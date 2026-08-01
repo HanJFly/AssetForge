@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * <p>
  * 用户表 前端控制器
@@ -87,8 +89,8 @@ public class UserController {
 
     //角色列表
     @PostMapping("/role/list")
-    public Result<RoleListVO> roleList(@RequestBody UserParam  param){
-        RoleListVO roleListVO = userService.getRoleList(param);
+    public Result<List<RoleListVO>> roleList(@RequestBody UserParam  param){
+        List<RoleListVO> roleListVO = userService.getRoleList(param);
         return Result.ok(roleListVO);
     }
 

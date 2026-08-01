@@ -8,6 +8,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.hjf.common.result.CommonException;
 import com.hjf.common.result.Result;
+import com.hjf.context.LoginUserIRoleUtile;
 import com.hjf.context.LoginUserInfoUtile;
 import com.hjf.entity.*;
 import com.hjf.mapper.*;
@@ -85,10 +86,20 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
     @Autowired
     private AssetLedgerMapper assetLedgerMapper;
 
+    @Autowired
+    private LoginUserIRoleUtile loginUserIRoleUtile;
+
+    @Autowired
+    private RoleMapper roleMapper;
+
 
     @Override
     public ApprovalRecordTodoPageVO todoPage(ApprovalRecordTodoPageParam param) {
         //分页
+        LoginUserContext context = requireLoginUser();
+        if (!isAssetAdmin(context.getId())) {
+            param.setApproverId(context.getId());
+        }
         PageHelper.startPage(param.getPage(), param.getSize());
 
         //查询
@@ -201,6 +212,10 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
 
     @Override
     public ApprovalRecordDonePageVO donePage(ApprovalRecordDonePageParam param) {
+        LoginUserContext context = requireLoginUser();
+        if (!isAssetAdmin(context.getId())) {
+            param.setApproverId(context.getId());
+        }
         PageHelper.startPage(param.getPage(), param.getSize());
         List<ApprovalRecord> approvalRecord = approvalRecordMapper.donePage(param);
         if (approvalRecord.isEmpty()) {
@@ -289,6 +304,8 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
         if (approvalRecord == null) {
             throw new CommonException(404, "没有该审批记录");
         }
+        LoginUserContext context = requireLoginUser();
+        validateApprovalAccess(approvalRecord, context.getId());
         ApprovalRecordDetailVO vo = new ApprovalRecordDetailVO();
         vo.setId(approvalRecord.getId());
 
@@ -494,7 +511,8 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
         if (approvalRecord == null) {
             throw new CommonException(404, "审批记录不存在");
         }
-        LoginUserContext context = LoginUserInfoUtile.get();
+        LoginUserContext context = requireLoginUser();
+        validateApprovalAccess(approvalRecord, context.getId());
         if(approvalRecord.getApplicantId() == context.getId()){
             throw new CommonException(400, "不能审批自己");
         }
@@ -537,6 +555,8 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
         if (approvalRecord == null) {
             throw new CommonException(404, "审批记录不存在");
         }
+        LoginUserContext context = requireLoginUser();
+        validateApprovalAccess(approvalRecord, context.getId());
         User user = userMapper.selectById(param.getTargetApproverId());
         if (user == null) {
             throw new CommonException(404, "转交的用户不存在");
@@ -544,7 +564,6 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
         //需要添加一个当转交ID与当前操作ID一致时，不能转交
 
          //先获取当前登录用户ID,判断是否与转交用户一致,一致则不能转交
-        LoginUserContext context = LoginUserInfoUtile.get();
         if (context.getId().equals(param.getTargetApproverId())) {
             throw new CommonException(400, "不能转交给自己");
         }
@@ -578,6 +597,43 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
 
     }
 
+
+
+    private LoginUserContext requireLoginUser() {
+        LoginUserContext context = LoginUserInfoUtile.get();
+        if (context == null || context.getId() == null) {
+            throw new CommonException(401, "未授权，请重新登录");
+        }
+        return context;
+    }
+
+    private void validateApprovalAccess(ApprovalRecord approvalRecord, Long currentUserId) {
+        if (approvalRecord == null || currentUserId == null) {
+            throw new CommonException(403, "无权访问该审批记录");
+        }
+        if (isAssetAdmin(currentUserId)) {
+            return;
+        }
+        if (!currentUserId.equals(approvalRecord.getApproverId())) {
+            throw new CommonException(403, "无权访问该审批记录");
+        }
+    }
+
+    private boolean isAssetAdmin(Long userId) {
+        if (userId == null) {
+            return false;
+        }
+        String selectedRoleId = loginUserIRoleUtile.getRole(String.valueOf(userId));
+        if (selectedRoleId == null || selectedRoleId.isBlank()) {
+            return false;
+        }
+        try {
+            Role selectedRole = roleMapper.selectById(Long.valueOf(selectedRoleId));
+            return selectedRole != null && "ASSET_ADMIN".equals(selectedRole.getCode());
+        } catch (NumberFormatException ex) {
+            return false;
+        }
+    }
 
     //更新对应的业务单据的审批状态
     public void updateTargetTypeTable(String targetType, Long targetId, String status, LoginUserContext context, ApprovalRecordActionParam param) {

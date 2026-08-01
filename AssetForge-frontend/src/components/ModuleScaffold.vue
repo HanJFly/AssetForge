@@ -27,6 +27,18 @@ const props = defineProps({
     type: Array,
     default: () => []
   },
+  detailTableTitle: {
+    type: String,
+    default: ''
+  },
+  detailTableProp: {
+    type: String,
+    default: ''
+  },
+  detailTableColumns: {
+    type: Array,
+    default: () => []
+  },
   api: {
     type: Object,
     default: () => ({})
@@ -86,6 +98,12 @@ const detailEntries = computed(() => {
   }
 
   return Object.entries(detailModel.value || {}).map(([label, value]) => ({ label, value }))
+})
+
+const detailTableData = computed(() => {
+  if (!props.detailTableProp) return []
+  const data = detailModel.value?.[props.detailTableProp]
+  return Array.isArray(data) ? data : []
 })
 
 function resolveFieldDefault(field) {
@@ -381,6 +399,20 @@ onMounted(fetchList)
           {{ item.value ?? '-' }}
         </el-descriptions-item>
       </el-descriptions>
+
+      <template v-if="detailTableColumns.length">
+        <div style="margin: 20px 0 12px; font-size: 16px; font-weight: 600">
+          {{ detailTableTitle || '明细信息' }}
+        </div>
+        <el-table v-if="detailTableData.length" :data="detailTableData" stripe class="full-width">
+          <el-table-column
+            v-for="column in detailTableColumns"
+            :key="column.prop"
+            v-bind="column"
+          />
+        </el-table>
+        <el-empty v-else description="暂无明细数据" />
+      </template>
     </el-drawer>
   </div>
 </template>

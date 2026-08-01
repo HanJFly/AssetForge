@@ -478,6 +478,7 @@ onMounted(() => {
             </template>
             <el-tree
               v-loading="loading"
+              class="management-tree"
               :data="treeData"
               node-key="id"
               default-expand-all
@@ -760,6 +761,16 @@ onMounted(() => {
 .suggestion-meta {
   color: #94a3b8;
   font-size: 12px;
+}
+
+:deep(.management-tree .el-tree-node__content) {
+  min-height: 38px;
+  font-size: 17px;
+}
+
+:deep(.management-tree .el-tree-node__label) {
+  font-size: 17px;
+  line-height: 1.5;
 }
 
 @media (max-width: 768px) {

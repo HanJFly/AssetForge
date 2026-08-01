@@ -8,9 +8,9 @@ public class ApprovalRecordDonePageParam extends Page {
 
     private String approvalType;
 
-
     private String targetType;
 
+    private Long approverId;
 
     private String approvalStatus;
 }

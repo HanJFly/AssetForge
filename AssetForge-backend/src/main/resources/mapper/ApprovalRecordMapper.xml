@@ -18,11 +18,14 @@
         updated_at AS updatedAt
         FROM approval_record
         WHERE approval_status = 'PENDING'
+        <if test="approverId != null">
+            AND approver_id = #{approverId}
+        </if>
         <if test="approvalType != null and approvalType != ''">
             AND approval_type = #{approvalType}
         </if>
         <if test="targetType != null and targetType != ''">
-            AND target_type like concat('%', #{targetType}, '%'))
+            AND target_type like concat('%', #{targetType}, '%')
         </if>
         <if test="approvalStatus != null and approvalStatus != ''">
             AND approval_status = #{approvalStatus}
@@ -45,12 +48,14 @@
             updated_at AS updatedAt
             FROM approval_record
             WHERE approval_status != 'PENDING'
+            <if test="approverId != null">
+                AND approver_id = #{approverId}
+            </if>
             <if test="approvalType != null and approvalType != ''">
                 AND approval_type = #{approvalType}
             </if>
             <if test="targetType != null and targetType != ''">
-                AND target_type like concat('%', #{targetType}, '%'))
-
+                AND target_type like concat('%', #{targetType}, '%')
             </if>
             <if test="approvalStatus != null and approvalStatus != ''">
                 AND approval_status = #{approvalStatus}

@@ -39,6 +39,13 @@ const detailFields = [
   { label: '审批状态', prop: 'approvalStatus' }
 ]
 
+const detailItemColumns = [
+  { label: '明细 ID', prop: 'id', width: 90 },
+  { label: '分类 ID', prop: 'categoryId', width: 100 },
+  { label: '分类名称', prop: 'categoryName', minWidth: 160 },
+  { label: '数量', prop: 'quantity', width: 90 }
+]
+
 const outboundForm = reactive({
   id: 1,
   confirmRemark: '已发放',
@@ -139,6 +146,9 @@ async function submitOutbound() {
       :columns="columns"
       :form-fields="formFields"
       :detail-fields="detailFields"
+      detail-table-title="申领物品明细"
+      detail-table-prop="itemList"
+      :detail-table-columns="detailItemColumns"
       :submit-payload-builder="submitPayloadBuilder"
       :query-payload-builder="queryPayloadBuilder"
       :permissions="{ create: canCreateRequisition }"

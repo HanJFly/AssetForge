@@ -224,6 +224,11 @@ public class AssetServiceImpl extends ServiceImpl<AssetMapper, Asset> implements
         approvalRecord.setTargetId(asset.getId());
         approvalRecord.setApplicantId(context.getId());
         approvalRecord.setApprovalStatus("PENDING");
+
+        LambdaQueryWrapper<Department> qw = new LambdaQueryWrapper<>();
+        qw.eq(Department::getId, param.getDepartmentId());
+        Department departmentManager = departmentMapper.selectOne(qw);
+        approvalRecord.setApproverId(departmentManager.getManagerUserId());
         approvalRecord.setCreatedAt(LocalDateTime.now());
         approvalRecord.setUpdatedAt(LocalDateTime.now());
         approvalRecordMapper.insert(approvalRecord);
@@ -485,6 +490,14 @@ public class AssetServiceImpl extends ServiceImpl<AssetMapper, Asset> implements
         approvalRecord.setTargetId(assetId);
         approvalRecord.setApplicantId(context == null ? 1L : context.getId());
         approvalRecord.setApprovalStatus("PENDING");
+        // 加上审批人：从部门的管理员获取
+        Asset asset = assetMapper.selectById(assetId);
+        if (asset != null && asset.getDepartmentId() != null) {
+            Department department = departmentMapper.selectById(asset.getDepartmentId());
+            if (department != null) {
+                approvalRecord.setApproverId(department.getManagerUserId());
+            }
+        }
         approvalRecord.setCreatedAt(LocalDateTime.now());
         approvalRecord.setUpdatedAt(LocalDateTime.now());
         approvalRecordMapper.insert(approvalRecord);

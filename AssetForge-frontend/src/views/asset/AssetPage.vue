@@ -403,7 +403,7 @@ function queryPayloadBuilder({ queryModel, pagination }) {
     {
       scope: dataScope.value,
       self: () => ({
-        userId: currentUser.value.userId
+        currentUserId: currentUser.value.userId
       }),
       department: () => ({})
     }

@@ -44,37 +44,48 @@ onMounted(restoreCurrentUser)
 
 <style scoped>
 .app-shell {
-  display: grid;
-  grid-template-columns: 260px 1fr;
   min-height: 100vh;
+  background: #f3f7fb;
 }
 
 .app-aside {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 260px;
   height: 100vh;
   background: linear-gradient(180deg, #0f172a, #1e293b);
   border-right: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 20;
+  overflow-y: auto;
 }
 
 .app-main {
+  margin-left: 260px;
+  min-height: 100vh;
   min-width: 0;
   display: flex;
   flex-direction: column;
 }
 
 .app-content {
+  flex: 1;
+  min-height: 0;
   padding: 24px;
+  overflow-y: auto;
 }
 
 @media (max-width: 960px) {
-  .app-shell {
-    grid-template-columns: 1fr;
-  }
-
   .app-aside {
     position: relative;
+    left: auto;
+    width: 100%;
     height: auto;
+    overflow: visible;
+  }
+
+  .app-main {
+    margin-left: 0;
   }
 }
 </style>

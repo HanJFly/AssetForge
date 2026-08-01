@@ -12,6 +12,8 @@ import com.hjf.vo.UserPageVO;
 import com.hjf.vo.UserVO;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * <p>
  * 用户表 服务类
@@ -34,5 +36,5 @@ public interface IUserService extends IService<User> {
 
     void delateUser(UserParam param);
 
-    RoleListVO getRoleList(UserParam param);
+    List<RoleListVO> getRoleList(UserParam param);
 }

@@ -171,10 +171,22 @@ async function loadAllCategories() {
 }
 
 async function loadPage() {
-  const payload = await requestWrap(() => categoryApi.page(pageForm))
-  const pageResult = normalizePageResult(payload, [])
-  pageRows.value = pageResult.records.map(enrichCategoryRow)
-  pageTotal.value = pageResult.total
+  const nameKeyword = normalizeName(pageForm.name)
+  const parentKeyword = normalizeName(pageForm.parentName)
+
+  const filteredRows = allCategories.value
+    .map(enrichCategoryRow)
+    .filter((item) => {
+      const matchedName = !nameKeyword || normalizeName(item.name).includes(nameKeyword)
+      const matchedParent = !parentKeyword || normalizeName(item.parentName).includes(parentKeyword)
+      return matchedName && matchedParent
+    })
+
+  pageTotal.value = filteredRows.length
+
+  const start = (pageForm.page - 1) * pageForm.size
+  const end = start + pageForm.size
+  pageRows.value = filteredRows.slice(start, end)
 }
 
 async function loadDetail(id) {
@@ -324,8 +336,6 @@ function resetPageQuery() {
   loadPage()
 }
 
-watch(() => pageForm.parentId, () => syncCategoryById(pageForm))
-watch(() => pageForm.parentName, () => syncCategoryByName(pageForm))
 watch(() => createForm.parentId, () => syncCategoryById(createForm))
 watch(() => createForm.parentName, () => syncCategoryByName(createForm))
 watch(() => editForm.parentId, () => syncCategoryById(editForm))
@@ -364,6 +374,7 @@ onMounted(() => {
             </template>
             <el-tree
               v-loading="loading"
+              class="management-tree"
               :data="treeData"
               node-key="id"
               default-expand-all
@@ -417,9 +428,6 @@ onMounted(() => {
             <el-form label-width="120px" class="query-grid">
               <el-form-item label="分类名称">
                 <el-input v-model="pageForm.name" placeholder="按分类名称模糊查询" />
-              </el-form-item>
-              <el-form-item label="上级分类 ID">
-                <el-input-number v-model="pageForm.parentId" class="full-width" />
               </el-form-item>
               <el-form-item label="上级分类名称">
                 <el-autocomplete
@@ -576,6 +584,16 @@ onMounted(() => {
   display: flex;
   justify-content: flex-end;
   gap: 12px;
+}
+
+:deep(.management-tree .el-tree-node__content) {
+  min-height: 38px;
+  font-size: 17px;
+}
+
+:deep(.management-tree .el-tree-node__label) {
+  font-size: 17px;
+  line-height: 1.5;
 }
 
 @media (max-width: 1200px) {

@@ -29,7 +29,9 @@ import com.hjf.vo.UserPageVO;
 import com.hjf.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -61,35 +63,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         PageHelper.startPage(param.getPage(), param.getSize());
 
         List<UserVO> users = userMapper.queryPage(param);
-
-        LambdaQueryWrapper<UserRole> getRoleIdByUserIDWrapper = new LambdaQueryWrapper<>();
-        getRoleIdByUserIDWrapper.in(UserRole::getUserId, users.stream().map(UserVO::getId).toList());
-        List<UserRole> userRoles = userRoleMapper.selectList(getRoleIdByUserIDWrapper);
-        LambdaQueryWrapper<Role> getRoleNameByRoleIdWrapper = new LambdaQueryWrapper<>();
-        getRoleNameByRoleIdWrapper.in(Role::getId, userRoles.stream().map(UserRole::getRoleId).toList());
-        List<Role> roles = roleMapper.selectList(getRoleNameByRoleIdWrapper);
-
-
-        Map<Long, String> roleIdToRoleNameMap = roles.stream().collect(Collectors.toMap(Role::getId, Role::getName));
-
-
-        // 封装角色名到每个用户
-        Map<Long, List<String>> userIdToRoleNamesMap = userRoles.stream()
-                .collect(Collectors.groupingBy(
-                        UserRole::getUserId,
-                        Collectors.mapping(
-                                ur -> roleIdToRoleNameMap.get(ur.getRoleId()),
-                                Collectors.toList()
-                        )
-                ));
-        users.forEach(user -> {
-            List<String> roleNames = userIdToRoleNamesMap.get(user.getId());
-            if (roleNames != null) {
-                user.setRoleNames(roleNames);
-            }
-        });
-
-
         Page<UserVO> pageInfo = (Page<UserVO>) users;
 
         UserPageVO userPageVO = new UserPageVO();
@@ -98,7 +71,50 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         userPageVO.setSize(param.getSize());
         userPageVO.setPage(param.getPage());
 
+        if (users == null || users.isEmpty()) {
+            return userPageVO;
+        }
 
+        List<Long> userIds = users.stream()
+                .map(UserVO::getId)
+                .distinct()
+                .toList();
+
+        LambdaQueryWrapper<UserRole> getRoleIdByUserIDWrapper = new LambdaQueryWrapper<>();
+        getRoleIdByUserIDWrapper.in(UserRole::getUserId, userIds);
+        List<UserRole> userRoles = userRoleMapper.selectList(getRoleIdByUserIDWrapper);
+
+        if (userRoles == null || userRoles.isEmpty()) {
+            return userPageVO;
+        }
+
+        List<Long> roleIds = userRoles.stream()
+                .map(UserRole::getRoleId)
+                .distinct()
+                .toList();
+
+        LambdaQueryWrapper<Role> getRoleNameByRoleIdWrapper = new LambdaQueryWrapper<>();
+        getRoleNameByRoleIdWrapper.in(Role::getId, roleIds);
+        List<Role> roles = roleMapper.selectList(getRoleNameByRoleIdWrapper);
+
+        Map<Long, String> roleIdToRoleNameMap = roles.stream()
+                .collect(Collectors.toMap(Role::getId, Role::getName));
+
+        Map<Long, List<String>> userIdToRoleNamesMap = userRoles.stream()
+                .collect(Collectors.groupingBy(
+                        UserRole::getUserId,
+                        Collectors.mapping(
+                                ur -> roleIdToRoleNameMap.get(ur.getRoleId()),
+                                Collectors.toList()
+                        )
+                ));
+
+        users.forEach(user -> {
+            List<String> roleNames = userIdToRoleNamesMap.get(user.getId());
+            if (roleNames != null) {
+                user.setRoleNames(roleNames);
+            }
+        });
 
         return userPageVO;
     }
@@ -172,6 +188,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void updateUser(UserParam param) {
         User user = userMapper.selectById(param.getId());
         if (user == null) {
@@ -180,6 +197,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
         if (param.getRealName() == null) {
             throw new CommonException(500, "真实姓名不能为空");
+        }
+        if (param.getEmployeeNo() == null) {
+            throw new CommonException(500, "工号不能为空");
         }
 
         QueryWrapper<User> employeeNoWrapper = new QueryWrapper<>();
@@ -192,13 +212,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         if (param.getStatus() == null) {
             param.setStatus("正常");
         }
-
+        if (param.getDepartmentId() != null) {
+            Department department = departmentMapper.selectById(param.getDepartmentId());
+            if (department == null) {
+                throw new CommonException(404, "部门不存在");
+            }
+            user.setDepartmentName(department.getName());
+        }
         user.setId(param.getId());
         user.setRealName(param.getRealName());
         user.setEmployeeNo(param.getEmployeeNo());
         user.setPhone(param.getPhone());
         user.setEmail(param.getEmail());
         user.setDepartmentId(param.getDepartmentId());
+
 
         QueryWrapper<Department> departmentWrapper = new QueryWrapper<>();
         departmentWrapper.eq("id", param.getDepartmentId());
@@ -207,9 +234,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         user.setStatus(param.getStatus());
         userMapper.updateById(user);
 
-        userRoleMapper.deleteByUserId(user.getId());
-        if (param.getRoleIds() != null && !param.getRoleIds().isEmpty()) {
-            userRoleMapper.insertUserRole(user.getId(), param.getRoleIds());
+        // 如果前端传了角色列表，则删旧插新；没传则不修改角色
+        if (param.getRoleIds() != null) {
+            userRoleMapper.deleteByUserId(user.getId());
+            if (!param.getRoleIds().isEmpty()) {
+                userRoleMapper.insertUserRole(user.getId(), param.getRoleIds());
+            }
         }
     }
 
@@ -260,7 +290,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     @Override
-    public RoleListVO getRoleList(UserParam param) {
+    public List<RoleListVO> getRoleList(UserParam param) {
         User user = userMapper.selectById(param.getId());
         if (user == null || user.getIsDeleted() == 1) {
             throw new CommonException(500, "用户不存在");
@@ -268,19 +298,27 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
         QueryWrapper<UserRole> wrapper = new QueryWrapper<>();
         wrapper.eq("user_id", param.getId());
-        UserRole userRole = userRoleMapper.selectOne(wrapper);
-        if (userRole == null) {
+        List<UserRole> userRoleList = userRoleMapper.selectList(wrapper);
+        if (userRoleList == null || userRoleList.isEmpty()) {
             throw new CommonException(404, "用户角色不存在");
         }
+        List<Long> roleIds = userRoleList.stream()
+                .map(UserRole::getRoleId)
+                .distinct()
+                .toList();
+        LambdaQueryWrapper<Role> roleWrapper = new LambdaQueryWrapper<>();
+        roleWrapper.in(Role::getId, roleIds);
+        List<Role> roleList = roleMapper.selectList(roleWrapper);
+        List<RoleListVO> roleListVOList = new ArrayList<>();
+        for (Role role : roleList) {
+            RoleListVO roleListVO = new RoleListVO();
+            roleListVO.setId(role.getId());
+            roleListVO.setCode(role.getCode());
+            roleListVO.setName(role.getName());
+            roleListVOList.add(roleListVO);
+        }
+        return roleListVOList;
 
-        QueryWrapper<Role> roleWrapper = new QueryWrapper<>();
-        roleWrapper.eq("id", userRole.getRoleId());
-        Role role = roleMapper.selectOne(roleWrapper);
 
-        RoleListVO roleListVO = new RoleListVO();
-        roleListVO.setId(role.getId());
-        roleListVO.setCode(role.getCode());
-        roleListVO.setName(role.getName());
-        return roleListVO;
     }
 }
