@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hjf.mapper.UserMapper">
+
+
+    <select id="queryPage" resultType="com.hjf.vo.UserVO">
+        select u.*, d.name as department_name
+        from user u
+        left join department d on u.department_id = d.id and d.is_deleted = 0
+        where u.is_deleted = 0
+        <if test="username != null and username != ''">
+            and u.username like concat('%', #{username}, '%')
+        </if>
+        <if test="realName != null and realName != ''">
+            and u.real_name like concat('%', #{realName}, '%')
+        </if>
+        <if test="departmentId != null">
+            and u.department_id = #{departmentId}
+        </if>
+        <if test="status != null and status != ''">
+            and u.status = #{status}
+        </if>
+        order by u.id desc
+
+    </select>
+
+
+</mapper>

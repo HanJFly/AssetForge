@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hjf.mapper.AssetMapper">
+
+    <select id="queryPage" resultType="com.hjf.vo.AssetVO">
+        SELECT
+        a.id,
+        a.asset_code,
+        a.name,
+        a.category_id,
+        c.name AS category_name,
+        a.brand_model,
+        a.purpose,
+        a.department_id,
+        a.department_name,
+        a.current_user_id,
+        u.real_name AS current_user_name,
+        a.status,
+        a.purchase_amount,
+        a.purchase_date,
+        a.source_type,
+        a.remark
+        FROM asset a
+        LEFT JOIN asset_category c ON a.category_id = c.id AND c.is_deleted = 0
+        LEFT JOIN user u ON a.current_user_id = u.id AND u.is_deleted = 0
+        WHERE a.is_deleted = 0
+        <if test="name != null and name != ''">
+            AND a.name LIKE CONCAT('%', #{name}, '%')
+        </if>
+        <if test="assetCode != null and assetCode != ''">
+            AND a.asset_code LIKE CONCAT(#{assetCode}, '%')
+        </if>
+        <if test="brandModel != null and brandModel != ''">
+            AND a.brand_model LIKE CONCAT('%', #{brandModel}, '%')
+        </if>
+        <if test="realName != null and realName != ''">
+            AND u.real_name LIKE CONCAT('%', #{realName}, '%')
+        </if>
+
+
+        <if test="assetStatus != null and assetStatus != ''">
+            AND a.status = #{assetStatus}
+        </if>
+        <if test="categoryName != null and categoryName != ''">
+            AND c.name LIKE CONCAT('%', #{categoryName}, '%')
+        </if>
+        <if test="departmentName != null and departmentName != ''">
+            AND a.department_name LIKE CONCAT('%', #{departmentName}, '%')
+        </if>
+        <if test="sourceType != null and sourceType != ''">
+            AND a.source_type = #{sourceType}
+        </if>
+        <if test="purchaseDateStart != null and purchaseDateStart != ''">
+            AND a.purchase_date &gt;= #{purchaseDateStart}
+        </if>
+        <if test="purchaseDateEnd != null and purchaseDateEnd != ''">
+            AND a.purchase_date &lt;= #{purchaseDateEnd}
+        </if>
+        ORDER BY a.id DESC
+    </select>
+</mapper>

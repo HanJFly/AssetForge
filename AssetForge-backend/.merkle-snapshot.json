@@ -1,0 +1,3568 @@
+{
+  "rootHash": "1248bac710f7354ef735f04094d9a9aac4d4ad60860c05ed8372950f1240b7c4",
+  "timestamp": 1785069445665,
+  "fileCount": 198,
+  "files": [
+    {
+      "path": "src\\test\\java\\com\\hjf\\AssetForgeBackendApplicationTests.java",
+      "hash": "2bae4c47e0b267ccef8582f68e75bd55d87690d01c97cb3ee03a86066aab2f51",
+      "size": 219,
+      "modified": 1782723248948.081
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\AssetForgeBackendApplication.java",
+      "hash": "925ef770c53299f9a35de33b53c9b2ab16406ce991b121d2fcc44adfda727633",
+      "size": 523,
+      "modified": 1784908732520.2683
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\Main.java",
+      "hash": "f7f0823818f1393e7a8a9a23c69e84790b01b1495d99ac4fee97382f6e1e521c",
+      "size": 151,
+      "modified": 1784863830445.5496
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\ApprovalRecordActionVO.java",
+      "hash": "8ec337948c760361bf8706cd527b3a341bd65dcd9dc1241656de8faa36a932a1",
+      "size": 163,
+      "modified": 1784712409276.8745
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\ApprovalRecordDetailFormData.java",
+      "hash": "6f7b938b2edf744fc9db0d8cb90e422b2db0052acdae54a2bc9a95ed9c9285b9",
+      "size": 427,
+      "modified": 1784708877492.023
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\ApprovalRecordDetailHistoryList.java",
+      "hash": "ec266fc73e98b650a42df7113bba33031703dd9a56184164b31df2a4cfad94cd",
+      "size": 273,
+      "modified": 1784709913393.0261
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\ApprovalRecordDetailVO.java",
+      "hash": "9ad7b46be6475c237f4dffe8605429f1b96648fe0692ba59db838e0c9a0c35ec",
+      "size": 628,
+      "modified": 1784708877501.7341
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\ApprovalRecordDonePageVO.java",
+      "hash": "1519deedc56b73361d438998457f874031835bbf358fd736ab53d542753261c8",
+      "size": 182,
+      "modified": 1784697312597.2144
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\ApprovalRecordTodoPageVO.java",
+      "hash": "fcb88cb386c27d7514c241f15a223f2c352237befdb07646271a83a3f6cd1c66",
+      "size": 252,
+      "modified": 1784960840613.52
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\ApprovalRecordTransferVO.java",
+      "hash": "ae478f07e29e425ac0f185135695f380a69cbf62032b71c2b7a3e0be5630cc33",
+      "size": 127,
+      "modified": 1784717080843.6313
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\AssetBarcodeDetailVO.java",
+      "hash": "1ddba1261127ce87ecc015c96d4833a456937994f4b6102c2f7a24e5cf011a76",
+      "size": 242,
+      "modified": 1784621347769.9766
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\AssetCategoryPageVO.java",
+      "hash": "0889fa1b5edfe547f1fd253467d141487b1bb553545cb8506372c3c1e54d9ba2",
+      "size": 251,
+      "modified": 1784963689896.0974
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\AssetCategoryVO.java",
+      "hash": "d49e7ac957dadba565572932f779f06d217092e67ca84b76af102bf4a6fa02f9",
+      "size": 306,
+      "modified": 1784517730604.4912
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\AssetCreateVO.java",
+      "hash": "1b28f29acde0233d29f1d969ec20869dd21332526cbd67ee3d59f2688cbee6eb",
+      "size": 341,
+      "modified": 1784602328566.632
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\AssetLedgerSnapshotPageVO.java",
+      "hash": "f3f26c7959b307be3317acc4655934b2b6bbcb7265508cbdc80a80edf1165012",
+      "size": 228,
+      "modified": 1784959992703.494
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\AssetLedgerSnapshotVO.java",
+      "hash": "468200045a660f9f9c4ef03bf8f9dce1676fbd5fd5a245f31a5f9ec688e129d4",
+      "size": 166,
+      "modified": 1784616779692.6843
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\AssetPageVO.java",
+      "hash": "1302486a736a0269184e0fa20b1412d6c7ee728905cdc94b6e34aa5fbf5ce70a",
+      "size": 224,
+      "modified": 1784970960242.112
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\AssetVO.java",
+      "hash": "2b5dab2e6419129d8d692115030a55f159226f303e540524dd59cc550bc2e839",
+      "size": 312,
+      "modified": 1784621303662.4536
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\DepartmentPageVO.java",
+      "hash": "5a3034c43a868e7d194e562bb5f396e87b8e7041e3ce0e1ff0c0b116a573708f",
+      "size": 245,
+      "modified": 1784963138661.6091
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\DepartmentVO.java",
+      "hash": "b24578f97f33953cda6b3907ff3c1dd1cef07b759a34d54447d0ed9c70af752e",
+      "size": 427,
+      "modified": 1784366987016.375
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\DonePageRecordVO.java",
+      "hash": "7b5db8cadd6fb28c27eccd8d7df5d36a0540292a8a76530f42b2b8169e959c3e",
+      "size": 307,
+      "modified": 1784695652085.7236
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\FileAttachmentVO.java",
+      "hash": "82ec4f648a712b051abaa1b0b78777cef6a7da8ff9d4c0e51c9b62ce5b68bd55",
+      "size": 153,
+      "modified": 1784548933398.6714
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\LoginUserListVO.java",
+      "hash": "6496435f2ab806012c7891be0eda075e2383c9e9e3a01c7811f79bf0d22ed4ae",
+      "size": 394,
+      "modified": 1784944865566.444
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\LoginVO.java",
+      "hash": "2c25f7c191827526fc5e986974f9c3c54595b890ac0688b6dfbf9b81517fbaad",
+      "size": 276,
+      "modified": 1784876058262.8464
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\Page.java",
+      "hash": "1eff2cab7a179659a816ddcfaad6d9ccd04035fc6622fc02000113b91209f9cb",
+      "size": 226,
+      "modified": 1784962326863.437
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\RequisitionOrderCreateVO.java",
+      "hash": "65a0a16c39c3c7308f35036c8f281e483a9c5220559ce4c6f864c0699d3d27ae",
+      "size": 258,
+      "modified": 1784957811559.8513
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\RequisitionOrderDetailItemVO.java",
+      "hash": "9dd32fcaeb3b0f31bce4f172f857023498e423b39a74f7bba8324cbeb8d7d3bd",
+      "size": 282,
+      "modified": 1785040881942.8335
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\RequisitionOrderDetailVO.java",
+      "hash": "7f79dcf29247a7b7eedcedbf03e5fe52d9e02779ffbebf0d33a16d3faf72e982",
+      "size": 459,
+      "modified": 1785042241953.0586
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\RequisitionOrderOutBoundVO.java",
+      "hash": "c0573bd952e7be8372dbf8bd646be8c1cb9ebcc9baea259085fc827afceca525",
+      "size": 162,
+      "modified": 1785046334898.0308
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\RequisitionOrderPageRecord.java",
+      "hash": "a9983e59cbed3a553f22bf7d8d90da4410f7cf54529b4a89ad630b8a9f40a62a",
+      "size": 294,
+      "modified": 1784959992786.9668
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\RequisitionOrderPageVO.java",
+      "hash": "038f901148e7849e03f01c9ee5c4ff53d111bc62f15fcdd1c9e39b4e9b7808e8",
+      "size": 289,
+      "modified": 1784973732453.5315
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\RoleListVO.java",
+      "hash": "ce36aa6bd45dea5396621885e5c7306d637168b036da2a945ecd7a0961e10990",
+      "size": 197,
+      "modified": 1784448711129.2852
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\SelectRoleVO.java",
+      "hash": "e03d97a262e5cb0be1fb93f060f692f2d0ad46a7cfcfeaa0ad1e74088afd37a7",
+      "size": 253,
+      "modified": 1784899853076.887
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\SystemConfigVo.java",
+      "hash": "1cd3d426df42e2b3c2ea7dbf7fd1266baad8f5f0b5e2ad249f63af7829fe59af",
+      "size": 145,
+      "modified": 1784530058040.773
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\TodoPageVo.java",
+      "hash": "a3790d3bb61f3ce37f4c170827a24f443e9ef9ff7042c92bfcf8b4a480007064",
+      "size": 394,
+      "modified": 1785039671071.399
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\TransferOrderVO.java",
+      "hash": "08f5ceaffa257214a97c64d6366dc51e3ac374fd94d79bd3ae5c5067115a6163",
+      "size": 175,
+      "modified": 1785066175635.125
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\UserPageVO.java",
+      "hash": "cc6a5e00c202476e6c733aa2a064caf625284c6d51bada2df8db4a966b4bd9a9",
+      "size": 215,
+      "modified": 1784964712171.4536
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\vo\\UserVO.java",
+      "hash": "518345cbd77b0c6fc4ee0c6f7a6c9b669f1ce89e5d0400c63a2c8ba14689ecbb",
+      "size": 269,
+      "modified": 1784964712139.5457
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\util\\JwtUtils.java",
+      "hash": "31f125c1370abc2e33eedb19226fda45dba7442f924a1b75acb850daf2020c44",
+      "size": 1386,
+      "modified": 1784884735615.0664
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\util\\PasswordUtils.java",
+      "hash": "2a8718e1487a6c6b37486b61be26c8a7712a2c77d7b46a16c67fceb3c70f8231",
+      "size": 372,
+      "modified": 1784884356777.2021
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\IApprovalRecordService.java",
+      "hash": "4fb3032fedf2503961bec04b71a0c62b3b6b0d186fe3e21bc1762369a7867af6",
+      "size": 760,
+      "modified": 1784717080869.084
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\IAssetCategoryService.java",
+      "hash": "bb60a9a321be970ac091f86fcf2cdac4b3d90cf434d94b1b0ea2122c17489928",
+      "size": 835,
+      "modified": 1784963689876.337
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\IAssetLedgerService.java",
+      "hash": "e2bef27842e9ec666cedb79b1a1986b7fdef9e5ccea7a6fa2b406b3a3a0dc632",
+      "size": 305,
+      "modified": 1784355908179.594
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\IAssetLedgerSnapshotService.java",
+      "hash": "526fe203e70ba0ab993828704d88a8f1f2d2655c0df59799252d0c439e1d9b30",
+      "size": 514,
+      "modified": 1784617041273.0088
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\IAssetLogService.java",
+      "hash": "d9491a048faebcef8951d2319186c35ae4eef0e8698b15f4c7c4900097589af8",
+      "size": 284,
+      "modified": 1784355908195.0415
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\IAssetService.java",
+      "hash": "0eb0d5669e06e3d267563a727d71f7f5fd2ec53c4ad887ca17ff2f0397b4e533",
+      "size": 815,
+      "modified": 1784970532244.7727
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\IAuthService.java",
+      "hash": "fd4fbd3ef640a75b1661cd209241c2b97f236989b5aedbf2f03da1c74755f0a4",
+      "size": 361,
+      "modified": 1784945130787.2234
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\IDepartmentService.java",
+      "hash": "97b6fad230ce42ffe2fd6f24f7a56e742ed12ffab919844498ae90434c4009d3",
+      "size": 1023,
+      "modified": 1784963138646.4365
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\IDepreciationRunLogService.java",
+      "hash": "9ff0f9469ed6dbd3bb0eb2ffae2f89571c5081d45edcd8bacdb61e9dd01f95c8",
+      "size": 320,
+      "modified": 1784355908207.0483
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\IFileAttachmentService.java",
+      "hash": "a6ef670bb083a87eb621b9beff39c55608feccdbdedd581e23ed03d8139872f4",
+      "size": 657,
+      "modified": 1784601434417.3604
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\IInventoryDetailService.java",
+      "hash": "e3b84428824dbae9b4453a1234fa7f561cac1c6168252d89b48934a8df67a3ea",
+      "size": 299,
+      "modified": 1784355908220.8496
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\IInventoryTaskService.java",
+      "hash": "14361d73b561965874ca8a75d70db32c681e54e9044c5de2ef694b9ee5363f6d",
+      "size": 293,
+      "modified": 1784355908227.8496
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\ILossOrderService.java",
+      "hash": "4780586c8caf7453f5be16d5ce2dbb5a3106488f6c4a6d3bc9546ea9ec78b668",
+      "size": 278,
+      "modified": 1784355908235.3418
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\IRequisitionOrderItemService.java",
+      "hash": "c800daf3057450b3b8281917493f638683e5840b6f738bab3746a3c163d87ad4",
+      "size": 324,
+      "modified": 1784355908246.9348
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\IRequisitionOrderService.java",
+      "hash": "ae67e61188a3d36f4580dab4fd1ae313342944ce4f85ea1cc5a0278017c5c180",
+      "size": 1021,
+      "modified": 1785046407425.3765
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\IReturnOrderItemService.java",
+      "hash": "b9106ada62dc1047deafd51245edf8285a45ee1df77e0a0b418cc2df67b4a38b",
+      "size": 309,
+      "modified": 1784355908259.2246
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\IReturnOrderService.java",
+      "hash": "ac3a745b23630ad11af81ba45980e4b4cae3b0efeb1a398805773d791ec01983",
+      "size": 287,
+      "modified": 1784355908253.933
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\IRoleService.java",
+      "hash": "ed9ef768a77ecb428bb68f14eae075125ede4d5db1aeebb5262ac0ce0c4db160",
+      "size": 260,
+      "modified": 1784355908265.2249
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\IScrapOrderItemService.java",
+      "hash": "8c3db1d414e504013f57bbbce2fc9897babd093b26ae45f3715ed7126e362083",
+      "size": 306,
+      "modified": 1784355908276.3647
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\IScrapOrderService.java",
+      "hash": "8537bc989269f42fca54a45d380d4e4cd34339bcff2b622be06f5e1658901cb5",
+      "size": 284,
+      "modified": 1784355908271.3645
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\ISystemConfigService.java",
+      "hash": "e814b469b91b98be887170016ad3c9cafb626d6a3b772255f32e8cc097e1f4ae",
+      "size": 472,
+      "modified": 1784531420095.833
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\ITransferOrderItemService.java",
+      "hash": "12e786d88a8e9a444f384bb51aa732ff8396e28b1a198ba127938d0707f8d25a",
+      "size": 315,
+      "modified": 1784355908299.8684
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\ITransferOrderService.java",
+      "hash": "e4db2dc45b97199fd860a748a9c5d1e09a6a5a4edf287fa7379badcd450aa3bb",
+      "size": 423,
+      "modified": 1785066677220.712
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\IUserRoleService.java",
+      "hash": "7ea4cfee528af5ea1259f4d3b9de82716c76252c269d46d7e6afac376c16e5e0",
+      "size": 284,
+      "modified": 1784355908311.511
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\IUserService.java",
+      "hash": "0c1a12027fb43a92f9392539e5417aded2640d06b45d52faafeb81bbc4f46f10",
+      "size": 830,
+      "modified": 1784964712146.5466
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\ApprovalRecordServiceImpl.java",
+      "hash": "d53c0f99a7ca934dcdce331776df86c938bcaf599a94507811e339e3b6150e23",
+      "size": 27718,
+      "modified": 1785056064602.674
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\AssetCategoryServiceImpl.java",
+      "hash": "6e212e604c49f4ce7d41814f275f7fe648bfca72e468b2cf15d7999f847e6ade",
+      "size": 7534,
+      "modified": 1784963689913.795
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\AssetLedgerServiceImpl.java",
+      "hash": "778ff6f72246184232ac81dd8a3269b7dec5a0eded3e55699858aed8703d74d2",
+      "size": 517,
+      "modified": 1784355908180.5935
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\AssetLedgerSnapshotServiceImpl.java",
+      "hash": "b87c2a353c7c521d13582f72030f92c84051aabb7f143d6f8e42db364ae6587d",
+      "size": 1528,
+      "modified": 1784962400885.7312
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\AssetLogServiceImpl.java",
+      "hash": "7a9d8c2aa0efeb998d733d751a1b3599c3836dc75d33a982ee5c61ffecd4cb1e",
+      "size": 484,
+      "modified": 1784355908195.0415
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\AssetServiceImpl.java",
+      "hash": "f42f7639120f7e7c765a397cadb9bee4f45cd9a621e22ef01f437622232c0be9",
+      "size": 11737,
+      "modified": 1785065143393.285
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\AuthServiceImpl.java",
+      "hash": "d92edd9f67d8e1eda94d92e1b4d8b0edec95f7c4cb6ec661e5bb51c7777fcb27",
+      "size": 7415,
+      "modified": 1784947741140.8467
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\DepartmentServiceImpl.java",
+      "hash": "0a693f5ef0d609a333e9746c3e40502053af630369c07bc2ba24010bc4ad6b8d",
+      "size": 7462,
+      "modified": 1784963138654.6003
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\DepreciationRunLogServiceImpl.java",
+      "hash": "81bea680c33199dd2a4abc4d6df22e2b9930b2c63368a8cf2f3b4b17e4100e0c",
+      "size": 560,
+      "modified": 1784355908208.0474
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\FileAttachmentServiceImpl.java",
+      "hash": "ce66ecf01950f700fc26ca512bcc69c0f19e70e34eab557e5a7ce14680074595",
+      "size": 3519,
+      "modified": 1784601584762.0715
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\InventoryDetailServiceImpl.java",
+      "hash": "ab9632c24bd05c72ee9208dc18730a48dc62851d60d5888b4d66b4feef80db7e",
+      "size": 527,
+      "modified": 1784355908221.85
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\InventoryTaskServiceImpl.java",
+      "hash": "4f4dea02c439bdf5009f720f2e6316c39141b33e557de572de4acba8841b941a",
+      "size": 513,
+      "modified": 1784355908228.8633
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\LossOrderServiceImpl.java",
+      "hash": "74cf52b7832387f38d69a5d22c444796cd5577cfe8b1565573841a6e9cbcd9fd",
+      "size": 482,
+      "modified": 1784355908236.3416
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\RequisitionOrderItemServiceImpl.java",
+      "hash": "210bcc76ec65841d955a3c763024b2dc5fbb2869f1a5bb1808236c7a416a5c96",
+      "size": 572,
+      "modified": 1784355908247.931
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\RequisitionOrderServiceImpl.java",
+      "hash": "229575667acf6c1fc71d75cec7dd38b6ca42c160279c047e7f045509276e8c17",
+      "size": 13129,
+      "modified": 1785052337821.4983
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\ReturnOrderItemServiceImpl.java",
+      "hash": "0377d0caac7e9596e96918b3e04308f03f290d3dcab55e72aa4a1b5f3f3b06cc",
+      "size": 537,
+      "modified": 1784355908260.224
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\ReturnOrderServiceImpl.java",
+      "hash": "4c5833c2548d824679b1e88d95060d93e7804a48eee9a37b3cb9733570952049",
+      "size": 499,
+      "modified": 1784355908253.933
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\RoleServiceImpl.java",
+      "hash": "31d3e79bb5145e78b06edb775077538baf75136009ca2f9b336bed9cf4849a1f",
+      "size": 444,
+      "modified": 1784355908266.2273
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\ScrapOrderItemServiceImpl.java",
+      "hash": "ac19f92a40c604a4872297217f23dc7bf93ebc8aa2738d31bc13396f31d04d27",
+      "size": 530,
+      "modified": 1784355908277.365
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\ScrapOrderServiceImpl.java",
+      "hash": "60867842eb0ad40f9b987ce167b61d1f233b61300f410a1eade8131b229df50b",
+      "size": 492,
+      "modified": 1784355908271.3645
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\SystemConfigServiceImpl.java",
+      "hash": "b714ccd0f7bed470a8cbb011d352b6f10461d3622ad6cc1d4bc3e4a1b5a714ce",
+      "size": 1812,
+      "modified": 1784531930713.263
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\TransferOrderItemServiceImpl.java",
+      "hash": "f3323cbb4938971dbd388e9287b4a7071b5785f09c2cc402396b87f6c5542a99",
+      "size": 551,
+      "modified": 1784355908301.2014
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\TransferOrderServiceImpl.java",
+      "hash": "d231b71e6fda4cc225c9c3fb112c36351b85dc1a2784d8c3c6b8b9a09ec5c488",
+      "size": 742,
+      "modified": 1785069208928.3303
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\UserRoleServiceImpl.java",
+      "hash": "b99ecf7306972b0652bfc53d814583a5c17198708a08032cb441d26cb48156ea",
+      "size": 484,
+      "modified": 1784355908311.511
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\service\\impl\\UserServiceImpl.java",
+      "hash": "540cb2f5760fb75d7228fa6b7ba597981611c7032cc4babb6b5bf7f13c0746e4",
+      "size": 10206,
+      "modified": 1785033568451.8523
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\ApprovalRecordActionParam.java",
+      "hash": "3e00c5f2ea873feb0ba9d1d9160a1fbd0286105b49feec469d5c0b5917b9e5b2",
+      "size": 337,
+      "modified": 1785044872841.9944
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\ApprovalRecordDetailParam.java",
+      "hash": "58ce21ed7cd8b9f0ef02506316a0f79ec2b0024428cefc26cb23091fc874f158",
+      "size": 123,
+      "modified": 1784708717622.8416
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\ApprovalRecordDonePageParam.java",
+      "hash": "aab994dc719ac7511247219f52c3b94da721c95f90254a37bcbc31e08c529fbf",
+      "size": 335,
+      "modified": 1785039706433.7559
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\ApprovalRecordTodoPageParam.java",
+      "hash": "3075f648a8a998c1f5da6f0529f6d32f2fb0489512fa2ce7e9c61e739ae98412",
+      "size": 415,
+      "modified": 1785039559052.9646
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\ApprovalRecordTransferParam.java",
+      "hash": "58fc511b4ad27e27a2720222eab9cb83d062bab88775d973c628182d2120876a",
+      "size": 190,
+      "modified": 1784717080830.9375
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\AssetCategoryPageParam.java",
+      "hash": "f42b1ced85d5042e04c55520e8f69c62e6df27da483f990ac8eb37edb657607b",
+      "size": 219,
+      "modified": 1784516878537.054
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\AssetCategoryParam.java",
+      "hash": "e9f88ed90838a25592e168bc09abf66c0745b44ab08252f6a5c40381749fd288",
+      "size": 154,
+      "modified": 1784521094939.141
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\AssetLedgerSnapshotParam.java",
+      "hash": "3e8b681ec9c6d660920fa98526b017bc68135e766a6a995920112c2b1b4dd003",
+      "size": 321,
+      "modified": 1784616577077.9507
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\AssetPageParam.java",
+      "hash": "50fbfff55b59f8979207b5daf45d2013b0f50175f09257413d7d2c545f04323d",
+      "size": 545,
+      "modified": 1785034646576.0088
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\AssetParam.java",
+      "hash": "1afd7240fc84edec822f3103e20e6cf848ca6060ec7900c29bf495a12580cc92",
+      "size": 518,
+      "modified": 1784968791323.673
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\DepartmentCreateParam.java",
+      "hash": "6918b2c195bce518af4c88c3ac6a65069f329acb11f88700457e7e45fe88e0b2",
+      "size": 320,
+      "modified": 1784376372152.8396
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\DepartmentDeleteParam.java",
+      "hash": "6d40cb45fccc5b6550499030c8c5079c03dcefeeece7274dd1b3b04e32fd4e08",
+      "size": 215,
+      "modified": 1784426556387.556
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\DepartmentPageParam.java",
+      "hash": "ecbdb572ea5c033fddafe3110984fe96ceaaa769a281874508e1430abf7ef88a",
+      "size": 190,
+      "modified": 1784433030585.7417
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\DepartmentUpdateParam.java",
+      "hash": "2913de179bb5a6480dd164597740e30056557b5a3f5ac57a3f8dcd181322a9fa",
+      "size": 411,
+      "modified": 1784423615990.0793
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\FileAttachmentBindParam.java",
+      "hash": "00e8f516d06cada7bf18417becd0dfa42a98ea8598a3233fae139352fe77ea0f",
+      "size": 186,
+      "modified": 1784602873669.042
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\LoginParam.java",
+      "hash": "058d66c0e9cc85490a95242ba63b53a061faa225322deb54141d2074ce130a59",
+      "size": 298,
+      "modified": 1784510339897.1206
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\LoginUserContext.java",
+      "hash": "b7a302a86291eed1d7f7f682a2aaaf52d42257a4c39785dbe5fb93b60281234f",
+      "size": 174,
+      "modified": 1784889174265.3196
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\RequisitionOrderCreateParam.java",
+      "hash": "59b9cae3ae8fe4d6dec7d69627d42900fd1116fd35e74833efafdbcfc2b6408e",
+      "size": 588,
+      "modified": 1784958419696.7107
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\RequisitionOrderDetailParam.java",
+      "hash": "20e946a12ec309e3faf79e2ae048fd0a5585062212b642f8b03a154f26c45cd6",
+      "size": 127,
+      "modified": 1785040415993.901
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\RequisitionOrderOutBoundParam.java",
+      "hash": "22191c18b6ee402e71b44f064c9510574812387529b7988b7956e35144b02355",
+      "size": 515,
+      "modified": 1785048395000.6584
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\RequisitionOrderPageParam.java",
+      "hash": "06fc06854f497eacd2c0ff63b63894dc8c11ceea7757b6ab01bfd0248138adaf",
+      "size": 398,
+      "modified": 1785032141143.0261
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\ResetPasswordParam.java",
+      "hash": "8e888f9a3ac1a0e2ad6b1ec035f82b61e9a0cc13d93553566a9cb13366ee8efe",
+      "size": 149,
+      "modified": 1784868882837.1917
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\SelectRoleParam.java",
+      "hash": "6ae812fb280fbda29d4ed42b78902c4f49a3ce0244063969c23fb77ff052d6f0",
+      "size": 129,
+      "modified": 1784899693827.39
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\SystemConfigParam.java",
+      "hash": "91ce6141c26638bda66675d3bb35565157051ab1f7c982a8133b66229d6402f2",
+      "size": 224,
+      "modified": 1784531299984.0227
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\TransferOrderParam.java",
+      "hash": "4c7c4babcce819ae30ebac8ab650d1832003c93b86dfa357b71850da39c2bf85",
+      "size": 802,
+      "modified": 1785066501390.7612
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\UserPageParam.java",
+      "hash": "244ad07a876b67ea55fb91eb6a13068940b70cef257ffba7e15e44975705e36c",
+      "size": 278,
+      "modified": 1784433708755.4143
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\UserParam.java",
+      "hash": "545ef8c26d21f03f0c027985265cce8b45088603bd1ad7b2006841aa24496460",
+      "size": 249,
+      "modified": 1784441539645.9329
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\param\\UserRoleParam.java",
+      "hash": "69973cdc3dc4ca08ed88c94af127e81fffe453c8baede451abbfac55c7dd2c14",
+      "size": 113,
+      "modified": 1784440570457.4514
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\ApprovalRecordMapper.java",
+      "hash": "f1c1c29395dc1f4123a962506da044eb5cd036bff0b0ae0c0ff6880e699fa8ec",
+      "size": 584,
+      "modified": 1784695743313.1006
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\AssetCategoryMapper.java",
+      "hash": "82d25df6cc8f1cfb63f9b4f881e4aed6e0783f8e06303b5670fb180dd73bb14b",
+      "size": 504,
+      "modified": 1784516677736.0984
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\AssetLedgerMapper.java",
+      "hash": "b63fcda41bc5a60a59d48c72a223c543bc30153a8f9869c92c340cb945afacd9",
+      "size": 307,
+      "modified": 1784355908177.5913
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\AssetLedgerSnapshotMapper.java",
+      "hash": "fad7773df86db30dfe3eea5024a369a15bc99d56b365efc7694bdb4eac8f2909",
+      "size": 543,
+      "modified": 1784620307017.4795
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\AssetLogMapper.java",
+      "hash": "638b52d5b8ad47c7c021f218777602434222be56c8a2c5c2fb55350d88376e38",
+      "size": 286,
+      "modified": 1784355908193.0444
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\AssetMapper.java",
+      "hash": "2df025b618e5b184892bb902f303318d3ae9bec443d2f9d2014d1ae93a285928",
+      "size": 486,
+      "modified": 1784971054728.2358
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\DepartmentMapper.java",
+      "hash": "7705734b3e3756be813ebfdf52f273138e4fae06584e186a827f3ddcbde8f7ee",
+      "size": 490,
+      "modified": 1784425339577.7554
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\DepreciationRunLogMapper.java",
+      "hash": "b5ef71ec2ed6ea07514b22be9cfa2a7fbd027c868e9c900651e3cf8553723d2c",
+      "size": 322,
+      "modified": 1784355908206.048
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\FileAttachmentMapper.java",
+      "hash": "7b43311e2a289df91a506f0e07dff3b83edd115fede932300a26a9b3e7a7e419",
+      "size": 298,
+      "modified": 1784355908211.046
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\InventoryDetailMapper.java",
+      "hash": "5a35e1d9259bd882014a3427eb462b38fab8f62793f664152a5cc7a15e67d696",
+      "size": 301,
+      "modified": 1784355908218.849
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\InventoryTaskMapper.java",
+      "hash": "5d039007845bade45eb39d88c1ca8ad016aa09ecd82b589f08b0880ac8e419a5",
+      "size": 295,
+      "modified": 1784355908225.8499
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\LossOrderMapper.java",
+      "hash": "73897c9b6872b7e6cf1942bcb44828029353171cbcf12976fb9adc83158cb60c",
+      "size": 280,
+      "modified": 1784355908234.342
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\RequisitionOrderItemMapper.java",
+      "hash": "ac1ac9abaefe237fe1e106cc293be02394b05528746b30d5ecd70d0cf02e616c",
+      "size": 326,
+      "modified": 1784355908245.3447
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\RequisitionOrderMapper.java",
+      "hash": "d3b6bbc67370a96e7a454a5cb0ced1c31ddc8c467cdfed197c34e5a0e917ebb3",
+      "size": 501,
+      "modified": 1784973732562.0266
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\ReturnOrderItemMapper.java",
+      "hash": "8879c6ff8fa12ac7643e80875031e56fe5f0f67c301926b36a89e0336e953659",
+      "size": 311,
+      "modified": 1784355908257.2166
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\ReturnOrderMapper.java",
+      "hash": "7e06eecaada909de98864273d95e127912714535450890b3bb9239f2ae4303b4",
+      "size": 289,
+      "modified": 1784355908251.9321
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\RoleMapper.java",
+      "hash": "45c58c2aa46f538bd20c635df101d9f236ba88c4f2fadc45ac6305c8a172174e",
+      "size": 262,
+      "modified": 1784355908263.2231
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\ScrapOrderItemMapper.java",
+      "hash": "3a1e78141f3698da749b861a8e1b1c11f47ae0b7380e51f89d60d099679ebc6b",
+      "size": 308,
+      "modified": 1784355908274.364
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\ScrapOrderMapper.java",
+      "hash": "680dcb6a78c573b6a2269926cd63fd71ee86992568cc5fe17b6d872718bf4344",
+      "size": 286,
+      "modified": 1784355908269.3657
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\SystemConfigMapper.java",
+      "hash": "4f090059b277194b895d108fab16165883b0ca3e5fd8bdca904f580bb88852a8",
+      "size": 292,
+      "modified": 1784355908281.7458
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\TransferOrderItemMapper.java",
+      "hash": "9a16fd175ebb6a4cd0341f6fde5c29cad9c5ca0f19c16ec13ca29c81c2c20b1d",
+      "size": 317,
+      "modified": 1784355908297.8684
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\TransferOrderMapper.java",
+      "hash": "ea81b797d19dbb0deb88120d9c78814b07aefefca7df8bf73e68831d654e5a9b",
+      "size": 295,
+      "modified": 1784355908290.8687
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\UserMapper.java",
+      "hash": "2e02c0b32a5340044f48a9fa634224f702ab3c3fea25039a5f828861508c2e57",
+      "size": 444,
+      "modified": 1784444114986.9111
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\mapper\\UserRoleMapper.java",
+      "hash": "42801a3824c6b918a457eba0f12db454fb5ab2c94fad0ed09efddd02c5f56283",
+      "size": 588,
+      "modified": 1784445075726.221
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\filter\\TokenFilter.java",
+      "hash": "1a2d59354e1bc2b5200b4f06711963140ee05f9999d2ee42f914767ccd032481",
+      "size": 3046,
+      "modified": 1784903715318.8215
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\ApprovalRecord.java",
+      "hash": "048bd7dc92806c73724488caa1939887770bc149078e2fa22af4ca572c1669b2",
+      "size": 1578,
+      "modified": 1784355908108.9324
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\Asset.java",
+      "hash": "9a66891499f4cd32a73f7ba0083e777fbb50bf76f64c6b5c60573331eead0161",
+      "size": 2098,
+      "modified": 1785065552983.3171
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\AssetCategory.java",
+      "hash": "6e5fe72fe580aafafe297685cffad917d2b95171efa375309de2f55783d3e0e4",
+      "size": 1228,
+      "modified": 1784355908166.5918
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\AssetLedger.java",
+      "hash": "89c664796ed13ba4c4199ec54e2ba43232b6e0fa9c1c569d6af00b68da82b42c",
+      "size": 1909,
+      "modified": 1784355908176.5957
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\AssetLedgerSnapshot.java",
+      "hash": "bce2f5622e01233476727ca6ee42be31308ff000f2c41e33f1d72aef0a66abf2",
+      "size": 2265,
+      "modified": 1784355908186.0396
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\AssetLog.java",
+      "hash": "861b3b5272d2c32b85d31edaf37cf8ab1c24d86910c684c41ce7505aa1cda768",
+      "size": 1194,
+      "modified": 1784355908193.0444
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\Department.java",
+      "hash": "e38126e615f12b508daadc1972b0af98175e5f8bb28529e28ba9c96447850de0",
+      "size": 1102,
+      "modified": 1784355908199.0403
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\DepreciationRunLog.java",
+      "hash": "af393654ecc52c21317639c040834ce8e9a1c6a0bfa02dc123c9d0789fe8ba14",
+      "size": 1414,
+      "modified": 1784355908205.047
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\FileAttachment.java",
+      "hash": "24ecbc5c397f596f0d1d5df082dedd34c32d323b9cbbd95653893941a9aeb835",
+      "size": 1227,
+      "modified": 1784355908211.046
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\InventoryDetail.java",
+      "hash": "c4eef059a4dc6aaa0b4dc824ae8422c9304adebd5e60884c99867881a61223b8",
+      "size": 1883,
+      "modified": 1784355908218.849
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\InventoryTask.java",
+      "hash": "3dba194b39fe52e48d8af56e0459ef047bcfd66428c5b0c3aa7c7e076d93a522",
+      "size": 1489,
+      "modified": 1784355908225.8499
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\LossOrder.java",
+      "hash": "00c0e89b25d4f703607e55a936ce412cd4c9674308ed7cc760ebb0f778c80ed2",
+      "size": 2412,
+      "modified": 1784355908233.3494
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\RequisitionOrder.java",
+      "hash": "58d501e24519e405f9726bc42910722bcc0135b32a0a02121d20037d242f6faa",
+      "size": 2266,
+      "modified": 1785046991983.8438
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\RequisitionOrderItem.java",
+      "hash": "616c4d88420fa7f83f87f5e99e10824b4af8bc5cb3dbd48e1428fba4ad9f0328",
+      "size": 1537,
+      "modified": 1784355908244.3433
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\ReturnOrder.java",
+      "hash": "f000ff07ffdfd211db3127280fca77631e9a760a7a1109843a36f1715f721abc",
+      "size": 2020,
+      "modified": 1784355908250.9314
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\ReturnOrderItem.java",
+      "hash": "5e90e45d40266df088805537e2ce9f779fc53ac6e16ffb59b66bbbb90aa8fa1c",
+      "size": 1457,
+      "modified": 1784355908257.2166
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\Role.java",
+      "hash": "c814123af4cd4326a2997d508287788e515a07e7d1ea252fc19d2b97f7fa08f8",
+      "size": 882,
+      "modified": 1784355908262.2234
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\ScrapOrder.java",
+      "hash": "4961f9eea4eae795371578f392dbf02cd524120e23eea5ef28f7ffb2b5489c55",
+      "size": 1838,
+      "modified": 1784355908268.3574
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\ScrapOrderItem.java",
+      "hash": "1d6184a86949c292e89d39968832586d20a5069c0e646bba5eeb9d9ee48aef5b",
+      "size": 1558,
+      "modified": 1784355908274.364
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\SystemConfig.java",
+      "hash": "221cf42ee8ee4c20b5090c31dce0201466a9ccf5193c8eab20062bff28132161",
+      "size": 1007,
+      "modified": 1784355908280.7446
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\TransferOrder.java",
+      "hash": "61262511f14abe5359290d6a37b4cacea70d39ea230a0fd62d27fc05b2166e4c",
+      "size": 2252,
+      "modified": 1784355908289.8682
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\TransferOrderItem.java",
+      "hash": "db0916331ac210af0214bf8fc49665d28f8bee05b45cb7c48392211177bd9f75",
+      "size": 1348,
+      "modified": 1784355908296.8687
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\User.java",
+      "hash": "e45262a5b2c8715bf90a051dae1a4d8077d5f22bddfc40acb458bd753040b546",
+      "size": 1595,
+      "modified": 1784511469444.447
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\entity\\UserRole.java",
+      "hash": "d6e97cd294d958f5f3ce6fc8c889f56fa4ba1555f69bb6c708fab1d89aca1826",
+      "size": 848,
+      "modified": 1784355908308.511
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\ApprovalRecordController.java",
+      "hash": "dcf371a30be7ea11aa509b2d8bc4d84b5522d24744e75df01f73708419315265",
+      "size": 2262,
+      "modified": 1785044934710.315
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\AssetCategoryController.java",
+      "hash": "4847d1b0d05ace0175430c1aa00a9b81811c435435ef76564baf60adf5df538e",
+      "size": 2247,
+      "modified": 1784963689904.7573
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\AssetController.java",
+      "hash": "86a03ac415e3606858959e5dc42fb7c086cec79615e59233ddab03f88d92a97f",
+      "size": 2208,
+      "modified": 1784970532310.4695
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\AssetLedgerController.java",
+      "hash": "0f521b5bc48a43c3ac944354987e203f2577dca5668b82c11aa6659bdeeeaee0",
+      "size": 347,
+      "modified": 1784355908183.0325
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\AssetLedgerSnapshotController.java",
+      "hash": "afd8fc3bc7eec042d0e83426486c1b71eaa7c05adaa33a390c897f563ed63a18",
+      "size": 1139,
+      "modified": 1784620819697.7373
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\AssetLogController.java",
+      "hash": "c2aceb0bc38819628174adb2605b51b94abb4fe000f7e7f539d80fc0798e4a57",
+      "size": 329,
+      "modified": 1784355908196.0408
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\AuthController.java",
+      "hash": "96fbc9ca2b72884270f419a91bbf3482f81521c9b84e2f1654822139782c303f",
+      "size": 1556,
+      "modified": 1784945130775.043
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\DepartmentController.java",
+      "hash": "6ab49169629197290974cee08cf20cac2512fbe370704242783f11cf15e7a049",
+      "size": 2386,
+      "modified": 1784963138637.4177
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\DepreciationRunLogController.java",
+      "hash": "b90e0709decdadbcf8bf172f1e511efa6bca0fd7dde20b63f0e013018e318b00",
+      "size": 355,
+      "modified": 1784355908209.0454
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\FileAttachmentController.java",
+      "hash": "c7cf3440e06496924a3b3fe908d4df743a38f11b74270f661df6f3df3622661c",
+      "size": 1262,
+      "modified": 1784602364797.2998
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\InventoryDetailController.java",
+      "hash": "45f24d6384a9a62987f30dd7543d6d22267090a25bab88283ca504e5b12dd411",
+      "size": 337,
+      "modified": 1784355908222.8508
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\InventoryTaskController.java",
+      "hash": "3686ccac3e9273eaadb37990cdc7271f400eef17a4512567d748905ff3fcb360",
+      "size": 333,
+      "modified": 1784355908229.851
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\LossOrderController.java",
+      "hash": "1f716fdda265234302b44deff095915dddb5657542dbac31c8426e70182b151b",
+      "size": 322,
+      "modified": 1784355908236.3416
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\RequisitionOrderController.java",
+      "hash": "d6c8052a2d652bf1510097b45be4c22f2f5a288ae07889199c29c5f8d1780dc8",
+      "size": 2507,
+      "modified": 1785046573566.8877
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\RequisitionOrderItemController.java",
+      "hash": "cad2c8d8858ee5da1ac0d0e315c8f1721d2b8f54439c0a294476f899796f8914",
+      "size": 357,
+      "modified": 1784355908248.9343
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\ReturnOrderController.java",
+      "hash": "cb09e611a6089c0254088b295a3e7aec66894f2008a4e7274eae8b5b0da3ad58",
+      "size": 329,
+      "modified": 1784355908254.9358
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\ReturnOrderItemController.java",
+      "hash": "46257f3dc172962bdebf127afdf272759d3d26cf4d0824b455abaa9e142793ac",
+      "size": 347,
+      "modified": 1784355908260.224
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\RoleController.java",
+      "hash": "4427b0090ddef3e18e7260de0ca982ba72b689325b17f6c63b776cd540a722b5",
+      "size": 309,
+      "modified": 1784355908267.2295
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\ScrapOrderController.java",
+      "hash": "f196a4727138bdce35cc63801815f82e49a7b26cb372addcbd3e496aca74d911",
+      "size": 327,
+      "modified": 1784355908272.3628
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\ScrapOrderItemController.java",
+      "hash": "6d7225878c5467224da3179fb23225c90f2792eeddaa0ae333fec1fc6feb492a",
+      "size": 345,
+      "modified": 1784355908278.7373
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\SystemConfigController.java",
+      "hash": "22eebd3c421d0aeaeacf62c5e981c1c7e350ff958049383806ca8f52c6e3a71a",
+      "size": 1275,
+      "modified": 1784531975712.6301
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\TransferOrderController.java",
+      "hash": "fef1659cfa7b09c14354759fea04a72b9831fc21eda0a03a3901fd52ab3b332c",
+      "size": 1047,
+      "modified": 1785066677234.516
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\TransferOrderItemController.java",
+      "hash": "22af6878ad2cc310c756228f6e392e04596633bf42c3f9bfb12199ab5cf49fe1",
+      "size": 351,
+      "modified": 1784355908301.2014
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\UserController.java",
+      "hash": "7a00097878748338c87d864ffe7f713b4846e4d70aa9f64d29d7f5c5103b370f",
+      "size": 2462,
+      "modified": 1784964712128.907
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\controller\\UserRoleController.java",
+      "hash": "e38631f148ac81b4777e51f70a7742547a735d88befc0fdbb0acc384c7065ec5",
+      "size": 329,
+      "modified": 1784355908312.511
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\context\\LoginUserInfoUtile.java",
+      "hash": "f68060f503eeede9228e1fa17fa82174f5fc03a58907f1983ff23f682c6aa672",
+      "size": 783,
+      "modified": 1784894300051.3696
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\context\\LoginUserIRoleUtile.java",
+      "hash": "9ec6606554667bf1737719b2662d8af87e230c6bb2ea4c713d47ba4eaa891cce",
+      "size": 721,
+      "modified": 1784896740747.1226
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\config\\CorsConfig.java",
+      "hash": "7ca76ca24131c00c36398beb704e55d816a3a4767365847ad39c37bc13deb04a",
+      "size": 739,
+      "modified": 1782821118569.4546
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\common\\result\\CommonException.java",
+      "hash": "50fd1b5a6d0d45fff891254871bb7ec831d3a9629f17eaf12620b0e7d8ea9b15",
+      "size": 312,
+      "modified": 1784428048959.3125
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\common\\result\\Result.java",
+      "hash": "0aa12cf22d56cb477ecc0afc111f01e2d1d33c3d08ceb53a529cbe8e962eaed7",
+      "size": 1372,
+      "modified": 1782727144747.402
+    },
+    {
+      "path": "src\\main\\java\\com\\hjf\\common\\exception\\GlobalExceptionHandler.java",
+      "hash": "1cff628e3049536182a7b52db90844ec22debbdfa3150724c690451a3828f405",
+      "size": 1269,
+      "modified": 1784515194607.2693
+    }
+  ],
+  "tree": {
+    "hash": "1248bac710f7354ef735f04094d9a9aac4d4ad60860c05ed8372950f1240b7c4",
+    "left": {
+      "hash": "b7df8ff23623bfa2ffeee76c8ecf8a66156a8d5fccb41e614350ea277a544bdc",
+      "left": {
+        "hash": "401b47c61c282f827524740bf01b242a315d8fe5fc1f9620ee2735beb3b5a9d2",
+        "left": {
+          "hash": "d44db0f890ef8dd6d8b8526497f41ea1878f837d8980d5158091c1536c260517",
+          "left": {
+            "hash": "842e7aec0cbc80c98fc5714ff7e6d2f4ba2460a3b21389ac71b20fde0d1a455b",
+            "left": {
+              "hash": "fa5468d7202e73cdd4e07648bbdf2c19895698b38652d076c228366122aefbdc",
+              "left": {
+                "hash": "4cdee0e2662f36f12072e6a0359739f07ad3fafb26d3a17f88c1706f7e9ffea0",
+                "left": {
+                  "hash": "b9ef35c251e1d51c71129b9790fed6b0e91411a36a5f941fcacbcff88cc44d7a",
+                  "left": {
+                    "hash": "925ef770c53299f9a35de33b53c9b2ab16406ce991b121d2fcc44adfda727633",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\AssetForgeBackendApplication.java",
+                      "hash": "925ef770c53299f9a35de33b53c9b2ab16406ce991b121d2fcc44adfda727633",
+                      "size": 523,
+                      "modified": 1784908732520.2683
+                    }
+                  },
+                  "right": {
+                    "hash": "1cff628e3049536182a7b52db90844ec22debbdfa3150724c690451a3828f405",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\common\\exception\\GlobalExceptionHandler.java",
+                      "hash": "1cff628e3049536182a7b52db90844ec22debbdfa3150724c690451a3828f405",
+                      "size": 1269,
+                      "modified": 1784515194607.2693
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "105f76f86c936b549bc035c70de025c1d384fa96cb4019e98111f55791ca0556",
+                  "left": {
+                    "hash": "50fd1b5a6d0d45fff891254871bb7ec831d3a9629f17eaf12620b0e7d8ea9b15",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\common\\result\\CommonException.java",
+                      "hash": "50fd1b5a6d0d45fff891254871bb7ec831d3a9629f17eaf12620b0e7d8ea9b15",
+                      "size": 312,
+                      "modified": 1784428048959.3125
+                    }
+                  },
+                  "right": {
+                    "hash": "0aa12cf22d56cb477ecc0afc111f01e2d1d33c3d08ceb53a529cbe8e962eaed7",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\common\\result\\Result.java",
+                      "hash": "0aa12cf22d56cb477ecc0afc111f01e2d1d33c3d08ceb53a529cbe8e962eaed7",
+                      "size": 1372,
+                      "modified": 1782727144747.402
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "3aefff812224168145cd82f7bb680ab798235f3e5e2323eb906416d5daf707ac",
+                "left": {
+                  "hash": "03ccfbc2f18688900b9c8377300dfb239de04d6ef55b7c38dd987c0da5cc045b",
+                  "left": {
+                    "hash": "7ca76ca24131c00c36398beb704e55d816a3a4767365847ad39c37bc13deb04a",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\config\\CorsConfig.java",
+                      "hash": "7ca76ca24131c00c36398beb704e55d816a3a4767365847ad39c37bc13deb04a",
+                      "size": 739,
+                      "modified": 1782821118569.4546
+                    }
+                  },
+                  "right": {
+                    "hash": "f68060f503eeede9228e1fa17fa82174f5fc03a58907f1983ff23f682c6aa672",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\context\\LoginUserInfoUtile.java",
+                      "hash": "f68060f503eeede9228e1fa17fa82174f5fc03a58907f1983ff23f682c6aa672",
+                      "size": 783,
+                      "modified": 1784894300051.3696
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "1bc96620a3cd042d523c33a4e292435f9a8a2cd887fd6e8292d164112f2e537c",
+                  "left": {
+                    "hash": "9ec6606554667bf1737719b2662d8af87e230c6bb2ea4c713d47ba4eaa891cce",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\context\\LoginUserIRoleUtile.java",
+                      "hash": "9ec6606554667bf1737719b2662d8af87e230c6bb2ea4c713d47ba4eaa891cce",
+                      "size": 721,
+                      "modified": 1784896740747.1226
+                    }
+                  },
+                  "right": {
+                    "hash": "dcf371a30be7ea11aa509b2d8bc4d84b5522d24744e75df01f73708419315265",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\ApprovalRecordController.java",
+                      "hash": "dcf371a30be7ea11aa509b2d8bc4d84b5522d24744e75df01f73708419315265",
+                      "size": 2262,
+                      "modified": 1785044934710.315
+                    }
+                  }
+                }
+              }
+            },
+            "right": {
+              "hash": "eb44ea0c1d704ab3031999d25ffaedb5cc9ca53acd9bf5fa243d710417a83d4e",
+              "left": {
+                "hash": "d50f2f1c0bbb0a376f8adb564c74a260e1a43dfb83490a6980b48e95bfe3a6f9",
+                "left": {
+                  "hash": "63faeab5e380ff7c490955ee70adffa9f3af71bd0a6f00cef560418930b483e6",
+                  "left": {
+                    "hash": "4847d1b0d05ace0175430c1aa00a9b81811c435435ef76564baf60adf5df538e",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\AssetCategoryController.java",
+                      "hash": "4847d1b0d05ace0175430c1aa00a9b81811c435435ef76564baf60adf5df538e",
+                      "size": 2247,
+                      "modified": 1784963689904.7573
+                    }
+                  },
+                  "right": {
+                    "hash": "86a03ac415e3606858959e5dc42fb7c086cec79615e59233ddab03f88d92a97f",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\AssetController.java",
+                      "hash": "86a03ac415e3606858959e5dc42fb7c086cec79615e59233ddab03f88d92a97f",
+                      "size": 2208,
+                      "modified": 1784970532310.4695
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "39d614888a69e44619e026b106dd5089a64656af05c26cbdd3b45b9e06a1ba7c",
+                  "left": {
+                    "hash": "0f521b5bc48a43c3ac944354987e203f2577dca5668b82c11aa6659bdeeeaee0",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\AssetLedgerController.java",
+                      "hash": "0f521b5bc48a43c3ac944354987e203f2577dca5668b82c11aa6659bdeeeaee0",
+                      "size": 347,
+                      "modified": 1784355908183.0325
+                    }
+                  },
+                  "right": {
+                    "hash": "afd8fc3bc7eec042d0e83426486c1b71eaa7c05adaa33a390c897f563ed63a18",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\AssetLedgerSnapshotController.java",
+                      "hash": "afd8fc3bc7eec042d0e83426486c1b71eaa7c05adaa33a390c897f563ed63a18",
+                      "size": 1139,
+                      "modified": 1784620819697.7373
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "da364b3c77c5cd9a348d25d9bdbee5b80157a2545db9cbd9df29e878895cc369",
+                "left": {
+                  "hash": "f54bd98ef80b57aa7c7a680b932338c9ce6f7e664139c8b85f00b7d31336062d",
+                  "left": {
+                    "hash": "c2aceb0bc38819628174adb2605b51b94abb4fe000f7e7f539d80fc0798e4a57",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\AssetLogController.java",
+                      "hash": "c2aceb0bc38819628174adb2605b51b94abb4fe000f7e7f539d80fc0798e4a57",
+                      "size": 329,
+                      "modified": 1784355908196.0408
+                    }
+                  },
+                  "right": {
+                    "hash": "96fbc9ca2b72884270f419a91bbf3482f81521c9b84e2f1654822139782c303f",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\AuthController.java",
+                      "hash": "96fbc9ca2b72884270f419a91bbf3482f81521c9b84e2f1654822139782c303f",
+                      "size": 1556,
+                      "modified": 1784945130775.043
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "94a6e4b360ce8dbefeca56cca9e4c3a6b3310f01cb8519e738f8c4a8d5a0dfa1",
+                  "left": {
+                    "hash": "6ab49169629197290974cee08cf20cac2512fbe370704242783f11cf15e7a049",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\DepartmentController.java",
+                      "hash": "6ab49169629197290974cee08cf20cac2512fbe370704242783f11cf15e7a049",
+                      "size": 2386,
+                      "modified": 1784963138637.4177
+                    }
+                  },
+                  "right": {
+                    "hash": "b90e0709decdadbcf8bf172f1e511efa6bca0fd7dde20b63f0e013018e318b00",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\DepreciationRunLogController.java",
+                      "hash": "b90e0709decdadbcf8bf172f1e511efa6bca0fd7dde20b63f0e013018e318b00",
+                      "size": 355,
+                      "modified": 1784355908209.0454
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "right": {
+            "hash": "6c8908f9006df3676aaaaca47927a0cfc5105788c837a47e75a9f8cfa45d13c5",
+            "left": {
+              "hash": "acfe17ce0f2461d133c99e637c2edb2359a2d8e58de611827ac7d72301f00860",
+              "left": {
+                "hash": "cbcbd15a38750e34eadddc52784693e7ef4d0ee7dbb1c639ae5879eb07d538b7",
+                "left": {
+                  "hash": "075d8d0029870b971626a973eb982e373f97b9ca7bb3841b7740b706c45eb68b",
+                  "left": {
+                    "hash": "c7cf3440e06496924a3b3fe908d4df743a38f11b74270f661df6f3df3622661c",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\FileAttachmentController.java",
+                      "hash": "c7cf3440e06496924a3b3fe908d4df743a38f11b74270f661df6f3df3622661c",
+                      "size": 1262,
+                      "modified": 1784602364797.2998
+                    }
+                  },
+                  "right": {
+                    "hash": "45f24d6384a9a62987f30dd7543d6d22267090a25bab88283ca504e5b12dd411",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\InventoryDetailController.java",
+                      "hash": "45f24d6384a9a62987f30dd7543d6d22267090a25bab88283ca504e5b12dd411",
+                      "size": 337,
+                      "modified": 1784355908222.8508
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "241017008bf0d90702979650dd183efd8686988fd4335e4ee9392778b96a2146",
+                  "left": {
+                    "hash": "3686ccac3e9273eaadb37990cdc7271f400eef17a4512567d748905ff3fcb360",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\InventoryTaskController.java",
+                      "hash": "3686ccac3e9273eaadb37990cdc7271f400eef17a4512567d748905ff3fcb360",
+                      "size": 333,
+                      "modified": 1784355908229.851
+                    }
+                  },
+                  "right": {
+                    "hash": "1f716fdda265234302b44deff095915dddb5657542dbac31c8426e70182b151b",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\LossOrderController.java",
+                      "hash": "1f716fdda265234302b44deff095915dddb5657542dbac31c8426e70182b151b",
+                      "size": 322,
+                      "modified": 1784355908236.3416
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "05ca054250258e4330c485de19572b0f36a5399e3a55c6f51939553fb66ea2ef",
+                "left": {
+                  "hash": "f3fc706693e565de19ac52614dd6db6b21d0893a88d37603f8f7b5bb5d15c5be",
+                  "left": {
+                    "hash": "d6c8052a2d652bf1510097b45be4c22f2f5a288ae07889199c29c5f8d1780dc8",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\RequisitionOrderController.java",
+                      "hash": "d6c8052a2d652bf1510097b45be4c22f2f5a288ae07889199c29c5f8d1780dc8",
+                      "size": 2507,
+                      "modified": 1785046573566.8877
+                    }
+                  },
+                  "right": {
+                    "hash": "cad2c8d8858ee5da1ac0d0e315c8f1721d2b8f54439c0a294476f899796f8914",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\RequisitionOrderItemController.java",
+                      "hash": "cad2c8d8858ee5da1ac0d0e315c8f1721d2b8f54439c0a294476f899796f8914",
+                      "size": 357,
+                      "modified": 1784355908248.9343
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "01b0f99119281ab5cd8c3ccf23ec8d5ec0d45b1abca401641818cf7434a17c67",
+                  "left": {
+                    "hash": "cb09e611a6089c0254088b295a3e7aec66894f2008a4e7274eae8b5b0da3ad58",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\ReturnOrderController.java",
+                      "hash": "cb09e611a6089c0254088b295a3e7aec66894f2008a4e7274eae8b5b0da3ad58",
+                      "size": 329,
+                      "modified": 1784355908254.9358
+                    }
+                  },
+                  "right": {
+                    "hash": "46257f3dc172962bdebf127afdf272759d3d26cf4d0824b455abaa9e142793ac",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\ReturnOrderItemController.java",
+                      "hash": "46257f3dc172962bdebf127afdf272759d3d26cf4d0824b455abaa9e142793ac",
+                      "size": 347,
+                      "modified": 1784355908260.224
+                    }
+                  }
+                }
+              }
+            },
+            "right": {
+              "hash": "406bb8bacec49a364c4d7a580054756c10f0a1b5bd0b7b1ef54f1198d54dcda5",
+              "left": {
+                "hash": "3e0f382f960e9c00dca0b9f9a83b3e1a4530305cfed225420c196e81e78a4b4e",
+                "left": {
+                  "hash": "62d2f98b9af15e1ced0b7748c7d94bda811ee1f7f11441dab76129fe45abce97",
+                  "left": {
+                    "hash": "4427b0090ddef3e18e7260de0ca982ba72b689325b17f6c63b776cd540a722b5",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\RoleController.java",
+                      "hash": "4427b0090ddef3e18e7260de0ca982ba72b689325b17f6c63b776cd540a722b5",
+                      "size": 309,
+                      "modified": 1784355908267.2295
+                    }
+                  },
+                  "right": {
+                    "hash": "f196a4727138bdce35cc63801815f82e49a7b26cb372addcbd3e496aca74d911",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\ScrapOrderController.java",
+                      "hash": "f196a4727138bdce35cc63801815f82e49a7b26cb372addcbd3e496aca74d911",
+                      "size": 327,
+                      "modified": 1784355908272.3628
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "45dfce97105d509ac954eba673974529f2c6bfb5a249fca54230462931adc340",
+                  "left": {
+                    "hash": "6d7225878c5467224da3179fb23225c90f2792eeddaa0ae333fec1fc6feb492a",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\ScrapOrderItemController.java",
+                      "hash": "6d7225878c5467224da3179fb23225c90f2792eeddaa0ae333fec1fc6feb492a",
+                      "size": 345,
+                      "modified": 1784355908278.7373
+                    }
+                  },
+                  "right": {
+                    "hash": "22eebd3c421d0aeaeacf62c5e981c1c7e350ff958049383806ca8f52c6e3a71a",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\SystemConfigController.java",
+                      "hash": "22eebd3c421d0aeaeacf62c5e981c1c7e350ff958049383806ca8f52c6e3a71a",
+                      "size": 1275,
+                      "modified": 1784531975712.6301
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "99d59e7a61e24f752e0e1c588331e60769000341c89699c463bef7d489283338",
+                "left": {
+                  "hash": "c44c3daed7f0ecee8d4aaeed7d76faaa9ec725be2c2d59d24f35983f90e577b8",
+                  "left": {
+                    "hash": "fef1659cfa7b09c14354759fea04a72b9831fc21eda0a03a3901fd52ab3b332c",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\TransferOrderController.java",
+                      "hash": "fef1659cfa7b09c14354759fea04a72b9831fc21eda0a03a3901fd52ab3b332c",
+                      "size": 1047,
+                      "modified": 1785066677234.516
+                    }
+                  },
+                  "right": {
+                    "hash": "22af6878ad2cc310c756228f6e392e04596633bf42c3f9bfb12199ab5cf49fe1",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\TransferOrderItemController.java",
+                      "hash": "22af6878ad2cc310c756228f6e392e04596633bf42c3f9bfb12199ab5cf49fe1",
+                      "size": 351,
+                      "modified": 1784355908301.2014
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "e5157867d70265101fbfc3b9a51937c3624a48e53f0b3ec154162dccab692a30",
+                  "left": {
+                    "hash": "7a00097878748338c87d864ffe7f713b4846e4d70aa9f64d29d7f5c5103b370f",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\UserController.java",
+                      "hash": "7a00097878748338c87d864ffe7f713b4846e4d70aa9f64d29d7f5c5103b370f",
+                      "size": 2462,
+                      "modified": 1784964712128.907
+                    }
+                  },
+                  "right": {
+                    "hash": "e38631f148ac81b4777e51f70a7742547a735d88befc0fdbb0acc384c7065ec5",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\controller\\UserRoleController.java",
+                      "hash": "e38631f148ac81b4777e51f70a7742547a735d88befc0fdbb0acc384c7065ec5",
+                      "size": 329,
+                      "modified": 1784355908312.511
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "right": {
+          "hash": "49d232d47146885a5f19bbdadd3d0a29ae2fa83dd217a9d977b5261f38a1e9d0",
+          "left": {
+            "hash": "b5bf016caaf4f0de0e07e56e40a72875ed4bb011b22123bbb9d00078e0922483",
+            "left": {
+              "hash": "23237f77d62f71333f7a3d82d9bf6337613c1058dece355a274e83c308446d08",
+              "left": {
+                "hash": "977a6fd177dca4e0826ece52f278dd61b03f177f8bb2da9f0a77f86333b16959",
+                "left": {
+                  "hash": "6d7634026305839773646b740946c3cbb3275e3267ac7ec3b8618ebe44d25240",
+                  "left": {
+                    "hash": "048bd7dc92806c73724488caa1939887770bc149078e2fa22af4ca572c1669b2",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\ApprovalRecord.java",
+                      "hash": "048bd7dc92806c73724488caa1939887770bc149078e2fa22af4ca572c1669b2",
+                      "size": 1578,
+                      "modified": 1784355908108.9324
+                    }
+                  },
+                  "right": {
+                    "hash": "9a66891499f4cd32a73f7ba0083e777fbb50bf76f64c6b5c60573331eead0161",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\Asset.java",
+                      "hash": "9a66891499f4cd32a73f7ba0083e777fbb50bf76f64c6b5c60573331eead0161",
+                      "size": 2098,
+                      "modified": 1785065552983.3171
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "f5c68bbd59597464d07f16ef1ebb2b1fdad4a14057fd600d21ec985867f5d0b5",
+                  "left": {
+                    "hash": "6e5fe72fe580aafafe297685cffad917d2b95171efa375309de2f55783d3e0e4",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\AssetCategory.java",
+                      "hash": "6e5fe72fe580aafafe297685cffad917d2b95171efa375309de2f55783d3e0e4",
+                      "size": 1228,
+                      "modified": 1784355908166.5918
+                    }
+                  },
+                  "right": {
+                    "hash": "89c664796ed13ba4c4199ec54e2ba43232b6e0fa9c1c569d6af00b68da82b42c",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\AssetLedger.java",
+                      "hash": "89c664796ed13ba4c4199ec54e2ba43232b6e0fa9c1c569d6af00b68da82b42c",
+                      "size": 1909,
+                      "modified": 1784355908176.5957
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "513a7365dac2f600829a3638d7d95eef5816043e9b0281e03d530999a6e4c8c6",
+                "left": {
+                  "hash": "6080ace8ff1b32d210c9f7f6e01d6594b21cd2925808f840fba3d78a1767848b",
+                  "left": {
+                    "hash": "bce2f5622e01233476727ca6ee42be31308ff000f2c41e33f1d72aef0a66abf2",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\AssetLedgerSnapshot.java",
+                      "hash": "bce2f5622e01233476727ca6ee42be31308ff000f2c41e33f1d72aef0a66abf2",
+                      "size": 2265,
+                      "modified": 1784355908186.0396
+                    }
+                  },
+                  "right": {
+                    "hash": "861b3b5272d2c32b85d31edaf37cf8ab1c24d86910c684c41ce7505aa1cda768",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\AssetLog.java",
+                      "hash": "861b3b5272d2c32b85d31edaf37cf8ab1c24d86910c684c41ce7505aa1cda768",
+                      "size": 1194,
+                      "modified": 1784355908193.0444
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "755711ea8f3d4a8f86a2c1a3ac4f3f4a579620e4e5c73e39d47de9805a7af79e",
+                  "left": {
+                    "hash": "e38126e615f12b508daadc1972b0af98175e5f8bb28529e28ba9c96447850de0",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\Department.java",
+                      "hash": "e38126e615f12b508daadc1972b0af98175e5f8bb28529e28ba9c96447850de0",
+                      "size": 1102,
+                      "modified": 1784355908199.0403
+                    }
+                  },
+                  "right": {
+                    "hash": "af393654ecc52c21317639c040834ce8e9a1c6a0bfa02dc123c9d0789fe8ba14",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\DepreciationRunLog.java",
+                      "hash": "af393654ecc52c21317639c040834ce8e9a1c6a0bfa02dc123c9d0789fe8ba14",
+                      "size": 1414,
+                      "modified": 1784355908205.047
+                    }
+                  }
+                }
+              }
+            },
+            "right": {
+              "hash": "be6a0b679de2616341f2e94f04802ba701e1be0165703205fe8d5129f2c5e6b6",
+              "left": {
+                "hash": "03d0a08ae336a84252154eee7a960e9a8b4f1977d3e00c1e47afaeb8e29efcd4",
+                "left": {
+                  "hash": "36e2c6c850104060060e1fa2c5143f4a93f7d83097a7f1c5eadc58b2d6b4a363",
+                  "left": {
+                    "hash": "24ecbc5c397f596f0d1d5df082dedd34c32d323b9cbbd95653893941a9aeb835",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\FileAttachment.java",
+                      "hash": "24ecbc5c397f596f0d1d5df082dedd34c32d323b9cbbd95653893941a9aeb835",
+                      "size": 1227,
+                      "modified": 1784355908211.046
+                    }
+                  },
+                  "right": {
+                    "hash": "c4eef059a4dc6aaa0b4dc824ae8422c9304adebd5e60884c99867881a61223b8",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\InventoryDetail.java",
+                      "hash": "c4eef059a4dc6aaa0b4dc824ae8422c9304adebd5e60884c99867881a61223b8",
+                      "size": 1883,
+                      "modified": 1784355908218.849
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "915aa7b3812ca017f597ad01696a96be57a6fc160ddf52dab2d7895c4850fb43",
+                  "left": {
+                    "hash": "3dba194b39fe52e48d8af56e0459ef047bcfd66428c5b0c3aa7c7e076d93a522",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\InventoryTask.java",
+                      "hash": "3dba194b39fe52e48d8af56e0459ef047bcfd66428c5b0c3aa7c7e076d93a522",
+                      "size": 1489,
+                      "modified": 1784355908225.8499
+                    }
+                  },
+                  "right": {
+                    "hash": "00c0e89b25d4f703607e55a936ce412cd4c9674308ed7cc760ebb0f778c80ed2",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\LossOrder.java",
+                      "hash": "00c0e89b25d4f703607e55a936ce412cd4c9674308ed7cc760ebb0f778c80ed2",
+                      "size": 2412,
+                      "modified": 1784355908233.3494
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "5deccf71e4db65b4ec78e194b45bcf7e8277007fb965cf31682e5029a5ae9856",
+                "left": {
+                  "hash": "7195ad0abbb64741520a43593fd4e1106e3ed485d29c4c4f1157a9ee0d13fe91",
+                  "left": {
+                    "hash": "58d501e24519e405f9726bc42910722bcc0135b32a0a02121d20037d242f6faa",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\RequisitionOrder.java",
+                      "hash": "58d501e24519e405f9726bc42910722bcc0135b32a0a02121d20037d242f6faa",
+                      "size": 2266,
+                      "modified": 1785046991983.8438
+                    }
+                  },
+                  "right": {
+                    "hash": "616c4d88420fa7f83f87f5e99e10824b4af8bc5cb3dbd48e1428fba4ad9f0328",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\RequisitionOrderItem.java",
+                      "hash": "616c4d88420fa7f83f87f5e99e10824b4af8bc5cb3dbd48e1428fba4ad9f0328",
+                      "size": 1537,
+                      "modified": 1784355908244.3433
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "2b9b4aecc4b6b03181fc4c38cc5633e3ba0ac23172765e36bd6072d00d1eb621",
+                  "left": {
+                    "hash": "f000ff07ffdfd211db3127280fca77631e9a760a7a1109843a36f1715f721abc",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\ReturnOrder.java",
+                      "hash": "f000ff07ffdfd211db3127280fca77631e9a760a7a1109843a36f1715f721abc",
+                      "size": 2020,
+                      "modified": 1784355908250.9314
+                    }
+                  },
+                  "right": {
+                    "hash": "5e90e45d40266df088805537e2ce9f779fc53ac6e16ffb59b66bbbb90aa8fa1c",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\ReturnOrderItem.java",
+                      "hash": "5e90e45d40266df088805537e2ce9f779fc53ac6e16ffb59b66bbbb90aa8fa1c",
+                      "size": 1457,
+                      "modified": 1784355908257.2166
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "right": {
+            "hash": "946f08521c4815bfe7a0cbe8bbffa932504c2b3f6e15b1a40d082460fe48fbd2",
+            "left": {
+              "hash": "30eefa4f65cf34bd62ed7e5eae29f2619314ec1469765e0f241d79f036f42081",
+              "left": {
+                "hash": "fd7e0153b41367776c87ba36e21a14db9e8b082a17d249e9bf9c03bd08e6920e",
+                "left": {
+                  "hash": "22499a32fb0a493a951e6a6f9d26f67e2177170ef55b8e3b423a683791351c89",
+                  "left": {
+                    "hash": "c814123af4cd4326a2997d508287788e515a07e7d1ea252fc19d2b97f7fa08f8",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\Role.java",
+                      "hash": "c814123af4cd4326a2997d508287788e515a07e7d1ea252fc19d2b97f7fa08f8",
+                      "size": 882,
+                      "modified": 1784355908262.2234
+                    }
+                  },
+                  "right": {
+                    "hash": "4961f9eea4eae795371578f392dbf02cd524120e23eea5ef28f7ffb2b5489c55",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\ScrapOrder.java",
+                      "hash": "4961f9eea4eae795371578f392dbf02cd524120e23eea5ef28f7ffb2b5489c55",
+                      "size": 1838,
+                      "modified": 1784355908268.3574
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "b1cdfc040806414d041e8c590f0c811877037f1419cdddce9453d48177cf15df",
+                  "left": {
+                    "hash": "1d6184a86949c292e89d39968832586d20a5069c0e646bba5eeb9d9ee48aef5b",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\ScrapOrderItem.java",
+                      "hash": "1d6184a86949c292e89d39968832586d20a5069c0e646bba5eeb9d9ee48aef5b",
+                      "size": 1558,
+                      "modified": 1784355908274.364
+                    }
+                  },
+                  "right": {
+                    "hash": "221cf42ee8ee4c20b5090c31dce0201466a9ccf5193c8eab20062bff28132161",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\SystemConfig.java",
+                      "hash": "221cf42ee8ee4c20b5090c31dce0201466a9ccf5193c8eab20062bff28132161",
+                      "size": 1007,
+                      "modified": 1784355908280.7446
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "17a975fd1c96cce66745a893b09987e909be2afd5d0e76da628bcd435dc720cd",
+                "left": {
+                  "hash": "19d58ac8314beb31a91e917bdcf808b49874c74e64bb7daeb5483d71bd597479",
+                  "left": {
+                    "hash": "61262511f14abe5359290d6a37b4cacea70d39ea230a0fd62d27fc05b2166e4c",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\TransferOrder.java",
+                      "hash": "61262511f14abe5359290d6a37b4cacea70d39ea230a0fd62d27fc05b2166e4c",
+                      "size": 2252,
+                      "modified": 1784355908289.8682
+                    }
+                  },
+                  "right": {
+                    "hash": "db0916331ac210af0214bf8fc49665d28f8bee05b45cb7c48392211177bd9f75",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\TransferOrderItem.java",
+                      "hash": "db0916331ac210af0214bf8fc49665d28f8bee05b45cb7c48392211177bd9f75",
+                      "size": 1348,
+                      "modified": 1784355908296.8687
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "47ce5c9d0af826f509aeb31f2e6bb051b98c185417c6025ba48fd671532965e8",
+                  "left": {
+                    "hash": "e45262a5b2c8715bf90a051dae1a4d8077d5f22bddfc40acb458bd753040b546",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\User.java",
+                      "hash": "e45262a5b2c8715bf90a051dae1a4d8077d5f22bddfc40acb458bd753040b546",
+                      "size": 1595,
+                      "modified": 1784511469444.447
+                    }
+                  },
+                  "right": {
+                    "hash": "d6e97cd294d958f5f3ce6fc8c889f56fa4ba1555f69bb6c708fab1d89aca1826",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\entity\\UserRole.java",
+                      "hash": "d6e97cd294d958f5f3ce6fc8c889f56fa4ba1555f69bb6c708fab1d89aca1826",
+                      "size": 848,
+                      "modified": 1784355908308.511
+                    }
+                  }
+                }
+              }
+            },
+            "right": {
+              "hash": "2ad2ae0bdbf9b022724fdff91e438fee5290c31b2ad7c77dde0047d579e823fe",
+              "left": {
+                "hash": "ad31b0130479c85ae3b89b9f671d04e2eec975779dbbbfe8056c24bc70a49a0b",
+                "left": {
+                  "hash": "8bd6df2bc6e5d7105e073f46376141020214ab72bc21d68db6fa6d1f4b4ed967",
+                  "left": {
+                    "hash": "1a2d59354e1bc2b5200b4f06711963140ee05f9999d2ee42f914767ccd032481",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\filter\\TokenFilter.java",
+                      "hash": "1a2d59354e1bc2b5200b4f06711963140ee05f9999d2ee42f914767ccd032481",
+                      "size": 3046,
+                      "modified": 1784903715318.8215
+                    }
+                  },
+                  "right": {
+                    "hash": "f7f0823818f1393e7a8a9a23c69e84790b01b1495d99ac4fee97382f6e1e521c",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\Main.java",
+                      "hash": "f7f0823818f1393e7a8a9a23c69e84790b01b1495d99ac4fee97382f6e1e521c",
+                      "size": 151,
+                      "modified": 1784863830445.5496
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "025fe0428725c164c53928bde468708b2b62d9c1a467a0faaacb61ebd49cea32",
+                  "left": {
+                    "hash": "f1c1c29395dc1f4123a962506da044eb5cd036bff0b0ae0c0ff6880e699fa8ec",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\ApprovalRecordMapper.java",
+                      "hash": "f1c1c29395dc1f4123a962506da044eb5cd036bff0b0ae0c0ff6880e699fa8ec",
+                      "size": 584,
+                      "modified": 1784695743313.1006
+                    }
+                  },
+                  "right": {
+                    "hash": "82d25df6cc8f1cfb63f9b4f881e4aed6e0783f8e06303b5670fb180dd73bb14b",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\AssetCategoryMapper.java",
+                      "hash": "82d25df6cc8f1cfb63f9b4f881e4aed6e0783f8e06303b5670fb180dd73bb14b",
+                      "size": 504,
+                      "modified": 1784516677736.0984
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "da500b0336d65eecc199ca8644a19526dabbd36f4a962002af8013ba45cbf4a2",
+                "left": {
+                  "hash": "cd220ee9671e3e0e4692de41093245472f82a8556a40bfcd24e3ac658c770d6e",
+                  "left": {
+                    "hash": "b63fcda41bc5a60a59d48c72a223c543bc30153a8f9869c92c340cb945afacd9",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\AssetLedgerMapper.java",
+                      "hash": "b63fcda41bc5a60a59d48c72a223c543bc30153a8f9869c92c340cb945afacd9",
+                      "size": 307,
+                      "modified": 1784355908177.5913
+                    }
+                  },
+                  "right": {
+                    "hash": "fad7773df86db30dfe3eea5024a369a15bc99d56b365efc7694bdb4eac8f2909",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\AssetLedgerSnapshotMapper.java",
+                      "hash": "fad7773df86db30dfe3eea5024a369a15bc99d56b365efc7694bdb4eac8f2909",
+                      "size": 543,
+                      "modified": 1784620307017.4795
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "082b37a976fe14642c209f0c74001f67649c11d3e4db52d104848faa2335c575",
+                  "left": {
+                    "hash": "638b52d5b8ad47c7c021f218777602434222be56c8a2c5c2fb55350d88376e38",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\AssetLogMapper.java",
+                      "hash": "638b52d5b8ad47c7c021f218777602434222be56c8a2c5c2fb55350d88376e38",
+                      "size": 286,
+                      "modified": 1784355908193.0444
+                    }
+                  },
+                  "right": {
+                    "hash": "2df025b618e5b184892bb902f303318d3ae9bec443d2f9d2014d1ae93a285928",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\AssetMapper.java",
+                      "hash": "2df025b618e5b184892bb902f303318d3ae9bec443d2f9d2014d1ae93a285928",
+                      "size": 486,
+                      "modified": 1784971054728.2358
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "right": {
+        "hash": "de08cc3042e5eac526a368a3b85ed12f69437ca3010d93539c301a8e6bd42c5e",
+        "left": {
+          "hash": "eeb7243f241c7a4a08faee316b79172bd8027fcc227e19b0dd599b28db4a98e9",
+          "left": {
+            "hash": "c5c122c6318f623d288763d3576bdcdd77d25ba45c75162104d289d3794ff7e6",
+            "left": {
+              "hash": "741e763efa1effaee71a4f936a377634c02ec5b6386edee19e6a3ff258e8d899",
+              "left": {
+                "hash": "1ca60da13e84b44d01a378ea6e03c92def51009d25237f1c232ffeb72c51698d",
+                "left": {
+                  "hash": "5b89a8fdc1cba6a84f3fbb89ee704cc1ce0513e3547aaad5bc672a06a9c93de1",
+                  "left": {
+                    "hash": "7705734b3e3756be813ebfdf52f273138e4fae06584e186a827f3ddcbde8f7ee",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\DepartmentMapper.java",
+                      "hash": "7705734b3e3756be813ebfdf52f273138e4fae06584e186a827f3ddcbde8f7ee",
+                      "size": 490,
+                      "modified": 1784425339577.7554
+                    }
+                  },
+                  "right": {
+                    "hash": "b5ef71ec2ed6ea07514b22be9cfa2a7fbd027c868e9c900651e3cf8553723d2c",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\DepreciationRunLogMapper.java",
+                      "hash": "b5ef71ec2ed6ea07514b22be9cfa2a7fbd027c868e9c900651e3cf8553723d2c",
+                      "size": 322,
+                      "modified": 1784355908206.048
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "9d8698a2b911b3395578c553dad0c4b3c9e3f5bc5738af493cf8219ea31305ab",
+                  "left": {
+                    "hash": "7b43311e2a289df91a506f0e07dff3b83edd115fede932300a26a9b3e7a7e419",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\FileAttachmentMapper.java",
+                      "hash": "7b43311e2a289df91a506f0e07dff3b83edd115fede932300a26a9b3e7a7e419",
+                      "size": 298,
+                      "modified": 1784355908211.046
+                    }
+                  },
+                  "right": {
+                    "hash": "5a35e1d9259bd882014a3427eb462b38fab8f62793f664152a5cc7a15e67d696",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\InventoryDetailMapper.java",
+                      "hash": "5a35e1d9259bd882014a3427eb462b38fab8f62793f664152a5cc7a15e67d696",
+                      "size": 301,
+                      "modified": 1784355908218.849
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "bd2f67a31c0bec4612c74203eb5899ce90101100832866cb01724bd3dedcd01d",
+                "left": {
+                  "hash": "4a231eac39f841a4ee89b5bf99a711b6fdabc38aaf4e09f8f5292fc4c2bf8b91",
+                  "left": {
+                    "hash": "5d039007845bade45eb39d88c1ca8ad016aa09ecd82b589f08b0880ac8e419a5",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\InventoryTaskMapper.java",
+                      "hash": "5d039007845bade45eb39d88c1ca8ad016aa09ecd82b589f08b0880ac8e419a5",
+                      "size": 295,
+                      "modified": 1784355908225.8499
+                    }
+                  },
+                  "right": {
+                    "hash": "73897c9b6872b7e6cf1942bcb44828029353171cbcf12976fb9adc83158cb60c",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\LossOrderMapper.java",
+                      "hash": "73897c9b6872b7e6cf1942bcb44828029353171cbcf12976fb9adc83158cb60c",
+                      "size": 280,
+                      "modified": 1784355908234.342
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "fa9bc41815f8d24a88e9b586546a6d39a578738bdd6d3d99c3f0cb80b2947bc5",
+                  "left": {
+                    "hash": "ac1ac9abaefe237fe1e106cc293be02394b05528746b30d5ecd70d0cf02e616c",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\RequisitionOrderItemMapper.java",
+                      "hash": "ac1ac9abaefe237fe1e106cc293be02394b05528746b30d5ecd70d0cf02e616c",
+                      "size": 326,
+                      "modified": 1784355908245.3447
+                    }
+                  },
+                  "right": {
+                    "hash": "d3b6bbc67370a96e7a454a5cb0ced1c31ddc8c467cdfed197c34e5a0e917ebb3",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\RequisitionOrderMapper.java",
+                      "hash": "d3b6bbc67370a96e7a454a5cb0ced1c31ddc8c467cdfed197c34e5a0e917ebb3",
+                      "size": 501,
+                      "modified": 1784973732562.0266
+                    }
+                  }
+                }
+              }
+            },
+            "right": {
+              "hash": "6ada6f75394327edf398991f5f60e9ab2b89996a2a67f3b5e1238539197a75c6",
+              "left": {
+                "hash": "03cdbf391f4ab6d458777508485985ea91b27ee2ddd9afdc563aa7227d48d6c7",
+                "left": {
+                  "hash": "f13a4758ee5be13af8ed15368c6dafaa1e9e6ba73a810fb99e0abe660ae16633",
+                  "left": {
+                    "hash": "8879c6ff8fa12ac7643e80875031e56fe5f0f67c301926b36a89e0336e953659",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\ReturnOrderItemMapper.java",
+                      "hash": "8879c6ff8fa12ac7643e80875031e56fe5f0f67c301926b36a89e0336e953659",
+                      "size": 311,
+                      "modified": 1784355908257.2166
+                    }
+                  },
+                  "right": {
+                    "hash": "7e06eecaada909de98864273d95e127912714535450890b3bb9239f2ae4303b4",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\ReturnOrderMapper.java",
+                      "hash": "7e06eecaada909de98864273d95e127912714535450890b3bb9239f2ae4303b4",
+                      "size": 289,
+                      "modified": 1784355908251.9321
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "36b7daa567b253b33f120fd178300f007c51c3e678b686d0a7ba4bf56bd75a65",
+                  "left": {
+                    "hash": "45c58c2aa46f538bd20c635df101d9f236ba88c4f2fadc45ac6305c8a172174e",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\RoleMapper.java",
+                      "hash": "45c58c2aa46f538bd20c635df101d9f236ba88c4f2fadc45ac6305c8a172174e",
+                      "size": 262,
+                      "modified": 1784355908263.2231
+                    }
+                  },
+                  "right": {
+                    "hash": "3a1e78141f3698da749b861a8e1b1c11f47ae0b7380e51f89d60d099679ebc6b",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\ScrapOrderItemMapper.java",
+                      "hash": "3a1e78141f3698da749b861a8e1b1c11f47ae0b7380e51f89d60d099679ebc6b",
+                      "size": 308,
+                      "modified": 1784355908274.364
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "0923e2bd66a3135dba53414067baaa87a555f4bc794dbbac10ab28638479e31c",
+                "left": {
+                  "hash": "5ee0f8f3b8b073417983fe816b96bb3790820c702120197fa3fd4fe0447fa0ba",
+                  "left": {
+                    "hash": "680dcb6a78c573b6a2269926cd63fd71ee86992568cc5fe17b6d872718bf4344",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\ScrapOrderMapper.java",
+                      "hash": "680dcb6a78c573b6a2269926cd63fd71ee86992568cc5fe17b6d872718bf4344",
+                      "size": 286,
+                      "modified": 1784355908269.3657
+                    }
+                  },
+                  "right": {
+                    "hash": "4f090059b277194b895d108fab16165883b0ca3e5fd8bdca904f580bb88852a8",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\SystemConfigMapper.java",
+                      "hash": "4f090059b277194b895d108fab16165883b0ca3e5fd8bdca904f580bb88852a8",
+                      "size": 292,
+                      "modified": 1784355908281.7458
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "571ecdcb62767097e98e963304077ea0dd09bb6b7988bdd320d7fe622d13fdb1",
+                  "left": {
+                    "hash": "9a16fd175ebb6a4cd0341f6fde5c29cad9c5ca0f19c16ec13ca29c81c2c20b1d",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\TransferOrderItemMapper.java",
+                      "hash": "9a16fd175ebb6a4cd0341f6fde5c29cad9c5ca0f19c16ec13ca29c81c2c20b1d",
+                      "size": 317,
+                      "modified": 1784355908297.8684
+                    }
+                  },
+                  "right": {
+                    "hash": "ea81b797d19dbb0deb88120d9c78814b07aefefca7df8bf73e68831d654e5a9b",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\TransferOrderMapper.java",
+                      "hash": "ea81b797d19dbb0deb88120d9c78814b07aefefca7df8bf73e68831d654e5a9b",
+                      "size": 295,
+                      "modified": 1784355908290.8687
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "right": {
+            "hash": "0baa9473a31e2f8c519332b711f189bda3e127557e8a53de41b18547079e7b71",
+            "left": {
+              "hash": "65c1b25906177880ccec2828fca90b3fa64879873138c51f62737d53e6ce298a",
+              "left": {
+                "hash": "e3a7ce20f5b481ac35952795c7ce8785a9fdc616d104cab1bffd02e8ed4c14a4",
+                "left": {
+                  "hash": "52297516057db7e1c1baae0c94885521aa2a393626c5501384cefed5b4b94898",
+                  "left": {
+                    "hash": "2e02c0b32a5340044f48a9fa634224f702ab3c3fea25039a5f828861508c2e57",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\UserMapper.java",
+                      "hash": "2e02c0b32a5340044f48a9fa634224f702ab3c3fea25039a5f828861508c2e57",
+                      "size": 444,
+                      "modified": 1784444114986.9111
+                    }
+                  },
+                  "right": {
+                    "hash": "42801a3824c6b918a457eba0f12db454fb5ab2c94fad0ed09efddd02c5f56283",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\mapper\\UserRoleMapper.java",
+                      "hash": "42801a3824c6b918a457eba0f12db454fb5ab2c94fad0ed09efddd02c5f56283",
+                      "size": 588,
+                      "modified": 1784445075726.221
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "b550fbb4f34185ede6d12e6d4b208b89a18c1a84ecf1b833e2e92920ccd7fbec",
+                  "left": {
+                    "hash": "3e00c5f2ea873feb0ba9d1d9160a1fbd0286105b49feec469d5c0b5917b9e5b2",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\ApprovalRecordActionParam.java",
+                      "hash": "3e00c5f2ea873feb0ba9d1d9160a1fbd0286105b49feec469d5c0b5917b9e5b2",
+                      "size": 337,
+                      "modified": 1785044872841.9944
+                    }
+                  },
+                  "right": {
+                    "hash": "58ce21ed7cd8b9f0ef02506316a0f79ec2b0024428cefc26cb23091fc874f158",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\ApprovalRecordDetailParam.java",
+                      "hash": "58ce21ed7cd8b9f0ef02506316a0f79ec2b0024428cefc26cb23091fc874f158",
+                      "size": 123,
+                      "modified": 1784708717622.8416
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "08ad28627c19e0b5a4c8d97b2c52578c6e634bbcbbc9b869f0ddb153379a1460",
+                "left": {
+                  "hash": "e86b04b28158f0576b9601ab591aa0a2fbfbc0aafd7ba3d47a475825afd0f1d8",
+                  "left": {
+                    "hash": "aab994dc719ac7511247219f52c3b94da721c95f90254a37bcbc31e08c529fbf",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\ApprovalRecordDonePageParam.java",
+                      "hash": "aab994dc719ac7511247219f52c3b94da721c95f90254a37bcbc31e08c529fbf",
+                      "size": 335,
+                      "modified": 1785039706433.7559
+                    }
+                  },
+                  "right": {
+                    "hash": "3075f648a8a998c1f5da6f0529f6d32f2fb0489512fa2ce7e9c61e739ae98412",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\ApprovalRecordTodoPageParam.java",
+                      "hash": "3075f648a8a998c1f5da6f0529f6d32f2fb0489512fa2ce7e9c61e739ae98412",
+                      "size": 415,
+                      "modified": 1785039559052.9646
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "587ed48dc582b870d92dd39c960371a6c68c37c09d2f239da77fe677e47a77ec",
+                  "left": {
+                    "hash": "58fc511b4ad27e27a2720222eab9cb83d062bab88775d973c628182d2120876a",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\ApprovalRecordTransferParam.java",
+                      "hash": "58fc511b4ad27e27a2720222eab9cb83d062bab88775d973c628182d2120876a",
+                      "size": 190,
+                      "modified": 1784717080830.9375
+                    }
+                  },
+                  "right": {
+                    "hash": "f42b1ced85d5042e04c55520e8f69c62e6df27da483f990ac8eb37edb657607b",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\AssetCategoryPageParam.java",
+                      "hash": "f42b1ced85d5042e04c55520e8f69c62e6df27da483f990ac8eb37edb657607b",
+                      "size": 219,
+                      "modified": 1784516878537.054
+                    }
+                  }
+                }
+              }
+            },
+            "right": {
+              "hash": "2888b8587000c5a4c610da9604df8990cbefb319a4c02fe450fd9f2f5b04a354",
+              "left": {
+                "hash": "02d49c413a36169a7140a6a9738ec19c52be3ee9b9083ab62ba45b95bcb675ce",
+                "left": {
+                  "hash": "ffdfa71144d11f3e41a22894b2999a434ba0e0333c8cd898f3edee9bad99b819",
+                  "left": {
+                    "hash": "e9f88ed90838a25592e168bc09abf66c0745b44ab08252f6a5c40381749fd288",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\AssetCategoryParam.java",
+                      "hash": "e9f88ed90838a25592e168bc09abf66c0745b44ab08252f6a5c40381749fd288",
+                      "size": 154,
+                      "modified": 1784521094939.141
+                    }
+                  },
+                  "right": {
+                    "hash": "3e8b681ec9c6d660920fa98526b017bc68135e766a6a995920112c2b1b4dd003",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\AssetLedgerSnapshotParam.java",
+                      "hash": "3e8b681ec9c6d660920fa98526b017bc68135e766a6a995920112c2b1b4dd003",
+                      "size": 321,
+                      "modified": 1784616577077.9507
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "b20457c181f79850ade5829596d9a4a7a059d16ec2817cad901e081cb3774547",
+                  "left": {
+                    "hash": "50fbfff55b59f8979207b5daf45d2013b0f50175f09257413d7d2c545f04323d",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\AssetPageParam.java",
+                      "hash": "50fbfff55b59f8979207b5daf45d2013b0f50175f09257413d7d2c545f04323d",
+                      "size": 545,
+                      "modified": 1785034646576.0088
+                    }
+                  },
+                  "right": {
+                    "hash": "1afd7240fc84edec822f3103e20e6cf848ca6060ec7900c29bf495a12580cc92",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\AssetParam.java",
+                      "hash": "1afd7240fc84edec822f3103e20e6cf848ca6060ec7900c29bf495a12580cc92",
+                      "size": 518,
+                      "modified": 1784968791323.673
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "babdcb5015458e6e7488fada75ead5470405d86d27caeaa68856232e340f8a73",
+                "left": {
+                  "hash": "c5d2b150d48e927de3b36a5e26dc99a1621cab3abd80ca18f864f1665b4ca104",
+                  "left": {
+                    "hash": "6918b2c195bce518af4c88c3ac6a65069f329acb11f88700457e7e45fe88e0b2",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\DepartmentCreateParam.java",
+                      "hash": "6918b2c195bce518af4c88c3ac6a65069f329acb11f88700457e7e45fe88e0b2",
+                      "size": 320,
+                      "modified": 1784376372152.8396
+                    }
+                  },
+                  "right": {
+                    "hash": "6d40cb45fccc5b6550499030c8c5079c03dcefeeece7274dd1b3b04e32fd4e08",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\DepartmentDeleteParam.java",
+                      "hash": "6d40cb45fccc5b6550499030c8c5079c03dcefeeece7274dd1b3b04e32fd4e08",
+                      "size": 215,
+                      "modified": 1784426556387.556
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "337c8b5d9faa3872c06b9fc8c7805d73ed9344aa4f0ac9bb205f999b8c708924",
+                  "left": {
+                    "hash": "ecbdb572ea5c033fddafe3110984fe96ceaaa769a281874508e1430abf7ef88a",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\DepartmentPageParam.java",
+                      "hash": "ecbdb572ea5c033fddafe3110984fe96ceaaa769a281874508e1430abf7ef88a",
+                      "size": 190,
+                      "modified": 1784433030585.7417
+                    }
+                  },
+                  "right": {
+                    "hash": "2913de179bb5a6480dd164597740e30056557b5a3f5ac57a3f8dcd181322a9fa",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\DepartmentUpdateParam.java",
+                      "hash": "2913de179bb5a6480dd164597740e30056557b5a3f5ac57a3f8dcd181322a9fa",
+                      "size": 411,
+                      "modified": 1784423615990.0793
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "right": {
+          "hash": "4f0acef249550ebe90a3fce2e147f62ff2e74188cafce3ab095f11cbdd449940",
+          "left": {
+            "hash": "ca919b8125b69f759fc8df8715a823d3d90e42313a8379b53295d84bc3f1bf6b",
+            "left": {
+              "hash": "0cf046374bc7dda8de47850a350b7743f679eedff4a18ebdca34765d38475252",
+              "left": {
+                "hash": "6f60db973b384b6cbdee6362357a36ee834d14dade6f1102a05e65531c0130be",
+                "left": {
+                  "hash": "461c50de3d634c43e4b54aa3bb1093f503bdb59c581849fb416ad26bc0b01cd9",
+                  "left": {
+                    "hash": "00e8f516d06cada7bf18417becd0dfa42a98ea8598a3233fae139352fe77ea0f",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\FileAttachmentBindParam.java",
+                      "hash": "00e8f516d06cada7bf18417becd0dfa42a98ea8598a3233fae139352fe77ea0f",
+                      "size": 186,
+                      "modified": 1784602873669.042
+                    }
+                  },
+                  "right": {
+                    "hash": "058d66c0e9cc85490a95242ba63b53a061faa225322deb54141d2074ce130a59",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\LoginParam.java",
+                      "hash": "058d66c0e9cc85490a95242ba63b53a061faa225322deb54141d2074ce130a59",
+                      "size": 298,
+                      "modified": 1784510339897.1206
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "7cc28c6c31cef694d0189bbd82bf429b74a46de0846b1bf0226b083ffaf2f94c",
+                  "left": {
+                    "hash": "b7a302a86291eed1d7f7f682a2aaaf52d42257a4c39785dbe5fb93b60281234f",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\LoginUserContext.java",
+                      "hash": "b7a302a86291eed1d7f7f682a2aaaf52d42257a4c39785dbe5fb93b60281234f",
+                      "size": 174,
+                      "modified": 1784889174265.3196
+                    }
+                  },
+                  "right": {
+                    "hash": "59b9cae3ae8fe4d6dec7d69627d42900fd1116fd35e74833efafdbcfc2b6408e",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\RequisitionOrderCreateParam.java",
+                      "hash": "59b9cae3ae8fe4d6dec7d69627d42900fd1116fd35e74833efafdbcfc2b6408e",
+                      "size": 588,
+                      "modified": 1784958419696.7107
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "c3befa895c17ecd7623eb957d98c658aeafbd2a34a3116732e4d2752a35695c9",
+                "left": {
+                  "hash": "c5640b75f326d1333df199efb733c28ee3afe866d721efb31d86c38884c6d17e",
+                  "left": {
+                    "hash": "20e946a12ec309e3faf79e2ae048fd0a5585062212b642f8b03a154f26c45cd6",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\RequisitionOrderDetailParam.java",
+                      "hash": "20e946a12ec309e3faf79e2ae048fd0a5585062212b642f8b03a154f26c45cd6",
+                      "size": 127,
+                      "modified": 1785040415993.901
+                    }
+                  },
+                  "right": {
+                    "hash": "22191c18b6ee402e71b44f064c9510574812387529b7988b7956e35144b02355",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\RequisitionOrderOutBoundParam.java",
+                      "hash": "22191c18b6ee402e71b44f064c9510574812387529b7988b7956e35144b02355",
+                      "size": 515,
+                      "modified": 1785048395000.6584
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "fa877d505a4a7ccaff36a2178492602e8eb9f79f8905f55587221bcb49d9f007",
+                  "left": {
+                    "hash": "06fc06854f497eacd2c0ff63b63894dc8c11ceea7757b6ab01bfd0248138adaf",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\RequisitionOrderPageParam.java",
+                      "hash": "06fc06854f497eacd2c0ff63b63894dc8c11ceea7757b6ab01bfd0248138adaf",
+                      "size": 398,
+                      "modified": 1785032141143.0261
+                    }
+                  },
+                  "right": {
+                    "hash": "8e888f9a3ac1a0e2ad6b1ec035f82b61e9a0cc13d93553566a9cb13366ee8efe",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\ResetPasswordParam.java",
+                      "hash": "8e888f9a3ac1a0e2ad6b1ec035f82b61e9a0cc13d93553566a9cb13366ee8efe",
+                      "size": 149,
+                      "modified": 1784868882837.1917
+                    }
+                  }
+                }
+              }
+            },
+            "right": {
+              "hash": "2f3b2b3d9b6aa51851756f3284b4871b3cd64e7c5c7b37c22e300bb326136ad3",
+              "left": {
+                "hash": "33fff4e52fd462730aa10a06635ea5295ad93b8d8784ee4f3265511463fd902f",
+                "left": {
+                  "hash": "6d5df3011d03747a081d396029b73e37ae938e7c97a922c31ddc1388f1a72b3f",
+                  "left": {
+                    "hash": "6ae812fb280fbda29d4ed42b78902c4f49a3ce0244063969c23fb77ff052d6f0",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\SelectRoleParam.java",
+                      "hash": "6ae812fb280fbda29d4ed42b78902c4f49a3ce0244063969c23fb77ff052d6f0",
+                      "size": 129,
+                      "modified": 1784899693827.39
+                    }
+                  },
+                  "right": {
+                    "hash": "91ce6141c26638bda66675d3bb35565157051ab1f7c982a8133b66229d6402f2",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\SystemConfigParam.java",
+                      "hash": "91ce6141c26638bda66675d3bb35565157051ab1f7c982a8133b66229d6402f2",
+                      "size": 224,
+                      "modified": 1784531299984.0227
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "b7db6ebcde19749c801ab913316d9adaad55c1ecaccaa26e8bfc82240a762bd6",
+                  "left": {
+                    "hash": "4c7c4babcce819ae30ebac8ab650d1832003c93b86dfa357b71850da39c2bf85",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\TransferOrderParam.java",
+                      "hash": "4c7c4babcce819ae30ebac8ab650d1832003c93b86dfa357b71850da39c2bf85",
+                      "size": 802,
+                      "modified": 1785066501390.7612
+                    }
+                  },
+                  "right": {
+                    "hash": "244ad07a876b67ea55fb91eb6a13068940b70cef257ffba7e15e44975705e36c",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\UserPageParam.java",
+                      "hash": "244ad07a876b67ea55fb91eb6a13068940b70cef257ffba7e15e44975705e36c",
+                      "size": 278,
+                      "modified": 1784433708755.4143
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "154348a4ee7308ea781522c0d23b5223b85524e596c4b2d86b9952e7e2e112ec",
+                "left": {
+                  "hash": "41bb1a8b7d4f0b19d67b6090e8bbb8a59a912ea5fa9502b927d4bb0dbf84f815",
+                  "left": {
+                    "hash": "545ef8c26d21f03f0c027985265cce8b45088603bd1ad7b2006841aa24496460",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\UserParam.java",
+                      "hash": "545ef8c26d21f03f0c027985265cce8b45088603bd1ad7b2006841aa24496460",
+                      "size": 249,
+                      "modified": 1784441539645.9329
+                    }
+                  },
+                  "right": {
+                    "hash": "69973cdc3dc4ca08ed88c94af127e81fffe453c8baede451abbfac55c7dd2c14",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\param\\UserRoleParam.java",
+                      "hash": "69973cdc3dc4ca08ed88c94af127e81fffe453c8baede451abbfac55c7dd2c14",
+                      "size": 113,
+                      "modified": 1784440570457.4514
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "2e278410e59930b11aad8cd93219ccdafb2b67c7bc1133d256e1494e02206085",
+                  "left": {
+                    "hash": "4fb3032fedf2503961bec04b71a0c62b3b6b0d186fe3e21bc1762369a7867af6",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\IApprovalRecordService.java",
+                      "hash": "4fb3032fedf2503961bec04b71a0c62b3b6b0d186fe3e21bc1762369a7867af6",
+                      "size": 760,
+                      "modified": 1784717080869.084
+                    }
+                  },
+                  "right": {
+                    "hash": "bb60a9a321be970ac091f86fcf2cdac4b3d90cf434d94b1b0ea2122c17489928",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\IAssetCategoryService.java",
+                      "hash": "bb60a9a321be970ac091f86fcf2cdac4b3d90cf434d94b1b0ea2122c17489928",
+                      "size": 835,
+                      "modified": 1784963689876.337
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "right": {
+            "hash": "877f14c46149c0488cccf6dfef0f4a1d84ed6d26d5832240c988e58efbac3769",
+            "left": {
+              "hash": "0ab9924ae5cfa67b696bc38f7061b4a3de44ddd1785dc1f1fc0ace1fd83e828e",
+              "left": {
+                "hash": "6a188f20e5403b1cc10b7548a0761542329d9f28ab5073af7f3d5a04498244f3",
+                "left": {
+                  "hash": "43ea661c250e0006e989a1554142e98ecc4daae9514a6be88917cf85c2879a69",
+                  "left": {
+                    "hash": "e2bef27842e9ec666cedb79b1a1986b7fdef9e5ccea7a6fa2b406b3a3a0dc632",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\IAssetLedgerService.java",
+                      "hash": "e2bef27842e9ec666cedb79b1a1986b7fdef9e5ccea7a6fa2b406b3a3a0dc632",
+                      "size": 305,
+                      "modified": 1784355908179.594
+                    }
+                  },
+                  "right": {
+                    "hash": "526fe203e70ba0ab993828704d88a8f1f2d2655c0df59799252d0c439e1d9b30",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\IAssetLedgerSnapshotService.java",
+                      "hash": "526fe203e70ba0ab993828704d88a8f1f2d2655c0df59799252d0c439e1d9b30",
+                      "size": 514,
+                      "modified": 1784617041273.0088
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "47ccfe961cd62f8e40374107741e7804fcb223d1c1ba478c3c9ca4d2cf981fbb",
+                  "left": {
+                    "hash": "d9491a048faebcef8951d2319186c35ae4eef0e8698b15f4c7c4900097589af8",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\IAssetLogService.java",
+                      "hash": "d9491a048faebcef8951d2319186c35ae4eef0e8698b15f4c7c4900097589af8",
+                      "size": 284,
+                      "modified": 1784355908195.0415
+                    }
+                  },
+                  "right": {
+                    "hash": "0eb0d5669e06e3d267563a727d71f7f5fd2ec53c4ad887ca17ff2f0397b4e533",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\IAssetService.java",
+                      "hash": "0eb0d5669e06e3d267563a727d71f7f5fd2ec53c4ad887ca17ff2f0397b4e533",
+                      "size": 815,
+                      "modified": 1784970532244.7727
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "d287ab4a875a8d6056a5c94e230694a881346a5cc5810bd02d99440156eab763",
+                "left": {
+                  "hash": "e2992778f9f05a724152925054f6b5770da0baafae5ebb7862aee01166731058",
+                  "left": {
+                    "hash": "fd4fbd3ef640a75b1661cd209241c2b97f236989b5aedbf2f03da1c74755f0a4",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\IAuthService.java",
+                      "hash": "fd4fbd3ef640a75b1661cd209241c2b97f236989b5aedbf2f03da1c74755f0a4",
+                      "size": 361,
+                      "modified": 1784945130787.2234
+                    }
+                  },
+                  "right": {
+                    "hash": "97b6fad230ce42ffe2fd6f24f7a56e742ed12ffab919844498ae90434c4009d3",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\IDepartmentService.java",
+                      "hash": "97b6fad230ce42ffe2fd6f24f7a56e742ed12ffab919844498ae90434c4009d3",
+                      "size": 1023,
+                      "modified": 1784963138646.4365
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "277e38962dd8a3eebfebc79b2d3331836742bd7082cb3f0aff218c245e23eb5d",
+                  "left": {
+                    "hash": "9ff0f9469ed6dbd3bb0eb2ffae2f89571c5081d45edcd8bacdb61e9dd01f95c8",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\IDepreciationRunLogService.java",
+                      "hash": "9ff0f9469ed6dbd3bb0eb2ffae2f89571c5081d45edcd8bacdb61e9dd01f95c8",
+                      "size": 320,
+                      "modified": 1784355908207.0483
+                    }
+                  },
+                  "right": {
+                    "hash": "a6ef670bb083a87eb621b9beff39c55608feccdbdedd581e23ed03d8139872f4",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\IFileAttachmentService.java",
+                      "hash": "a6ef670bb083a87eb621b9beff39c55608feccdbdedd581e23ed03d8139872f4",
+                      "size": 657,
+                      "modified": 1784601434417.3604
+                    }
+                  }
+                }
+              }
+            },
+            "right": {
+              "hash": "3082f86cab5be29d0cbdb74f075b98bf269b5fa3cc96ebb0959576b8f03c7d1c",
+              "left": {
+                "hash": "1949761d2e9f5ed89b86eff063570e169faa9aeb0f175738d105b400637bc182",
+                "left": {
+                  "hash": "e2ea9f50396949d371d31f70c74998510bb22c2324feee0d7031e8b8a351e8fd",
+                  "left": {
+                    "hash": "e3b84428824dbae9b4453a1234fa7f561cac1c6168252d89b48934a8df67a3ea",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\IInventoryDetailService.java",
+                      "hash": "e3b84428824dbae9b4453a1234fa7f561cac1c6168252d89b48934a8df67a3ea",
+                      "size": 299,
+                      "modified": 1784355908220.8496
+                    }
+                  },
+                  "right": {
+                    "hash": "14361d73b561965874ca8a75d70db32c681e54e9044c5de2ef694b9ee5363f6d",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\IInventoryTaskService.java",
+                      "hash": "14361d73b561965874ca8a75d70db32c681e54e9044c5de2ef694b9ee5363f6d",
+                      "size": 293,
+                      "modified": 1784355908227.8496
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "74492bd695b83559094bb52dc9452e3de6b6af5d246bb2b2df2b78e2bc4d72b3",
+                  "left": {
+                    "hash": "4780586c8caf7453f5be16d5ce2dbb5a3106488f6c4a6d3bc9546ea9ec78b668",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\ILossOrderService.java",
+                      "hash": "4780586c8caf7453f5be16d5ce2dbb5a3106488f6c4a6d3bc9546ea9ec78b668",
+                      "size": 278,
+                      "modified": 1784355908235.3418
+                    }
+                  },
+                  "right": {
+                    "hash": "d53c0f99a7ca934dcdce331776df86c938bcaf599a94507811e339e3b6150e23",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\ApprovalRecordServiceImpl.java",
+                      "hash": "d53c0f99a7ca934dcdce331776df86c938bcaf599a94507811e339e3b6150e23",
+                      "size": 27718,
+                      "modified": 1785056064602.674
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "d26ea56011d4f631c3512d832c83c69fe07cab271f6427677175becf7d1f4866",
+                "left": {
+                  "hash": "34234f90de0302b026b265fe643c0a1c9a70223633a49d1d1a84ef1c76b9b12a",
+                  "left": {
+                    "hash": "6e212e604c49f4ce7d41814f275f7fe648bfca72e468b2cf15d7999f847e6ade",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\AssetCategoryServiceImpl.java",
+                      "hash": "6e212e604c49f4ce7d41814f275f7fe648bfca72e468b2cf15d7999f847e6ade",
+                      "size": 7534,
+                      "modified": 1784963689913.795
+                    }
+                  },
+                  "right": {
+                    "hash": "778ff6f72246184232ac81dd8a3269b7dec5a0eded3e55699858aed8703d74d2",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\AssetLedgerServiceImpl.java",
+                      "hash": "778ff6f72246184232ac81dd8a3269b7dec5a0eded3e55699858aed8703d74d2",
+                      "size": 517,
+                      "modified": 1784355908180.5935
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "6229ddbd7574ac52a51bd5c439dc9c8c98e3aea65b8fc1c541d554fb6f091bb2",
+                  "left": {
+                    "hash": "b87c2a353c7c521d13582f72030f92c84051aabb7f143d6f8e42db364ae6587d",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\AssetLedgerSnapshotServiceImpl.java",
+                      "hash": "b87c2a353c7c521d13582f72030f92c84051aabb7f143d6f8e42db364ae6587d",
+                      "size": 1528,
+                      "modified": 1784962400885.7312
+                    }
+                  },
+                  "right": {
+                    "hash": "7a9d8c2aa0efeb998d733d751a1b3599c3836dc75d33a982ee5c61ffecd4cb1e",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\AssetLogServiceImpl.java",
+                      "hash": "7a9d8c2aa0efeb998d733d751a1b3599c3836dc75d33a982ee5c61ffecd4cb1e",
+                      "size": 484,
+                      "modified": 1784355908195.0415
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "right": {
+      "hash": "08fbe236c3ea8dcdb3dc72fde2abbe6c7c525c8d6096f0ed8653b29a8196b792",
+      "left": {
+        "hash": "a1548733f7f6c41fcdc6a9cc7044a7a8f3fff30db468fac7b503d4d46e91a228",
+        "left": {
+          "hash": "614576331c99b8a7046046235530be1e9e427a3a973dd4459525232756f8e756",
+          "left": {
+            "hash": "e75a6b222c520af3e9d223e17347b86716d570c39d156e334af9f561a232f027",
+            "left": {
+              "hash": "da033f8f815b8ff3ca2996acdc699b292f88528060e71040b05a2c648aeb8218",
+              "left": {
+                "hash": "d1e4a9afcd48630530549db440836e2dcae5201b6fe3bca8cffc10c1f01bf70a",
+                "left": {
+                  "hash": "cc4dd7de034eceaf8ff41832fd72e94c0096dfa06f2fe798f5c1ae86998f10b3",
+                  "left": {
+                    "hash": "f42f7639120f7e7c765a397cadb9bee4f45cd9a621e22ef01f437622232c0be9",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\AssetServiceImpl.java",
+                      "hash": "f42f7639120f7e7c765a397cadb9bee4f45cd9a621e22ef01f437622232c0be9",
+                      "size": 11737,
+                      "modified": 1785065143393.285
+                    }
+                  },
+                  "right": {
+                    "hash": "d92edd9f67d8e1eda94d92e1b4d8b0edec95f7c4cb6ec661e5bb51c7777fcb27",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\AuthServiceImpl.java",
+                      "hash": "d92edd9f67d8e1eda94d92e1b4d8b0edec95f7c4cb6ec661e5bb51c7777fcb27",
+                      "size": 7415,
+                      "modified": 1784947741140.8467
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "e5dd059d1635c03f828e0b61527f540273729b9f55fd2f41d7d0c22ce2f8e272",
+                  "left": {
+                    "hash": "0a693f5ef0d609a333e9746c3e40502053af630369c07bc2ba24010bc4ad6b8d",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\DepartmentServiceImpl.java",
+                      "hash": "0a693f5ef0d609a333e9746c3e40502053af630369c07bc2ba24010bc4ad6b8d",
+                      "size": 7462,
+                      "modified": 1784963138654.6003
+                    }
+                  },
+                  "right": {
+                    "hash": "81bea680c33199dd2a4abc4d6df22e2b9930b2c63368a8cf2f3b4b17e4100e0c",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\DepreciationRunLogServiceImpl.java",
+                      "hash": "81bea680c33199dd2a4abc4d6df22e2b9930b2c63368a8cf2f3b4b17e4100e0c",
+                      "size": 560,
+                      "modified": 1784355908208.0474
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "8cf3f19a511d632901147cf1cf5398a6a629cbad7ee74b283e3275bb6155e951",
+                "left": {
+                  "hash": "426f2e200e9ac5f18999cb8fced70b7911870232ed84bcf3f00367d6288a26d1",
+                  "left": {
+                    "hash": "ce66ecf01950f700fc26ca512bcc69c0f19e70e34eab557e5a7ce14680074595",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\FileAttachmentServiceImpl.java",
+                      "hash": "ce66ecf01950f700fc26ca512bcc69c0f19e70e34eab557e5a7ce14680074595",
+                      "size": 3519,
+                      "modified": 1784601584762.0715
+                    }
+                  },
+                  "right": {
+                    "hash": "ab9632c24bd05c72ee9208dc18730a48dc62851d60d5888b4d66b4feef80db7e",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\InventoryDetailServiceImpl.java",
+                      "hash": "ab9632c24bd05c72ee9208dc18730a48dc62851d60d5888b4d66b4feef80db7e",
+                      "size": 527,
+                      "modified": 1784355908221.85
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "714b92803587a5bbeeecc4c69a4eec186173b19555187ac19b922584e71f851e",
+                  "left": {
+                    "hash": "4f4dea02c439bdf5009f720f2e6316c39141b33e557de572de4acba8841b941a",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\InventoryTaskServiceImpl.java",
+                      "hash": "4f4dea02c439bdf5009f720f2e6316c39141b33e557de572de4acba8841b941a",
+                      "size": 513,
+                      "modified": 1784355908228.8633
+                    }
+                  },
+                  "right": {
+                    "hash": "74cf52b7832387f38d69a5d22c444796cd5577cfe8b1565573841a6e9cbcd9fd",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\LossOrderServiceImpl.java",
+                      "hash": "74cf52b7832387f38d69a5d22c444796cd5577cfe8b1565573841a6e9cbcd9fd",
+                      "size": 482,
+                      "modified": 1784355908236.3416
+                    }
+                  }
+                }
+              }
+            },
+            "right": {
+              "hash": "cbce140268d8c23259dbf56da485451327b54646df6ee1e34ab92e6c0cf48d4c",
+              "left": {
+                "hash": "9a3e29415f8d523846406c2172e365dea9ab503235a426479f03d69f1f119bdc",
+                "left": {
+                  "hash": "d995b196d074395ad957a7902ed8d07812aec308ada1531ad70fc4cd0120cbef",
+                  "left": {
+                    "hash": "210bcc76ec65841d955a3c763024b2dc5fbb2869f1a5bb1808236c7a416a5c96",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\RequisitionOrderItemServiceImpl.java",
+                      "hash": "210bcc76ec65841d955a3c763024b2dc5fbb2869f1a5bb1808236c7a416a5c96",
+                      "size": 572,
+                      "modified": 1784355908247.931
+                    }
+                  },
+                  "right": {
+                    "hash": "229575667acf6c1fc71d75cec7dd38b6ca42c160279c047e7f045509276e8c17",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\RequisitionOrderServiceImpl.java",
+                      "hash": "229575667acf6c1fc71d75cec7dd38b6ca42c160279c047e7f045509276e8c17",
+                      "size": 13129,
+                      "modified": 1785052337821.4983
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "4ea1b2b3611353aab5b00d9adee68e98379fcd6f7d05b45ed316929a2f54a6ab",
+                  "left": {
+                    "hash": "0377d0caac7e9596e96918b3e04308f03f290d3dcab55e72aa4a1b5f3f3b06cc",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\ReturnOrderItemServiceImpl.java",
+                      "hash": "0377d0caac7e9596e96918b3e04308f03f290d3dcab55e72aa4a1b5f3f3b06cc",
+                      "size": 537,
+                      "modified": 1784355908260.224
+                    }
+                  },
+                  "right": {
+                    "hash": "4c5833c2548d824679b1e88d95060d93e7804a48eee9a37b3cb9733570952049",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\ReturnOrderServiceImpl.java",
+                      "hash": "4c5833c2548d824679b1e88d95060d93e7804a48eee9a37b3cb9733570952049",
+                      "size": 499,
+                      "modified": 1784355908253.933
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "a49b90cb3a1e45b65ae88468da652b74bbe5d98b8632f8123d61e0c099664311",
+                "left": {
+                  "hash": "6a8b4b9b68a130de8347434a82369b58ce2b14d0da7f556b8bce701db9928f53",
+                  "left": {
+                    "hash": "31d3e79bb5145e78b06edb775077538baf75136009ca2f9b336bed9cf4849a1f",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\RoleServiceImpl.java",
+                      "hash": "31d3e79bb5145e78b06edb775077538baf75136009ca2f9b336bed9cf4849a1f",
+                      "size": 444,
+                      "modified": 1784355908266.2273
+                    }
+                  },
+                  "right": {
+                    "hash": "ac19f92a40c604a4872297217f23dc7bf93ebc8aa2738d31bc13396f31d04d27",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\ScrapOrderItemServiceImpl.java",
+                      "hash": "ac19f92a40c604a4872297217f23dc7bf93ebc8aa2738d31bc13396f31d04d27",
+                      "size": 530,
+                      "modified": 1784355908277.365
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "9bdca835f3fa5daa15db888e44904553fc856534f7f9f108c943b685769658da",
+                  "left": {
+                    "hash": "60867842eb0ad40f9b987ce167b61d1f233b61300f410a1eade8131b229df50b",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\ScrapOrderServiceImpl.java",
+                      "hash": "60867842eb0ad40f9b987ce167b61d1f233b61300f410a1eade8131b229df50b",
+                      "size": 492,
+                      "modified": 1784355908271.3645
+                    }
+                  },
+                  "right": {
+                    "hash": "b714ccd0f7bed470a8cbb011d352b6f10461d3622ad6cc1d4bc3e4a1b5a714ce",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\SystemConfigServiceImpl.java",
+                      "hash": "b714ccd0f7bed470a8cbb011d352b6f10461d3622ad6cc1d4bc3e4a1b5a714ce",
+                      "size": 1812,
+                      "modified": 1784531930713.263
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "right": {
+            "hash": "5dd16160eaeae96ddf8de89533f8a70231166170cea962d1744907f9e70d410f",
+            "left": {
+              "hash": "447ac88766d8788597fae101c55e844eed11760d0a2f5d75288d788e768a6c0d",
+              "left": {
+                "hash": "982f9ea17ed3869518199b1de192ac8dd02638220215eefba74c5f56f1f00a62",
+                "left": {
+                  "hash": "eaad16fd7eed4a735da5b8c2b36d237cdab3f15dfe84ae6fb1945b72a1ba8a53",
+                  "left": {
+                    "hash": "f3323cbb4938971dbd388e9287b4a7071b5785f09c2cc402396b87f6c5542a99",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\TransferOrderItemServiceImpl.java",
+                      "hash": "f3323cbb4938971dbd388e9287b4a7071b5785f09c2cc402396b87f6c5542a99",
+                      "size": 551,
+                      "modified": 1784355908301.2014
+                    }
+                  },
+                  "right": {
+                    "hash": "d231b71e6fda4cc225c9c3fb112c36351b85dc1a2784d8c3c6b8b9a09ec5c488",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\TransferOrderServiceImpl.java",
+                      "hash": "d231b71e6fda4cc225c9c3fb112c36351b85dc1a2784d8c3c6b8b9a09ec5c488",
+                      "size": 742,
+                      "modified": 1785069208928.3303
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "f4584dfd3f71cca902fe842f9b1ed89815c61bcc3deb55080fa5eb463a2e6294",
+                  "left": {
+                    "hash": "b99ecf7306972b0652bfc53d814583a5c17198708a08032cb441d26cb48156ea",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\UserRoleServiceImpl.java",
+                      "hash": "b99ecf7306972b0652bfc53d814583a5c17198708a08032cb441d26cb48156ea",
+                      "size": 484,
+                      "modified": 1784355908311.511
+                    }
+                  },
+                  "right": {
+                    "hash": "540cb2f5760fb75d7228fa6b7ba597981611c7032cc4babb6b5bf7f13c0746e4",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\impl\\UserServiceImpl.java",
+                      "hash": "540cb2f5760fb75d7228fa6b7ba597981611c7032cc4babb6b5bf7f13c0746e4",
+                      "size": 10206,
+                      "modified": 1785033568451.8523
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "2d84c45fe2ec137643fb9060391f56517f774a901ebfea3828b58e77e81360d4",
+                "left": {
+                  "hash": "50563e3f5575caed5793216b6fdc7f32dbc47e8da4628bb47176a2f30cedea6e",
+                  "left": {
+                    "hash": "c800daf3057450b3b8281917493f638683e5840b6f738bab3746a3c163d87ad4",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\IRequisitionOrderItemService.java",
+                      "hash": "c800daf3057450b3b8281917493f638683e5840b6f738bab3746a3c163d87ad4",
+                      "size": 324,
+                      "modified": 1784355908246.9348
+                    }
+                  },
+                  "right": {
+                    "hash": "ae67e61188a3d36f4580dab4fd1ae313342944ce4f85ea1cc5a0278017c5c180",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\IRequisitionOrderService.java",
+                      "hash": "ae67e61188a3d36f4580dab4fd1ae313342944ce4f85ea1cc5a0278017c5c180",
+                      "size": 1021,
+                      "modified": 1785046407425.3765
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "7ea08e95e4c44a0485c3cd066e79bf473776d31f18cabe02cfb125730111507a",
+                  "left": {
+                    "hash": "b9106ada62dc1047deafd51245edf8285a45ee1df77e0a0b418cc2df67b4a38b",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\IReturnOrderItemService.java",
+                      "hash": "b9106ada62dc1047deafd51245edf8285a45ee1df77e0a0b418cc2df67b4a38b",
+                      "size": 309,
+                      "modified": 1784355908259.2246
+                    }
+                  },
+                  "right": {
+                    "hash": "ac3a745b23630ad11af81ba45980e4b4cae3b0efeb1a398805773d791ec01983",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\IReturnOrderService.java",
+                      "hash": "ac3a745b23630ad11af81ba45980e4b4cae3b0efeb1a398805773d791ec01983",
+                      "size": 287,
+                      "modified": 1784355908253.933
+                    }
+                  }
+                }
+              }
+            },
+            "right": {
+              "hash": "6a5a60cb789420cf8ae4b3d865a28193a45e4e4d0bc4ebdf16e16bd2c049eadc",
+              "left": {
+                "hash": "58c414ec198582e8d63e6c96d22fd8818fabe1656278528bf174d60e5c035828",
+                "left": {
+                  "hash": "b39e5c369e76b59ba58ed987142b9b10421b11c4a5fe33bf9b37547d392d4793",
+                  "left": {
+                    "hash": "ed9ef768a77ecb428bb68f14eae075125ede4d5db1aeebb5262ac0ce0c4db160",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\IRoleService.java",
+                      "hash": "ed9ef768a77ecb428bb68f14eae075125ede4d5db1aeebb5262ac0ce0c4db160",
+                      "size": 260,
+                      "modified": 1784355908265.2249
+                    }
+                  },
+                  "right": {
+                    "hash": "8c3db1d414e504013f57bbbce2fc9897babd093b26ae45f3715ed7126e362083",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\IScrapOrderItemService.java",
+                      "hash": "8c3db1d414e504013f57bbbce2fc9897babd093b26ae45f3715ed7126e362083",
+                      "size": 306,
+                      "modified": 1784355908276.3647
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "b6a43542775de294694494708722cff929bec20bc8a5b90ea7fd8186715c975a",
+                  "left": {
+                    "hash": "8537bc989269f42fca54a45d380d4e4cd34339bcff2b622be06f5e1658901cb5",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\IScrapOrderService.java",
+                      "hash": "8537bc989269f42fca54a45d380d4e4cd34339bcff2b622be06f5e1658901cb5",
+                      "size": 284,
+                      "modified": 1784355908271.3645
+                    }
+                  },
+                  "right": {
+                    "hash": "e814b469b91b98be887170016ad3c9cafb626d6a3b772255f32e8cc097e1f4ae",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\ISystemConfigService.java",
+                      "hash": "e814b469b91b98be887170016ad3c9cafb626d6a3b772255f32e8cc097e1f4ae",
+                      "size": 472,
+                      "modified": 1784531420095.833
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "66a41861635c9425a590ed266944fa244c86ab8f4f20d6812965756f7b4ea9bd",
+                "left": {
+                  "hash": "4a281fbdd2a43bf4701a7efc633727c5f1ac1b6db477b7ef5853bc18d12128d2",
+                  "left": {
+                    "hash": "12e786d88a8e9a444f384bb51aa732ff8396e28b1a198ba127938d0707f8d25a",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\ITransferOrderItemService.java",
+                      "hash": "12e786d88a8e9a444f384bb51aa732ff8396e28b1a198ba127938d0707f8d25a",
+                      "size": 315,
+                      "modified": 1784355908299.8684
+                    }
+                  },
+                  "right": {
+                    "hash": "e4db2dc45b97199fd860a748a9c5d1e09a6a5a4edf287fa7379badcd450aa3bb",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\ITransferOrderService.java",
+                      "hash": "e4db2dc45b97199fd860a748a9c5d1e09a6a5a4edf287fa7379badcd450aa3bb",
+                      "size": 423,
+                      "modified": 1785066677220.712
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "0a9644ebea921286fa067a98aed1a91948152de92663491deead96b7c4b7215b",
+                  "left": {
+                    "hash": "7ea4cfee528af5ea1259f4d3b9de82716c76252c269d46d7e6afac376c16e5e0",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\IUserRoleService.java",
+                      "hash": "7ea4cfee528af5ea1259f4d3b9de82716c76252c269d46d7e6afac376c16e5e0",
+                      "size": 284,
+                      "modified": 1784355908311.511
+                    }
+                  },
+                  "right": {
+                    "hash": "0c1a12027fb43a92f9392539e5417aded2640d06b45d52faafeb81bbc4f46f10",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\service\\IUserService.java",
+                      "hash": "0c1a12027fb43a92f9392539e5417aded2640d06b45d52faafeb81bbc4f46f10",
+                      "size": 830,
+                      "modified": 1784964712146.5466
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "right": {
+          "hash": "695db5d91ecd9309c22f2ba1f794550c96b352f0d04a03271eb92f391a99d433",
+          "left": {
+            "hash": "d87d2bd9379edfad4444b476b7bc4328179ffb4f383ec024cdb5c489ce48ef00",
+            "left": {
+              "hash": "f791a8b813b29efb1dd810ab8973cc8dc4b6eee13fa5b4038e70901e119b67ca",
+              "left": {
+                "hash": "7497d11039c1f6f935c745b3d35ce9c993e2045664db2bafb94eb34825c3cb9a",
+                "left": {
+                  "hash": "4177c6b2f4ccde6250d9bcc85c926787246b2711e20fba3a7aa397e519b4aa3d",
+                  "left": {
+                    "hash": "31f125c1370abc2e33eedb19226fda45dba7442f924a1b75acb850daf2020c44",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\util\\JwtUtils.java",
+                      "hash": "31f125c1370abc2e33eedb19226fda45dba7442f924a1b75acb850daf2020c44",
+                      "size": 1386,
+                      "modified": 1784884735615.0664
+                    }
+                  },
+                  "right": {
+                    "hash": "2a8718e1487a6c6b37486b61be26c8a7712a2c77d7b46a16c67fceb3c70f8231",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\util\\PasswordUtils.java",
+                      "hash": "2a8718e1487a6c6b37486b61be26c8a7712a2c77d7b46a16c67fceb3c70f8231",
+                      "size": 372,
+                      "modified": 1784884356777.2021
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "3b95d0527540115e29f312e70b31a46a960327d6d63fb4f7f0a39d32eac7e706",
+                  "left": {
+                    "hash": "8ec337948c760361bf8706cd527b3a341bd65dcd9dc1241656de8faa36a932a1",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\ApprovalRecordActionVO.java",
+                      "hash": "8ec337948c760361bf8706cd527b3a341bd65dcd9dc1241656de8faa36a932a1",
+                      "size": 163,
+                      "modified": 1784712409276.8745
+                    }
+                  },
+                  "right": {
+                    "hash": "6f7b938b2edf744fc9db0d8cb90e422b2db0052acdae54a2bc9a95ed9c9285b9",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\ApprovalRecordDetailFormData.java",
+                      "hash": "6f7b938b2edf744fc9db0d8cb90e422b2db0052acdae54a2bc9a95ed9c9285b9",
+                      "size": 427,
+                      "modified": 1784708877492.023
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "5b1a5c260d81616e366a7ec7d63ddba14e4b6a094bbc6340dee14883240d8ee6",
+                "left": {
+                  "hash": "87b1277ae709d64686e0611696248404abe60e20eabb3328fdb58d04507d2987",
+                  "left": {
+                    "hash": "ec266fc73e98b650a42df7113bba33031703dd9a56184164b31df2a4cfad94cd",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\ApprovalRecordDetailHistoryList.java",
+                      "hash": "ec266fc73e98b650a42df7113bba33031703dd9a56184164b31df2a4cfad94cd",
+                      "size": 273,
+                      "modified": 1784709913393.0261
+                    }
+                  },
+                  "right": {
+                    "hash": "9ad7b46be6475c237f4dffe8605429f1b96648fe0692ba59db838e0c9a0c35ec",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\ApprovalRecordDetailVO.java",
+                      "hash": "9ad7b46be6475c237f4dffe8605429f1b96648fe0692ba59db838e0c9a0c35ec",
+                      "size": 628,
+                      "modified": 1784708877501.7341
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "aa42756037d6ba28f4394ec85b7a900e17f0ae3a1b0c4f64c22af3f881cc8adc",
+                  "left": {
+                    "hash": "1519deedc56b73361d438998457f874031835bbf358fd736ab53d542753261c8",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\ApprovalRecordDonePageVO.java",
+                      "hash": "1519deedc56b73361d438998457f874031835bbf358fd736ab53d542753261c8",
+                      "size": 182,
+                      "modified": 1784697312597.2144
+                    }
+                  },
+                  "right": {
+                    "hash": "fcb88cb386c27d7514c241f15a223f2c352237befdb07646271a83a3f6cd1c66",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\ApprovalRecordTodoPageVO.java",
+                      "hash": "fcb88cb386c27d7514c241f15a223f2c352237befdb07646271a83a3f6cd1c66",
+                      "size": 252,
+                      "modified": 1784960840613.52
+                    }
+                  }
+                }
+              }
+            },
+            "right": {
+              "hash": "0f2fe582689d4361ff31c4df091bc8a5677a3adb2cbd025e36d2fc24144ee807",
+              "left": {
+                "hash": "d22353acaee04390a16fa2c8909552db620b3bb769d68e8a495c7a7696ab7dbb",
+                "left": {
+                  "hash": "d83d646db201786ed868315c4f281c63dc1e932a8f9fb40365f9cb848c8213ec",
+                  "left": {
+                    "hash": "ae478f07e29e425ac0f185135695f380a69cbf62032b71c2b7a3e0be5630cc33",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\ApprovalRecordTransferVO.java",
+                      "hash": "ae478f07e29e425ac0f185135695f380a69cbf62032b71c2b7a3e0be5630cc33",
+                      "size": 127,
+                      "modified": 1784717080843.6313
+                    }
+                  },
+                  "right": {
+                    "hash": "1ddba1261127ce87ecc015c96d4833a456937994f4b6102c2f7a24e5cf011a76",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\AssetBarcodeDetailVO.java",
+                      "hash": "1ddba1261127ce87ecc015c96d4833a456937994f4b6102c2f7a24e5cf011a76",
+                      "size": 242,
+                      "modified": 1784621347769.9766
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "c1d91b8cc79745d2270e633893d370aa80458768ca13fa7e6a6ad698b774a111",
+                  "left": {
+                    "hash": "0889fa1b5edfe547f1fd253467d141487b1bb553545cb8506372c3c1e54d9ba2",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\AssetCategoryPageVO.java",
+                      "hash": "0889fa1b5edfe547f1fd253467d141487b1bb553545cb8506372c3c1e54d9ba2",
+                      "size": 251,
+                      "modified": 1784963689896.0974
+                    }
+                  },
+                  "right": {
+                    "hash": "d49e7ac957dadba565572932f779f06d217092e67ca84b76af102bf4a6fa02f9",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\AssetCategoryVO.java",
+                      "hash": "d49e7ac957dadba565572932f779f06d217092e67ca84b76af102bf4a6fa02f9",
+                      "size": 306,
+                      "modified": 1784517730604.4912
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "bef26885891a163dff932a925d038d178b15b623e2610e8153b92cb375da8af7",
+                "left": {
+                  "hash": "518c47803eb22b05f301a9f2de02e42604591f16fef9ddf402765a6de06aab02",
+                  "left": {
+                    "hash": "1b28f29acde0233d29f1d969ec20869dd21332526cbd67ee3d59f2688cbee6eb",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\AssetCreateVO.java",
+                      "hash": "1b28f29acde0233d29f1d969ec20869dd21332526cbd67ee3d59f2688cbee6eb",
+                      "size": 341,
+                      "modified": 1784602328566.632
+                    }
+                  },
+                  "right": {
+                    "hash": "f3f26c7959b307be3317acc4655934b2b6bbcb7265508cbdc80a80edf1165012",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\AssetLedgerSnapshotPageVO.java",
+                      "hash": "f3f26c7959b307be3317acc4655934b2b6bbcb7265508cbdc80a80edf1165012",
+                      "size": 228,
+                      "modified": 1784959992703.494
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "9c19edebbec05aaea7941a2d27240691caddc0029389162dbd11335660e68386",
+                  "left": {
+                    "hash": "468200045a660f9f9c4ef03bf8f9dce1676fbd5fd5a245f31a5f9ec688e129d4",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\AssetLedgerSnapshotVO.java",
+                      "hash": "468200045a660f9f9c4ef03bf8f9dce1676fbd5fd5a245f31a5f9ec688e129d4",
+                      "size": 166,
+                      "modified": 1784616779692.6843
+                    }
+                  },
+                  "right": {
+                    "hash": "1302486a736a0269184e0fa20b1412d6c7ee728905cdc94b6e34aa5fbf5ce70a",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\AssetPageVO.java",
+                      "hash": "1302486a736a0269184e0fa20b1412d6c7ee728905cdc94b6e34aa5fbf5ce70a",
+                      "size": 224,
+                      "modified": 1784970960242.112
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "right": {
+            "hash": "b8d190980cf57e96badb85deb4a713f837c3a4fc4fe4d0c2631206784897ab73",
+            "left": {
+              "hash": "366667e8aa1d7ad43aed050c7100717f5580a17613ab0e5ee8069d02580d1252",
+              "left": {
+                "hash": "7df05c7a234f6659a2f66471caba000326049f725b6d223fea69c28008b2f0ca",
+                "left": {
+                  "hash": "9cdce0f1505870ede9b8ea987fa31ee879d9fa31c8bcb3a91c2c967d4f916b0c",
+                  "left": {
+                    "hash": "2b5dab2e6419129d8d692115030a55f159226f303e540524dd59cc550bc2e839",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\AssetVO.java",
+                      "hash": "2b5dab2e6419129d8d692115030a55f159226f303e540524dd59cc550bc2e839",
+                      "size": 312,
+                      "modified": 1784621303662.4536
+                    }
+                  },
+                  "right": {
+                    "hash": "5a3034c43a868e7d194e562bb5f396e87b8e7041e3ce0e1ff0c0b116a573708f",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\DepartmentPageVO.java",
+                      "hash": "5a3034c43a868e7d194e562bb5f396e87b8e7041e3ce0e1ff0c0b116a573708f",
+                      "size": 245,
+                      "modified": 1784963138661.6091
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "1917ce9bf50edc03940b45f292456e6e9f2298efe1176052c09ef133c1c1c3f3",
+                  "left": {
+                    "hash": "b24578f97f33953cda6b3907ff3c1dd1cef07b759a34d54447d0ed9c70af752e",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\DepartmentVO.java",
+                      "hash": "b24578f97f33953cda6b3907ff3c1dd1cef07b759a34d54447d0ed9c70af752e",
+                      "size": 427,
+                      "modified": 1784366987016.375
+                    }
+                  },
+                  "right": {
+                    "hash": "7b5db8cadd6fb28c27eccd8d7df5d36a0540292a8a76530f42b2b8169e959c3e",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\DonePageRecordVO.java",
+                      "hash": "7b5db8cadd6fb28c27eccd8d7df5d36a0540292a8a76530f42b2b8169e959c3e",
+                      "size": 307,
+                      "modified": 1784695652085.7236
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "4151ee4ff63c9a2a9d3948c27d44db7f3d57e02af12364a41e06b5e53776b00f",
+                "left": {
+                  "hash": "542baeac99ee8e5bd4b10f708e8ab36da4ebf47f033e2e2b82c67abc05ac6d24",
+                  "left": {
+                    "hash": "82ec4f648a712b051abaa1b0b78777cef6a7da8ff9d4c0e51c9b62ce5b68bd55",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\FileAttachmentVO.java",
+                      "hash": "82ec4f648a712b051abaa1b0b78777cef6a7da8ff9d4c0e51c9b62ce5b68bd55",
+                      "size": 153,
+                      "modified": 1784548933398.6714
+                    }
+                  },
+                  "right": {
+                    "hash": "6496435f2ab806012c7891be0eda075e2383c9e9e3a01c7811f79bf0d22ed4ae",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\LoginUserListVO.java",
+                      "hash": "6496435f2ab806012c7891be0eda075e2383c9e9e3a01c7811f79bf0d22ed4ae",
+                      "size": 394,
+                      "modified": 1784944865566.444
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "705deea0f61b009cc01debb1ca2e60bea2c39fe7466b1f3aef1ae4230eaae27c",
+                  "left": {
+                    "hash": "2c25f7c191827526fc5e986974f9c3c54595b890ac0688b6dfbf9b81517fbaad",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\LoginVO.java",
+                      "hash": "2c25f7c191827526fc5e986974f9c3c54595b890ac0688b6dfbf9b81517fbaad",
+                      "size": 276,
+                      "modified": 1784876058262.8464
+                    }
+                  },
+                  "right": {
+                    "hash": "1eff2cab7a179659a816ddcfaad6d9ccd04035fc6622fc02000113b91209f9cb",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\Page.java",
+                      "hash": "1eff2cab7a179659a816ddcfaad6d9ccd04035fc6622fc02000113b91209f9cb",
+                      "size": 226,
+                      "modified": 1784962326863.437
+                    }
+                  }
+                }
+              }
+            },
+            "right": {
+              "hash": "db79544d42f870dfa5da5dd313d600e435e596f2c6c2f1fbaea5ab5a1ae1ed51",
+              "left": {
+                "hash": "3970563ade87c88e0a7fefbaf458f6a956504f082c552dcb1b120f05521ea360",
+                "left": {
+                  "hash": "c3ce7614b162055f43aca0a8fb0b5dedb1b399b904d566021432ef3b72672104",
+                  "left": {
+                    "hash": "65a0a16c39c3c7308f35036c8f281e483a9c5220559ce4c6f864c0699d3d27ae",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\RequisitionOrderCreateVO.java",
+                      "hash": "65a0a16c39c3c7308f35036c8f281e483a9c5220559ce4c6f864c0699d3d27ae",
+                      "size": 258,
+                      "modified": 1784957811559.8513
+                    }
+                  },
+                  "right": {
+                    "hash": "9dd32fcaeb3b0f31bce4f172f857023498e423b39a74f7bba8324cbeb8d7d3bd",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\RequisitionOrderDetailItemVO.java",
+                      "hash": "9dd32fcaeb3b0f31bce4f172f857023498e423b39a74f7bba8324cbeb8d7d3bd",
+                      "size": 282,
+                      "modified": 1785040881942.8335
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "1301cf07010f5abc3e0c9abf620e140bbca9821aabb8b2950eeb64abe514aadc",
+                  "left": {
+                    "hash": "7f79dcf29247a7b7eedcedbf03e5fe52d9e02779ffbebf0d33a16d3faf72e982",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\RequisitionOrderDetailVO.java",
+                      "hash": "7f79dcf29247a7b7eedcedbf03e5fe52d9e02779ffbebf0d33a16d3faf72e982",
+                      "size": 459,
+                      "modified": 1785042241953.0586
+                    }
+                  },
+                  "right": {
+                    "hash": "c0573bd952e7be8372dbf8bd646be8c1cb9ebcc9baea259085fc827afceca525",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\RequisitionOrderOutBoundVO.java",
+                      "hash": "c0573bd952e7be8372dbf8bd646be8c1cb9ebcc9baea259085fc827afceca525",
+                      "size": 162,
+                      "modified": 1785046334898.0308
+                    }
+                  }
+                }
+              },
+              "right": {
+                "hash": "73f650102ed1f0300d1334cbf4f304675eabd7280e1737d0262ff6fdc951044e",
+                "left": {
+                  "hash": "4ae7ac5eacc69c823bf052f9a6359c717c903fd2c3dbcb14e88636eadf7ea86a",
+                  "left": {
+                    "hash": "a9983e59cbed3a553f22bf7d8d90da4410f7cf54529b4a89ad630b8a9f40a62a",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\RequisitionOrderPageRecord.java",
+                      "hash": "a9983e59cbed3a553f22bf7d8d90da4410f7cf54529b4a89ad630b8a9f40a62a",
+                      "size": 294,
+                      "modified": 1784959992786.9668
+                    }
+                  },
+                  "right": {
+                    "hash": "038f901148e7849e03f01c9ee5c4ff53d111bc62f15fcdd1c9e39b4e9b7808e8",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\RequisitionOrderPageVO.java",
+                      "hash": "038f901148e7849e03f01c9ee5c4ff53d111bc62f15fcdd1c9e39b4e9b7808e8",
+                      "size": 289,
+                      "modified": 1784973732453.5315
+                    }
+                  }
+                },
+                "right": {
+                  "hash": "d798f4df3fad76b19467d87c95562bdad27249223e98b4d0e42a6c6e25da78f7",
+                  "left": {
+                    "hash": "ce36aa6bd45dea5396621885e5c7306d637168b036da2a945ecd7a0961e10990",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\RoleListVO.java",
+                      "hash": "ce36aa6bd45dea5396621885e5c7306d637168b036da2a945ecd7a0961e10990",
+                      "size": 197,
+                      "modified": 1784448711129.2852
+                    }
+                  },
+                  "right": {
+                    "hash": "e03d97a262e5cb0be1fb93f060f692f2d0ad46a7cfcfeaa0ad1e74088afd37a7",
+                    "file": {
+                      "path": "src\\main\\java\\com\\hjf\\vo\\SelectRoleVO.java",
+                      "hash": "e03d97a262e5cb0be1fb93f060f692f2d0ad46a7cfcfeaa0ad1e74088afd37a7",
+                      "size": 253,
+                      "modified": 1784899853076.887
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "right": {
+        "hash": "47502dfc3570dd4b64cacdbf8cfbc50547f5fa18b65e64b9a4be90d9a8b55a42",
+        "left": {
+          "hash": "31518546e79e5db6fe3541f630299a74eecd9b3c494aef8296ff9f04d30045b0",
+          "left": {
+            "hash": "7f4bc48bb4b7bbb0eafef1f8964ebecb6592ee2e4baf3a6e66799a997d5dada8",
+            "left": {
+              "hash": "1cd3d426df42e2b3c2ea7dbf7fd1266baad8f5f0b5e2ad249f63af7829fe59af",
+              "file": {
+                "path": "src\\main\\java\\com\\hjf\\vo\\SystemConfigVo.java",
+                "hash": "1cd3d426df42e2b3c2ea7dbf7fd1266baad8f5f0b5e2ad249f63af7829fe59af",
+                "size": 145,
+                "modified": 1784530058040.773
+              }
+            },
+            "right": {
+              "hash": "a3790d3bb61f3ce37f4c170827a24f443e9ef9ff7042c92bfcf8b4a480007064",
+              "file": {
+                "path": "src\\main\\java\\com\\hjf\\vo\\TodoPageVo.java",
+                "hash": "a3790d3bb61f3ce37f4c170827a24f443e9ef9ff7042c92bfcf8b4a480007064",
+                "size": 394,
+                "modified": 1785039671071.399
+              }
+            }
+          },
+          "right": {
+            "hash": "73b2a0f6fb30f9fd2eb0f74f39c617e6189cc6ba1bcccb1c63739cdeb7d02000",
+            "left": {
+              "hash": "08f5ceaffa257214a97c64d6366dc51e3ac374fd94d79bd3ae5c5067115a6163",
+              "file": {
+                "path": "src\\main\\java\\com\\hjf\\vo\\TransferOrderVO.java",
+                "hash": "08f5ceaffa257214a97c64d6366dc51e3ac374fd94d79bd3ae5c5067115a6163",
+                "size": 175,
+                "modified": 1785066175635.125
+              }
+            },
+            "right": {
+              "hash": "cc6a5e00c202476e6c733aa2a064caf625284c6d51bada2df8db4a966b4bd9a9",
+              "file": {
+                "path": "src\\main\\java\\com\\hjf\\vo\\UserPageVO.java",
+                "hash": "cc6a5e00c202476e6c733aa2a064caf625284c6d51bada2df8db4a966b4bd9a9",
+                "size": 215,
+                "modified": 1784964712171.4536
+              }
+            }
+          }
+        },
+        "right": {
+          "hash": "7f5513175ac347ce6a0b4118e39d52a1a48dd57b144aff887713377d05b08774",
+          "left": {
+            "hash": "518345cbd77b0c6fc4ee0c6f7a6c9b669f1ce89e5d0400c63a2c8ba14689ecbb",
+            "file": {
+              "path": "src\\main\\java\\com\\hjf\\vo\\UserVO.java",
+              "hash": "518345cbd77b0c6fc4ee0c6f7a6c9b669f1ce89e5d0400c63a2c8ba14689ecbb",
+              "size": 269,
+              "modified": 1784964712139.5457
+            }
+          },
+          "right": {
+            "hash": "2bae4c47e0b267ccef8582f68e75bd55d87690d01c97cb3ee03a86066aab2f51",
+            "file": {
+              "path": "src\\test\\java\\com\\hjf\\AssetForgeBackendApplicationTests.java",
+              "hash": "2bae4c47e0b267ccef8582f68e75bd55d87690d01c97cb3ee03a86066aab2f51",
+              "size": 219,
+              "modified": 1782723248948.081
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hjf.mapper.ReportMapper">
+
+    <select id="detail" resultType="com.hjf.vo.ReportAssetDetailPageRecord">
+        select a.id as asset_id,
+               a.asset_code as asset_code,
+               a.name as asset_name,
+               c.name as category_name,
+               a.department_name department_name,
+               u.real_name as user_name,
+               a.status as status,
+               l.original_value as purchase_price,
+               l.net_value as net_amount
+        from asset a
+            left join asset_category c on a.category_id = c.id
+            left join asset_ledger l on a.id = l.asset_id
+            left join user u on a.current_user_id = u.id
+        <where>
+            <if test="categoryId != null and categoryId != ''">
+                and a.category_id = #{categoryId}
+            </if>
+            <if test="departmentId != null and departmentId != ''">
+                and a.department_id = #{departmentId}
+            </if>
+            <if test="status != null and status != ''">
+                and a.status = #{status}
+            </if>
+        </where>
+    </select>
+    <select id="ledgerSnapshotPage" resultType="com.hjf.vo.ReportLedgerSnapshotPageRecord">
+        select ls.id as id,
+               ls.snapshot_month as snapshot_month,
+               ls.asset_code as asset_code,
+               ls.asset_name as asset_name,
+               ls.original_value as original_amount,
+               ls.monthly_depreciation as monthly_depreciation,
+               ls.accumulated_depreciation as accumulated_depreciation,
+               ls.net_value as net_Amount
+        from asset_ledger_snapshot ls
+          left join asset a on  a.id = ls.asset_id
+          left join  asset_category c on ls.category_name = c.name
+          left join department d on ls.department_name = d.name
+        <where>
+            <if test="snapshotMonth != null and snapshotMonth != ''">
+                and ls.snapshot_month = #{snapshotMonth}
+            </if>
+            <if test="categoryId != null and categoryId != ''">
+                and ls.category_id = #{categoryId}
+            </if>
+            <if test="departmentId != null and departmentId != ''">
+                and ls.department_id = #{departmentId}
+            </if>
+        </where>
+
+
+    </select>
+</mapper>

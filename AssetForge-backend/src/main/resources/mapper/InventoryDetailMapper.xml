@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hjf.mapper.InventoryDetailMapper">
+
+    <select id="queryPage" resultType="com.hjf.vo.InventoryDetailPageRecord">
+        select i.id,
+               i.task_id,
+               i.asset_id,
+               a.asset_code,
+               a.name as asset_name,
+               i.system_user_id,
+               u1.real_name as system_user_name,
+               i.result,
+               i.actual_user_id,
+               u2.real_name as actual_user_name
+        from inventory_detail i
+            left join asset a on i.asset_id = a.id and a.is_deleted = 0
+            left join user u1 on i.system_user_id = u1.id and u1.is_deleted = 0
+            left join user u2 on i.actual_user_id = u2.id and u2.is_deleted = 0
+        <where>
+            i.task_id = #{taskId}
+            <if test="result != null and result != ''">
+                AND i.result = #{result}
+            </if>
+        </where>
+    </select>
+</mapper>

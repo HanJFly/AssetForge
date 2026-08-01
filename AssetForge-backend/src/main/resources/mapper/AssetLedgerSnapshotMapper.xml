@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hjf.mapper.AssetLedgerSnapshotMapper">
+
+    <select id="queryPage" resultType="com.hjf.entity.AssetLedgerSnapshot">
+        SELECT
+            s.id,
+            s.ledger_id,
+            s.asset_id,
+            s.snapshot_month,
+            s.asset_code,
+            s.asset_name,
+            s.category_name,
+            s.department_name,
+            s.entry_date,
+            s.original_value,
+            s.standard_life_months,
+            s.monthly_depreciation,
+            s.accumulated_depreciation,
+            s.net_value,
+            s.months_used,
+            s.current_user_name,
+            s.current_user_employee_no,
+            s.current_user_department,
+            s.asset_status,
+            s.created_at
+        FROM asset_ledger_snapshot s
+        WHERE 1=1
+        <if test="param.snapshotMonth != null and param.snapshotMonth != ''">
+            AND s.snapshot_month = #{param.snapshotMonth}
+        </if>
+        <if test="param.categoryId != null">
+            AND s.category_name = #{param.categoryId}
+        </if>
+        <if test="param.departmentId != null">
+            AND s.department_name = #{param.departmentId}
+        </if>
+        ORDER BY s.id DESC
+    </select>
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hjf.mapper.ReturnOrderMapper">
+
+
+    <select id="queryPage" resultType="com.hjf.vo.ReturnOrderPageRecord">
+        select id,
+            order_no,
+            return_user_name,
+            return_user_employee_no,
+            return_user_department_name,
+            receiver_name,
+            reason,
+        approval_status,
+            created_at
+        from return_order
+        <where>
+            <if test="approvalStatus != null and approvalStatus != ''">
+                and approval_status = #{approvalStatus}
+            </if>
+            <if test="orderNo != null and orderNo != ''">
+                and order_no like concat('%',#{orderNo},'%')
+            </if>
+            <if test="returnUserName != null and returnUserName != ''">
+                and return_user_name like concat('%',#{returnUserName},'%')
+            </if>
+            <if test="returnUserEmployeeNo != null and returnUserEmployeeNo != ''">
+                and return_user_employee_no like concat('%',#{returnUserEmployeeNo},'%')
+            </if>
+            <if test="returnUserDepartmentName != null and returnUserDepartmentName != ''">
+                and return_user_department_name like concat('%',#{returnUserDepartmentName},'%')
+            </if>
+            <if test="startDate != null and startDate != ''">
+                and created_at &gt;= #{startDate}
+            </if>
+            <if test="endDate != null and endDate != ''">
+                and created_at &lt;= #{endDate}
+            </if>
+        </where>
+
+
+    </select>
+</mapper>

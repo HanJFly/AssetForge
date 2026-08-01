@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hjf.mapper.ApprovalRecordMapper">
+
+   <select id="todoPage" resultType="com.hjf.entity.ApprovalRecord">
+        SELECT
+        id,
+        approval_type AS approvalType,
+        target_type AS targetType,
+        target_id AS targetId,
+        applicant_id AS applicantId,
+        approver_id AS approverId,
+        approval_status AS approvalStatus,
+        approval_remark AS approvalRemark,
+        approved_at AS approvedAt,
+        transferred_to AS transferredTo,
+        created_at AS createdAt,
+        updated_at AS updatedAt
+        FROM approval_record
+        WHERE approval_status = 'PENDING'
+        <if test="approvalType != null and approvalType != ''">
+            AND approval_type = #{approvalType}
+        </if>
+        <if test="targetType != null and targetType != ''">
+            AND target_type like concat('%', #{targetType}, '%'))
+        </if>
+        <if test="approvalStatus != null and approvalStatus != ''">
+            AND approval_status = #{approvalStatus}
+        </if>
+
+   </select>
+    <select id="donePage" resultType="com.hjf.entity.ApprovalRecord">
+            SELECT
+            id,
+            approval_type AS approvalType,
+            target_type AS targetType,
+            target_id AS targetId,
+            applicant_id AS applicantId,
+            approver_id AS approverId,
+            approval_status AS approvalStatus,
+            approval_remark AS approvalRemark,
+            approved_at AS approvedAt,
+            transferred_to AS transferredTo,
+            created_at AS createdAt,
+            updated_at AS updatedAt
+            FROM approval_record
+            WHERE approval_status != 'PENDING'
+            <if test="approvalType != null and approvalType != ''">
+                AND approval_type = #{approvalType}
+            </if>
+            <if test="targetType != null and targetType != ''">
+                AND target_type like concat('%', #{targetType}, '%'))
+
+            </if>
+            <if test="approvalStatus != null and approvalStatus != ''">
+                AND approval_status = #{approvalStatus}
+            </if>
+    </select>
+</mapper>
