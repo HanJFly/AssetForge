@@ -8,7 +8,7 @@ import http from '@/api/http'
 import { normalizeDataResult, normalizePageResult } from '@/api/helpers'
 import { authState } from '@/utils/auth'
 import { buildScopedQuery, getCurrentUserProfile } from '@/utils/data-scope'
-import { ACTION_CODES, DATA_SCOPES, getRoleDataScope, roleHasAction } from '@/utils/role-access'
+import { ACTION_CODES, DATA_SCOPES, getRoleDataScope, ROLE_CODES, roleHasAction } from '@/utils/role-access'
 
 const assetStatusOptions = [
   { label: '库存', value: 'STOCK' },
@@ -25,6 +25,17 @@ const sourceTypeOptions = [
 const categoryLookup = ref([])
 const departmentLookup = ref([])
 const ledgerLoading = ref(false)
+
+const leafCategoryLookup = computed(() => {
+  const parentIds = new Set(
+    categoryLookup.value
+      .map((item) => item?.parentId)
+      .filter((parentId) => parentId != null && parentId !== '' && Number(parentId) !== 0)
+      .map((parentId) => Number(parentId))
+  )
+
+  return categoryLookup.value.filter((item) => item?.id != null && !parentIds.has(Number(item.id)))
+})
 
 function resolveBackendFileUrl(fileUrl) {
   if (!fileUrl) {
@@ -92,7 +103,7 @@ const columns = [
   { label: '采购日期', prop: 'purchaseDate', width: 120 }
 ]
 
-const formFields = [
+const baseFormFields = [
   { label: 'ID', prop: 'id', hidden: true },
   { label: '分类 ID', prop: 'categoryId', hidden: true },
   { label: '部门 ID', prop: 'departmentId', hidden: true },
@@ -184,6 +195,7 @@ const barcodeDetail = ref(null)
 
 const selectedRoleCode = computed(() => authState.selectedRole?.code || '')
 const dataScope = computed(() => getRoleDataScope(selectedRoleCode.value))
+const isDeptManager = computed(() => selectedRoleCode.value === ROLE_CODES.DEPT_MANAGER)
 const canManageAsset = computed(() => roleHasAction(selectedRoleCode.value, ACTION_CODES.ASSET_REGISTER))
 const canViewLedger = computed(() => roleHasAction(selectedRoleCode.value, ACTION_CODES.ASSET_LEDGER_VIEW))
 const currentUser = computed(() => getCurrentUserProfile())
@@ -196,8 +208,30 @@ const filters = computed(() => {
     }))
   }
 
+  if (dataScope.value === DATA_SCOPES.DEPARTMENT_TREE) {
+    return baseFilters.map((field) => ({
+      ...field,
+      hidden: field.prop === 'departmentName'
+    }))
+  }
+
   return baseFilters
 })
+
+const formFields = computed(() => baseFormFields.map((field) => {
+  if (field.prop !== 'departmentName' || !isDeptManager.value) {
+    return field
+  }
+
+  return {
+    ...field,
+    default: currentUser.value.departmentName || '',
+    componentProps: {
+      ...(field.componentProps || {}),
+      disabled: true
+    }
+  }
+}))
 
 const assetNote = computed(() => {
   if (dataScope.value === DATA_SCOPES.SELF) {
@@ -205,7 +239,7 @@ const assetNote = computed(() => {
   }
 
   if (dataScope.value === DATA_SCOPES.DEPARTMENT_TREE) {
-    return '支持按使用人、分类名称和部门名称查询，并可在登记时一并上传附件。'
+    return '当前角色仅可查看本部门资产，登记资产时部门将自动锁定为本人所属部门。'
   }
 
   return '当前角色可维护资产资料并查看资产台账。'
@@ -239,7 +273,7 @@ function buildSuggestions(source, queryString) {
 }
 
 function queryCategorySuggestions(queryString, callback) {
-  callback(buildSuggestions(categoryLookup.value, queryString))
+  callback(buildSuggestions(leafCategoryLookup.value, queryString))
 }
 
 function queryDepartmentSuggestions(queryString, callback) {
@@ -255,6 +289,25 @@ function resolveLookupId(source, name, label) {
   }
 
   return matched.id
+}
+
+function findCategoryById(categoryId) {
+  return categoryLookup.value.find((item) => Number(item.id) === Number(categoryId)) || null
+}
+
+function ensureLeafCategory(categoryId) {
+  const category = findCategoryById(categoryId)
+
+  if (!category) {
+    throw new Error('请选择已有分类')
+  }
+
+  const hasChildren = categoryLookup.value.some((item) => Number(item.parentId) === Number(categoryId))
+  if (hasChildren) {
+    throw new Error('资产登记只能选择末级分类，请重新选择具体分类')
+  }
+
+  return category
 }
 
 function resolveAttachmentPreviewUrl(file) {
@@ -323,7 +376,7 @@ async function loadLookupData() {
 
     categoryLookup.value = categoryData
       .filter((item) => item?.id != null && item?.name)
-      .map((item) => ({ id: item.id, name: item.name }))
+      .map((item) => ({ id: item.id, name: item.name, parentId: item.parentId ?? null }))
     departmentLookup.value = departmentData
       .filter((item) => item?.id != null && item?.name)
       .map((item) => ({ id: item.id, name: item.name }))
@@ -338,7 +391,17 @@ function submitPayloadBuilder({ mode, formModel }) {
   }
 
   const categoryId = resolveLookupId(categoryLookup.value, formModel.categoryName, '分类')
-  const departmentId = resolveLookupId(departmentLookup.value, formModel.departmentName, '部门')
+  ensureLeafCategory(categoryId)
+  const departmentId = isDeptManager.value
+    ? currentUser.value.departmentId
+    : resolveLookupId(departmentLookup.value, formModel.departmentName, '部门')
+  const departmentName = isDeptManager.value
+    ? currentUser.value.departmentName
+    : formModel.departmentName || ''
+
+  if (isDeptManager.value && !departmentId) {
+    throw new Error('当前账号未绑定所属部门，无法登记资产')
+  }
 
   const attachmentIds = formModel.attachmentFiles
     .map((file) => file?.id ?? file?.response?.id ?? null)
@@ -355,7 +418,7 @@ function submitPayloadBuilder({ mode, formModel }) {
       name: formModel.name || '',
       categoryId,
       departmentId,
-      departmentName: formModel.departmentName || '',
+      departmentName,
       location: formModel.location || '',
       brandModel: formModel.brandModel || '',
       specification: formModel.specification || '',
@@ -405,7 +468,10 @@ function queryPayloadBuilder({ queryModel, pagination }) {
       self: () => ({
         currentUserId: currentUser.value.userId
       }),
-      department: () => ({})
+      department: () => ({
+        departmentId: currentUser.value.departmentId,
+        departmentName: currentUser.value.departmentName
+      })
     }
   )
 }

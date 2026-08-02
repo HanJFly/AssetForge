@@ -17,6 +17,7 @@ import com.hjf.service.IApprovalRecordService;
 import com.baomidou.mybatisplus.spring.service.impl.ServiceImpl;
 import com.hjf.util.JwtUtils;
 import com.hjf.vo.*;
+import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,6 +42,7 @@ import java.util.stream.Collectors;
  * @author Baomidou
  * @since 2026-07-18
  */
+@Slf4j
 @Service
 public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper, ApprovalRecord> implements IApprovalRecordService {
 
@@ -92,26 +94,37 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
     @Autowired
     private RoleMapper roleMapper;
 
+    @Autowired
+    private UserRoleMapper userRoleMapper;
+
 
     @Override
     public ApprovalRecordTodoPageVO todoPage(ApprovalRecordTodoPageParam param) {
         //分页
         LoginUserContext context = requireLoginUser();
-        if (!isAssetAdmin(context.getId())) {
+        boolean assetAdmin = isAssetAdmin(context.getId());
+        if (!assetAdmin) {
             param.setApproverId(context.getId());
+        } else {
+            param.setApproverId(null);
         }
+        log.info("审批中心待审批查询: userId={}, assetAdmin={}, approverId={}, page={}, size={}",
+                context.getId(), assetAdmin, param.getApproverId(), param.getPage(), param.getSize());
         PageHelper.startPage(param.getPage(), param.getSize());
 
         //查询
         List<ApprovalRecord> approvalRecord = approvalRecordMapper.todoPage(param);
+        log.info("审批中心待审批结果数量={}", approvalRecord == null ? 0 : approvalRecord.size());
         Page<ApprovalRecord> pageInfo = (Page<ApprovalRecord>) approvalRecord;
-        if (approvalRecord.size() == 0) {
-            throw new CommonException(404, "没有待审批的记录");
-        }
-
-
         List<TodoPageVo> list = new ArrayList<>();
         ApprovalRecordTodoPageVO resultPage = new ApprovalRecordTodoPageVO();
+        if (approvalRecord == null || approvalRecord.isEmpty()) {
+            resultPage.setRecords(list);
+            resultPage.setTotal(0);
+            resultPage.setPage(param.getPage());
+            resultPage.setSize(param.getSize());
+            return resultPage;
+        }
         for (ApprovalRecord record : approvalRecord) {
 
             TodoPageVo vo = new TodoPageVo();
@@ -196,14 +209,34 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
 
 
             }
+            if ("ASSET".equals(record.getApprovalType())) {
+                vo.setApprovalType("ASSET");
+                vo.setBusinessId(record.getTargetId());
+                Asset asset = assetMapper.selectById(record.getTargetId());
+                if (asset != null) {
+                    vo.setProcessNo(asset.getAssetCode());
+                    vo.setTitle(asset.getName() + "资产登记审批");
+                }
+                vo.setApplicantId(record.getApplicantId());
+                QueryWrapper<User> qwU = new QueryWrapper<>();
+                qwU.eq("id", record.getApplicantId());
+                User user = userMapper.selectOne(qwU);
+                if (user != null) {
+                    vo.setApplicantName(user.getRealName());
+                    if (vo.getTitle() == null) {
+                        vo.setTitle(user.getRealName() + "提交资产登记");
+                    }
+                }
+                vo.setCreatedAt(record.getCreatedAt());
+            }
             list.add(vo);
         }
 
 
         resultPage.setRecords(list);
-        resultPage.setTotal(pageInfo.getTotal());
-        resultPage.setPageNum(pageInfo.getPageNum());
-        resultPage.setPageSize(pageInfo.getPageSize());
+        resultPage.setTotal((int) pageInfo.getTotal());
+        resultPage.setPage(pageInfo.getPageNum());
+        resultPage.setSize(pageInfo.getPageSize());
 
 
         return resultPage;
@@ -213,17 +246,27 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
     @Override
     public ApprovalRecordDonePageVO donePage(ApprovalRecordDonePageParam param) {
         LoginUserContext context = requireLoginUser();
-        if (!isAssetAdmin(context.getId())) {
+        boolean assetAdmin = isAssetAdmin(context.getId());
+        if (!assetAdmin) {
             param.setApproverId(context.getId());
+        } else {
+            param.setApproverId(null);
         }
+        log.info("审批中心已审批查询: userId={}, assetAdmin={}, approverId={}, page={}, size={}",
+                context.getId(), assetAdmin, param.getApproverId(), param.getPage(), param.getSize());
         PageHelper.startPage(param.getPage(), param.getSize());
         List<ApprovalRecord> approvalRecord = approvalRecordMapper.donePage(param);
-        if (approvalRecord.isEmpty()) {
-            throw new CommonException(404, "没有待审批的记录");
-        }
-
+        log.info("审批中心已审批结果数量={}", approvalRecord == null ? 0 : approvalRecord.size());
+        Page<ApprovalRecord> pageInfo = (Page<ApprovalRecord>) approvalRecord;
         List<DonePageRecordVO> list = new ArrayList<>();
         ApprovalRecordDonePageVO resultPage = new ApprovalRecordDonePageVO();
+        if (approvalRecord == null || approvalRecord.isEmpty()) {
+            resultPage.setRecords(list);
+            resultPage.setTotal(0);
+            resultPage.setPage(param.getPage());
+            resultPage.setSize(param.getSize());
+            return resultPage;
+        }
         for (ApprovalRecord re : approvalRecord) {
             DonePageRecordVO record = new DonePageRecordVO();
             record.setId(re.getId());
@@ -287,10 +330,21 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
 
                 record.setApprovedAt(re.getApprovedAt());
             }
+            if ("ASSET".equals(re.getApprovalType())) {
+                Asset asset = assetMapper.selectById(re.getTargetId());
+                if (asset != null) {
+                    record.setProcessNo(asset.getAssetCode());
+                    record.setTitle(asset.getName() + "资产登记审批");
+                }
+                record.setApprovedAt(re.getApprovedAt());
+            }
 
             list.add(record);
         }
         resultPage.setRecords(list);
+        resultPage.setTotal((int) pageInfo.getTotal());
+        resultPage.setPage(pageInfo.getPageNum());
+        resultPage.setSize(pageInfo.getPageSize());
         return resultPage;
 
     }
@@ -313,7 +367,10 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
         vo.setBusinessType(approvalRecord.getApprovalType());
 
         //生成 processNo
-        LocalDateTime time = approvalRecord.getApprovedAt();
+        LocalDateTime time = approvalRecord.getCreatedAt() != null ? approvalRecord.getCreatedAt() : approvalRecord.getApprovedAt();
+        if (time == null) {
+            time = LocalDateTime.now();
+        }
         String yearMonth = DateUtil.format(time, "yyyyMM");
         String processNo = "AP" + yearMonth + approvalRecord.getTargetId();
         vo.setProcessNo(processNo);
@@ -390,33 +447,37 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
                 //设置reason
                 formData.setReason(transferOrder.getReason());
                 //设置itemList
-                TransferOrderItem item2 = transferOrderItemMapper.selectById(approvalRecord.getTargetId());
-                ApprovalRecordDetailFormData.itemList itemList2 = new ApprovalRecordDetailFormData.itemList();
-                itemList2.setCategoryName(item2.getCategoryName());
-                QueryWrapper<AssetCategory> qwC = new QueryWrapper<>();
-                qwC.eq("name", item2.getCategoryName());
-                AssetCategory assetCategory = assetCategoryMapper.selectOne(qwC);
-                itemList2.setCategoryId(assetCategory.getId());
-                formData.getItemList().add(itemList2);
+                LambdaQueryWrapper<TransferOrderItem> transferItemQw = new LambdaQueryWrapper<>();
+                transferItemQw.eq(TransferOrderItem::getOrderId, approvalRecord.getTargetId());
+                List<TransferOrderItem> transferItems = transferOrderItemMapper.selectList(transferItemQw);
+                for (TransferOrderItem item2 : transferItems) {
+                    ApprovalRecordDetailFormData.itemList itemList2 = new ApprovalRecordDetailFormData.itemList();
+                    itemList2.setCategoryName(item2.getCategoryName());
+                    QueryWrapper<AssetCategory> qwC = new QueryWrapper<>();
+                    qwC.eq("name", item2.getCategoryName());
+                    AssetCategory assetCategory = assetCategoryMapper.selectOne(qwC);
+                    itemList2.setCategoryId(assetCategory != null ? assetCategory.getId() : null);
+                    formData.getItemList().add(itemList2);
+                }
                 vo.getFormData().add(formData);
 
                 //设置historyList
-                ApprovalRecordDetailHistoryList historyList2 = new ApprovalRecordDetailHistoryList();
                 QueryWrapper<ApprovalRecord> qw2 = new QueryWrapper<>();
                 qw2.eq("target_id", approvalRecord.getTargetId());
                 qw2.eq("approval_type", "TRANSFER");
                 List<ApprovalRecord> targetlist2 = approvalRecordMapper.selectList(qw2);
                 for (ApprovalRecord re : targetlist2) {
+                    ApprovalRecordDetailHistoryList historyList2 = new ApprovalRecordDetailHistoryList();
                     QueryWrapper<User> qwU4 = new QueryWrapper<>();
                     qwU4.eq("id", re.getApproverId());
                     User user4 = userMapper.selectOne(qwU4);
-                    historyList2.setApproverName(user4.getRealName());
+                    historyList2.setApproverName(user4 != null ? user4.getRealName() : "-");
 
                     historyList2.setDecision(re.getApprovalStatus());
                     historyList2.setComment(re.getApprovalRemark());
                     historyList2.setActionTime(re.getApprovedAt());
+                    vo.getHistoryList().add(historyList2);
                 }
-                vo.getHistoryList().add(historyList2);
 
                 break;
             case "RETURN":
@@ -440,22 +501,21 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
                 formData.getItemList().add(itemList3);
                 vo.getFormData().add(formData);
                 //设置historyList
-                ApprovalRecordDetailHistoryList historyList3 = new ApprovalRecordDetailHistoryList();
-
                 QueryWrapper<ApprovalRecord> qw3 = new QueryWrapper<>();
                 qw3.eq("target_id", approvalRecord.getTargetId());
                 qw3.eq("approval_type", "RETURN");
                 List<ApprovalRecord> targetlist3 = approvalRecordMapper.selectList(qw3);
                 for (ApprovalRecord re : targetlist3) {
+                    ApprovalRecordDetailHistoryList historyList3 = new ApprovalRecordDetailHistoryList();
                     QueryWrapper<User> qwU5 = new QueryWrapper<>();
                     qwU5.eq("id", re.getApproverId());
                     User user5 = userMapper.selectOne(qwU5);
-                    historyList3.setApproverName(user5.getRealName());
+                    historyList3.setApproverName(user5 != null ? user5.getRealName() : "-");
                     historyList3.setDecision(re.getApprovalStatus());
                     historyList3.setComment(re.getApprovalRemark());
                     historyList3.setActionTime(re.getApprovedAt());
+                    vo.getHistoryList().add(historyList3);
                 }
-                vo.getHistoryList().add(historyList3);
 
                 break;
             case "SCRAP":
@@ -479,21 +539,51 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
                 formData.getItemList().add(itemList4);
                 vo.getFormData().add(formData);
                 //设置historyList
-                ApprovalRecordDetailHistoryList historyList4 = new ApprovalRecordDetailHistoryList();
                 QueryWrapper<ApprovalRecord> qw4 = new QueryWrapper<>();
                 qw4.eq("target_id", approvalRecord.getTargetId());
                 qw4.eq("approval_type", "SCRAP");
                 List<ApprovalRecord> targetlist4 = approvalRecordMapper.selectList(qw4);
                 for (ApprovalRecord re : targetlist4) {
+                    ApprovalRecordDetailHistoryList historyList4 = new ApprovalRecordDetailHistoryList();
                     QueryWrapper<User> qwU6 = new QueryWrapper<>();
                     qwU6.eq("id", re.getApproverId());
                     User user6 = userMapper.selectOne(qwU6);
-                    historyList4.setApproverName(user6.getRealName());
+                    historyList4.setApproverName(user6 != null ? user6.getRealName() : "-");
                     historyList4.setDecision(re.getApprovalStatus());
                     historyList4.setComment(re.getApprovalRemark());
                     historyList4.setActionTime(re.getApprovedAt());
+                    vo.getHistoryList().add(historyList4);
                 }
-                vo.getHistoryList().add(historyList4);
+                break;
+            case "ASSET":
+                Asset asset = assetMapper.selectById(approvalRecord.getTargetId());
+                if (asset == null) {
+                    throw new CommonException(404, "资产不存在");
+                }
+                vo.setTitle(asset.getName() + "资产登记审批");
+                formData.setOrderNo(asset.getAssetCode());
+                formData.setReason("资产登记入库审批");
+                ApprovalRecordDetailFormData.itemList assetItem = new ApprovalRecordDetailFormData.itemList();
+                assetItem.setCategoryId(asset.getCategoryId());
+                AssetCategory assetCategoryInfo = assetCategoryMapper.selectById(asset.getCategoryId());
+                assetItem.setCategoryName(assetCategoryInfo != null ? assetCategoryInfo.getName() : null);
+                assetItem.setQuantity(1);
+                formData.getItemList().add(assetItem);
+                vo.getFormData().add(formData);
+
+                QueryWrapper<ApprovalRecord> assetQw = new QueryWrapper<>();
+                assetQw.eq("target_id", approvalRecord.getTargetId());
+                assetQw.eq("approval_type", "ASSET");
+                List<ApprovalRecord> assetHistory = approvalRecordMapper.selectList(assetQw);
+                for (ApprovalRecord re : assetHistory) {
+                    ApprovalRecordDetailHistoryList history = new ApprovalRecordDetailHistoryList();
+                    User approver = userMapper.selectById(re.getApproverId());
+                    history.setApproverName(approver != null ? approver.getRealName() : "-");
+                    history.setDecision(re.getApprovalStatus());
+                    history.setComment(re.getApprovalRemark());
+                    history.setActionTime(re.getApprovedAt());
+                    vo.getHistoryList().add(history);
+                }
                 break;
             default:
                 break;
@@ -624,15 +714,28 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
             return false;
         }
         String selectedRoleId = loginUserIRoleUtile.getRole(String.valueOf(userId));
-        if (selectedRoleId == null || selectedRoleId.isBlank()) {
+        if (selectedRoleId != null && !selectedRoleId.isBlank()) {
+            try {
+                Role selectedRole = roleMapper.selectById(Long.valueOf(selectedRoleId));
+                if (selectedRole != null && "ASSET_ADMIN".equals(selectedRole.getCode())) {
+                    return true;
+                }
+            } catch (NumberFormatException ex) {
+                // ignore invalid cached role id and fall back to database roles
+            }
+        }
+
+        LambdaQueryWrapper<UserRole> userRoleWrapper = new LambdaQueryWrapper<>();
+        userRoleWrapper.eq(UserRole::getUserId, userId);
+        List<UserRole> userRoles = userRoleMapper.selectList(userRoleWrapper);
+        if (userRoles == null || userRoles.isEmpty()) {
             return false;
         }
-        try {
-            Role selectedRole = roleMapper.selectById(Long.valueOf(selectedRoleId));
-            return selectedRole != null && "ASSET_ADMIN".equals(selectedRole.getCode());
-        } catch (NumberFormatException ex) {
-            return false;
-        }
+
+        LambdaQueryWrapper<Role> roleWrapper = new LambdaQueryWrapper<>();
+        roleWrapper.in(Role::getId, userRoles.stream().map(UserRole::getRoleId).toList());
+        List<Role> roles = roleMapper.selectList(roleWrapper);
+        return roles != null && roles.stream().anyMatch(role -> "ASSET_ADMIN".equals(role.getCode()));
     }
 
     //更新对应的业务单据的审批状态
@@ -693,8 +796,18 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
                    assetLedger.setEntryDate(LocalDate.now());
                    assetLedger.setOriginalValue(asset.getPurchaseAmount());
                    assetLedger.setResidualRate(BigDecimal.valueOf(0.05));
-                   Integer standardLifeMonths = assetCategoryMapper.selectById(asset.getCategoryId()).getStandardLifeMonths();
-                   assetLedger.setStandardLifeMonths(standardLifeMonths);
+                    AssetCategory assetCategory = assetCategoryMapper.selectById(asset.getCategoryId());
+                    if (assetCategory == null) {
+                        throw new CommonException(400, "资产分类不存在，无法完成入库审批");
+                    }
+                    Integer standardLifeMonths = assetCategory.getStandardLifeMonths();
+                    if (standardLifeMonths == null || standardLifeMonths <= 0) {
+                        throw new CommonException(400, "资产分类未配置标准使用年限，无法完成入库审批");
+                    }
+                    if (asset.getPurchaseAmount() == null) {
+                        throw new CommonException(400, "资产原值为空，无法完成入库审批");
+                    }
+                    assetLedger.setStandardLifeMonths(standardLifeMonths);
                    BigDecimal monthlyDepreciation = asset.getPurchaseAmount()           // 原值
                            .multiply(BigDecimal.ONE.subtract(new BigDecimal("0.05")))      // × (1 - 残值率)
                            .divide(BigDecimal.valueOf(standardLifeMonths), 2, RoundingMode.HALF_UP); // ÷ 标准年限

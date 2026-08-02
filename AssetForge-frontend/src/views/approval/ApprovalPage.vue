@@ -5,7 +5,7 @@ import { ElMessage } from 'element-plus'
 import { approvalApi } from '@/api'
 import { normalizeDataResult, normalizePageResult } from '@/api/helpers'
 import { authState } from '@/utils/auth'
-import { buildScopedQuery, getCurrentUserProfile } from '@/utils/data-scope'
+import { getCurrentUserProfile } from '@/utils/data-scope'
 import { ACTION_CODES, roleHasAction } from '@/utils/role-access'
 
 const activeTab = ref('todo')
@@ -29,38 +29,43 @@ const transferForm = reactive({
 const selectedRoleCode = computed(() => authState.selectedRole?.code || '')
 const canReviewApproval = computed(() => roleHasAction(selectedRoleCode.value, ACTION_CODES.APPROVAL_REVIEW))
 const currentUser = computed(() => getCurrentUserProfile())
-const detailFormData = computed(() => Array.isArray(detail.value?.formData) ? detail.value.formData : [])
-const detailHistoryList = computed(() => Array.isArray(detail.value?.historyList) ? detail.value.historyList : [])
-const pageDesc = computed(() => (canReviewApproval.value ? '处理待审批事项并查看审批记录。' : '查看与本人相关的审批记录。'))
+const detailFormData = computed(() => (Array.isArray(detail.value?.formData) ? detail.value.formData : []))
+const detailHistoryList = computed(() => (Array.isArray(detail.value?.historyList) ? detail.value.historyList : []))
+const pageDesc = computed(() => (
+  canReviewApproval.value
+    ? '处理待审批事项并查看审批记录。'
+    : '查看与本人相关的审批记录。'
+))
+
+function isNotFoundError(error) {
+  return error?.code === 404 || error?.response?.status === 404
+}
 
 async function loadData() {
   loading.value = true
   try {
-    const todoQuery = buildScopedQuery(
-      { page: 1, size: 10, approvalType: null },
-      {
-        scope: canReviewApproval.value ? 'DEPARTMENT_TREE' : 'SELF',
-        self: () => ({ applicantName: currentUser.value.realName }),
-        department: () => ({ departmentId: currentUser.value.departmentId })
+    const todoRequest = approvalApi.todoPage({ page: 1, size: 10, approvalType: null })
+    const doneRequest = approvalApi.donePage({ page: 1, size: 10, approvalType: null, approvalStatus: null })
+
+    const [todoResult, doneResult] = await Promise.allSettled([todoRequest, doneRequest])
+
+    if (todoResult.status === 'fulfilled') {
+      todoList.value = normalizePageResult(todoResult.value, []).records
+    } else {
+      todoList.value = []
+      if (!isNotFoundError(todoResult.reason)) {
+        ElMessage.error(todoResult.reason?.msg || todoResult.reason?.message || '待审批数据加载失败')
       }
-    )
+    }
 
-    const doneQuery = buildScopedQuery(
-      { page: 1, size: 10, approvalType: null, approvalStatus: null },
-      {
-        scope: canReviewApproval.value ? 'DEPARTMENT_TREE' : 'SELF',
-        self: () => ({ applicantName: currentUser.value.realName }),
-        department: () => ({ departmentId: currentUser.value.departmentId })
+    if (doneResult.status === 'fulfilled') {
+      doneList.value = normalizePageResult(doneResult.value, []).records
+    } else {
+      doneList.value = []
+      if (!isNotFoundError(doneResult.reason)) {
+        ElMessage.error(doneResult.reason?.msg || doneResult.reason?.message || '已审批数据加载失败')
       }
-    )
-
-    const [todoPayload, donePayload] = await Promise.all([
-      approvalApi.todoPage(todoQuery),
-      approvalApi.donePage(doneQuery)
-    ])
-
-    todoList.value = normalizePageResult(todoPayload, []).records
-    doneList.value = normalizePageResult(donePayload, []).records
+    }
   } catch (error) {
     todoList.value = []
     doneList.value = []
@@ -87,7 +92,7 @@ async function submitAction(row) {
   try {
     await approvalApi.action({ ...actionForm })
     ElMessage.success('审批已提交')
-    loadData()
+    await loadData()
   } catch (error) {
     ElMessage.error(error?.msg || error?.message || '审批提交失败')
   }
@@ -97,6 +102,7 @@ async function submitTransfer() {
   try {
     await approvalApi.transfer({ ...transferForm })
     ElMessage.success('转交审批已提交')
+    await loadData()
   } catch (error) {
     ElMessage.error(error?.msg || error?.message || '转交审批失败')
   }

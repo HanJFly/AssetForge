@@ -207,11 +207,14 @@ public class ScrapOrderItemServiceImpl extends ServiceImpl<ScrapOrderItemMapper,
 
         //新建审批记录表
         ApprovalRecord approvalRecord = new ApprovalRecord();
-        approvalRecord.setApprovalType("SCARP");
+        approvalRecord.setApprovalType("SCRAP");
         approvalRecord.setTargetType("scrap_order");
         approvalRecord.setTargetId(scrapOrder.getId());
         approvalRecord.setApplicantId(context.getId());
         Department department = departmentMapper.selectById(user.getDepartmentId());
+        if (department == null || department.getManagerUserId() == null) {
+            throw new CommonException(400, "当前部门未配置部门管理员，无法提交审批");
+        }
         approvalRecord.setApproverId(department.getManagerUserId());
         approvalRecord.setApprovalStatus("PENDING");
         approvalRecord.setCreatedAt(LocalDateTime.now());

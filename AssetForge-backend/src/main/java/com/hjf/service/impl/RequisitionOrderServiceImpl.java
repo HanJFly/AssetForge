@@ -162,7 +162,10 @@ public class RequisitionOrderServiceImpl extends ServiceImpl<RequisitionOrderMap
             approvalRecord.setApplicantId(context.getId());
             User currentUser = userMapper.selectById(context.getId());
             Department department = departmentMapper.selectById(currentUser.getDepartmentId());
-            approvalRecord.setApproverId(department != null ? department.getManagerUserId() : null);
+            if (department == null || department.getManagerUserId() == null) {
+                throw new CommonException(400, "当前部门未配置部门管理员，无法提交审批");
+            }
+            approvalRecord.setApproverId(department.getManagerUserId());
             approvalRecord.setApprovalStatus("PENDING");
             approvalRecord.setCreatedAt(LocalDateTime.now());
             approvalRecord.setUpdatedAt(LocalDateTime.now());

@@ -212,6 +212,21 @@ function buildCategoryPayload(formModel) {
   }
 }
 
+function validateCategoryForm(formModel) {
+  if (!formModel.name.trim()) {
+    ElMessage.warning('请输入分类名称')
+    return false
+  }
+
+  const isChildCategory = formModel.parentId != null && formModel.parentId !== '' && Number(formModel.parentId) !== 0
+  if (isChildCategory && (formModel.standardLifeMonths == null || Number(formModel.standardLifeMonths) <= 0)) {
+    ElMessage.warning('子分类必须填写标准使用年限，且必须大于 0')
+    return false
+  }
+
+  return true
+}
+
 function openCreateDialog(parentNode = null) {
   resetCreateForm()
   if (parentNode?.id != null) {
@@ -232,8 +247,7 @@ function openEditDialog() {
 }
 
 async function submitCreateCategory() {
-  if (!createForm.name.trim()) {
-    ElMessage.warning('请输入分类名称')
+  if (!validateCategoryForm(createForm)) {
     return
   }
 
@@ -255,8 +269,7 @@ async function submitEditCategory() {
     return
   }
 
-  if (!editForm.name.trim()) {
-    ElMessage.warning('请输入分类名称')
+  if (!validateCategoryForm(editForm)) {
     return
   }
 

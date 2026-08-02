@@ -190,6 +190,9 @@ public class TransferOrderServiceImpl extends ServiceImpl<TransferOrderMapper, T
         approvalRecord.setTargetId(transferOrder.getId());
         LoginUserContext context = LoginUserInfoUtile.get();
         approvalRecord.setApplicantId(context.getId());
+        if (from_department == null || from_department.getManagerUserId() == null) {
+            throw new CommonException(400, "转出部门未配置部门管理员，无法提交审批");
+        }
         approvalRecord.setApproverId(from_department.getManagerUserId());
         approvalRecord.setTransferredTo(param.getToUserId());
         approvalRecord.setCreatedAt(LocalDateTime.now());

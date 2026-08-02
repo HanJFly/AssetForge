@@ -228,6 +228,9 @@ public class AssetServiceImpl extends ServiceImpl<AssetMapper, Asset> implements
         LambdaQueryWrapper<Department> qw = new LambdaQueryWrapper<>();
         qw.eq(Department::getId, param.getDepartmentId());
         Department departmentManager = departmentMapper.selectOne(qw);
+        if (departmentManager == null || departmentManager.getManagerUserId() == null) {
+            throw new CommonException(400, "资产所属部门未配置部门管理员，无法提交审批");
+        }
         approvalRecord.setApproverId(departmentManager.getManagerUserId());
         approvalRecord.setCreatedAt(LocalDateTime.now());
         approvalRecord.setUpdatedAt(LocalDateTime.now());
@@ -494,9 +497,10 @@ public class AssetServiceImpl extends ServiceImpl<AssetMapper, Asset> implements
         Asset asset = assetMapper.selectById(assetId);
         if (asset != null && asset.getDepartmentId() != null) {
             Department department = departmentMapper.selectById(asset.getDepartmentId());
-            if (department != null) {
-                approvalRecord.setApproverId(department.getManagerUserId());
+            if (department == null || department.getManagerUserId() == null) {
+                throw new CommonException(400, "资产所属部门未配置部门管理员，无法提交审批");
             }
+            approvalRecord.setApproverId(department.getManagerUserId());
         }
         approvalRecord.setCreatedAt(LocalDateTime.now());
         approvalRecord.setUpdatedAt(LocalDateTime.now());
