@@ -27,6 +27,9 @@
         <if test="currentUserId != null">
             AND a.current_user_id = #{currentUserId}
         </if>
+        <if test="departmentId != null">
+            AND a.department_id = #{departmentId}
+        </if>
         <if test="name != null and name != ''">
             AND a.name LIKE CONCAT('%', #{name}, '%')
         </if>

@@ -415,9 +415,7 @@ onMounted(() => {
 
             <template v-else>
               <el-descriptions :column="1" border>
-                <el-descriptions-item label="ID">{{ detailResult.id }}</el-descriptions-item>
                 <el-descriptions-item label="分类名称">{{ detailResult.name }}</el-descriptions-item>
-                <el-descriptions-item label="上级分类 ID">{{ detailResult.parentId ?? '-' }}</el-descriptions-item>
                 <el-descriptions-item label="上级分类名称">{{ detailResult.parentName || '-' }}</el-descriptions-item>
                 <el-descriptions-item label="标准使用年限(月)">
                   {{ detailResult.standardLifeMonths ?? '-' }}
@@ -449,7 +447,7 @@ onMounted(() => {
                   :fetch-suggestions="queryCategorySuggestions"
                   clearable
                   value-key="value"
-                  placeholder="输入上级分类名称后自动联动 ID"
+                  placeholder="输入上级分类名称后自动联动"
                   @select="handleCategorySelect(pageForm, $event)"
                 />
               </el-form-item>
@@ -461,7 +459,6 @@ onMounted(() => {
             </div>
 
             <el-table :data="pageRows" stripe v-loading="loading" style="margin-top: 16px">
-              <el-table-column label="ID" prop="id" width="80" />
               <el-table-column label="分类名称" prop="name" min-width="180" />
               <el-table-column label="上级分类名称" prop="parentName" min-width="180" />
               <el-table-column label="标准使用年限(月)" prop="standardLifeMonths" width="140" />
@@ -495,9 +492,6 @@ onMounted(() => {
         <el-form-item label="分类名称">
           <el-input v-model="createForm.name" placeholder="请输入分类名称" />
         </el-form-item>
-        <el-form-item label="上级分类 ID">
-          <el-input-number v-model="createForm.parentId" class="full-width" />
-        </el-form-item>
         <el-form-item label="上级分类名称">
           <el-autocomplete
             v-model="createForm.parentName"
@@ -529,14 +523,8 @@ onMounted(() => {
 
     <el-dialog v-model="editDialogVisible" title="修改分类" width="520px" destroy-on-close>
       <el-form label-width="130px">
-        <el-form-item label="分类 ID">
-          <el-input :model-value="editForm.id ?? '-'" disabled />
-        </el-form-item>
         <el-form-item label="分类名称">
           <el-input v-model="editForm.name" placeholder="请输入分类名称" />
-        </el-form-item>
-        <el-form-item label="上级分类 ID">
-          <el-input-number v-model="editForm.parentId" class="full-width" />
         </el-form-item>
         <el-form-item label="上级分类名称">
           <el-autocomplete

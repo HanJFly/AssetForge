@@ -506,11 +506,8 @@ onMounted(() => {
 
             <template v-else>
               <el-descriptions :column="1" border>
-                <el-descriptions-item label="ID">{{ detailResult.id }}</el-descriptions-item>
                 <el-descriptions-item label="部门名称">{{ detailResult.name }}</el-descriptions-item>
-                <el-descriptions-item label="上级部门 ID">{{ detailResult.parentId ?? '-' }}</el-descriptions-item>
                 <el-descriptions-item label="上级部门名称">{{ detailResult.parentName || '-' }}</el-descriptions-item>
-                <el-descriptions-item label="负责人 ID">{{ detailResult.managerUserId ?? '-' }}</el-descriptions-item>
                 <el-descriptions-item label="负责人名称">{{ detailResult.managerUserName || '-' }}</el-descriptions-item>
                 <el-descriptions-item label="排序">{{ detailResult.sortOrder ?? '-' }}</el-descriptions-item>
                 <el-descriptions-item label="备注">{{ detailResult.remark || '-' }}</el-descriptions-item>
@@ -541,7 +538,6 @@ onMounted(() => {
             </div>
 
             <el-table :data="pageRows" stripe v-loading="loading" style="margin-top: 16px">
-              <el-table-column label="ID" prop="id" width="80" />
               <el-table-column label="部门名称" prop="name" min-width="160" />
               <el-table-column label="上级部门名称" prop="parentName" min-width="180" />
               <el-table-column label="负责人名称" prop="managerUserName" min-width="160" />
@@ -575,7 +571,7 @@ onMounted(() => {
         <el-form-item label="部门名称">
           <el-input v-model="createForm.name" placeholder="请输入部门名称" />
         </el-form-item>
-        <el-form-item label="上级部门 ID">
+        <el-form-item label="上级部门编号">
           <el-input-number v-model="createForm.parentId" class="full-width" />
         </el-form-item>
         <el-form-item label="上级部门名称">
@@ -589,13 +585,13 @@ onMounted(() => {
             @select="handleDepartmentSelect(createForm, $event)"
           />
         </el-form-item>
-        <el-form-item label="负责人 ID">
+        <el-form-item label="负责人编号">
           <el-select
             v-model="createForm.managerUserId"
             class="full-width"
             clearable
             filterable
-            placeholder="输入或选择负责人 ID"
+            placeholder="输入或选择负责人编号"
           >
             <el-option
               v-for="user in getManagerIdOptions(createForm)"
@@ -612,13 +608,13 @@ onMounted(() => {
             :fetch-suggestions="queryUserSuggestions"
             clearable
             value-key="value"
-            placeholder="输入负责人名称后自动联动 ID"
+            placeholder="输入负责人名称后自动匹配负责人"
             @select="handleManagerSelect(createForm, $event)"
           >
             <template #default="{ item }">
               <div class="suggestion-row">
                 <span>{{ item.value }}</span>
-                <span class="suggestion-meta">ID: {{ item.id }}</span>
+                <span class="suggestion-meta">账号: {{ item.username || '-' }}</span>
               </div>
             </template>
           </el-autocomplete>
@@ -648,13 +644,13 @@ onMounted(() => {
 
     <el-dialog v-model="editDialogVisible" title="修改部门" width="560px" destroy-on-close>
       <el-form label-width="130px">
-        <el-form-item label="部门 ID">
+        <el-form-item label="部门编号">
           <el-input :model-value="editForm.id ?? '-'" disabled />
         </el-form-item>
         <el-form-item label="部门名称">
           <el-input v-model="editForm.name" placeholder="请输入部门名称" />
         </el-form-item>
-        <el-form-item label="上级部门 ID">
+        <el-form-item label="上级部门编号">
           <el-input-number v-model="editForm.parentId" class="full-width" />
         </el-form-item>
         <el-form-item label="上级部门名称">
@@ -668,13 +664,13 @@ onMounted(() => {
             @select="handleDepartmentSelect(editForm, $event)"
           />
         </el-form-item>
-        <el-form-item label="负责人 ID">
+        <el-form-item label="负责人编号">
           <el-select
             v-model="editForm.managerUserId"
             class="full-width"
             clearable
             filterable
-            placeholder="输入或选择负责人 ID"
+            placeholder="输入或选择负责人编号"
           >
             <el-option
               v-for="user in getManagerIdOptions(editForm)"
@@ -691,13 +687,13 @@ onMounted(() => {
             :fetch-suggestions="queryUserSuggestions"
             clearable
             value-key="value"
-            placeholder="输入负责人名称后自动联动 ID"
+            placeholder="输入负责人名称后自动匹配负责人"
             @select="handleManagerSelect(editForm, $event)"
           >
             <template #default="{ item }">
               <div class="suggestion-row">
                 <span>{{ item.value }}</span>
-                <span class="suggestion-meta">ID: {{ item.id }}</span>
+                <span class="suggestion-meta">账号: {{ item.username || '-' }}</span>
               </div>
             </template>
           </el-autocomplete>

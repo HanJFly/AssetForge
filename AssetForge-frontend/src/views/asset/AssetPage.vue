@@ -91,7 +91,6 @@ const baseFilters = [
 ]
 
 const columns = [
-  { label: 'ID', prop: 'id', width: 80 },
   { label: '资产编码', prop: 'assetCode', minWidth: 160 },
   { label: '资产名称', prop: 'name', minWidth: 180 },
   { label: '分类', prop: 'categoryName', minWidth: 150 },
@@ -567,7 +566,6 @@ onMounted(loadLookupData)
           <el-button type="primary" @click="onLedgerSearch">查询台账</el-button>
         </div>
         <el-table :data="ledgerList" stripe v-loading="ledgerLoading">
-          <el-table-column label="ID" prop="id" width="80" />
           <el-table-column label="资产编码" prop="assetCode" min-width="150" />
           <el-table-column label="资产名称" prop="assetName" min-width="160" />
           <el-table-column label="月份" prop="snapshotMonth" width="100" />
@@ -592,14 +590,14 @@ onMounted(loadLookupData)
       <el-card shadow="never" class="page-card">
         <template #header><span>资产条码详情</span></template>
         <el-form label-width="90px">
-          <el-form-item label="资产 ID">
+          <el-form-item label="资产内部编号">
             <el-input-number v-model="barcodeForm.id" class="full-width" />
           </el-form-item>
         </el-form>
         <div class="toolbar-row">
           <el-button type="primary" @click="loadBarcode">查询条码</el-button>
         </div>
-        <el-empty v-if="!barcodeDetail" description="输入资产 ID 后查询条码详情" />
+        <el-empty v-if="!barcodeDetail" description="输入资产内部编号后查询条码详情" />
         <el-descriptions v-else :column="1" border>
           <el-descriptions-item label="资产编码">{{ barcodeDetail.assetCode }}</el-descriptions-item>
           <el-descriptions-item label="条码值">{{ barcodeDetail.barcodeValue }}</el-descriptions-item>

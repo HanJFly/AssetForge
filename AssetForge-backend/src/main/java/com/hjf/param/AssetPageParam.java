@@ -7,6 +7,7 @@ import lombok.Data;
 public class AssetPageParam extends Page {
 
     private Long currentUserId;
+    private Long departmentId;
     private String name;
     private String assetCode;
     private String brandModel;

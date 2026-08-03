@@ -130,9 +130,9 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
             TodoPageVo vo = new TodoPageVo();
             vo.setId(record.getId());
             vo.setStatus(record.getApprovalStatus());
+            vo.setApprovalType(normalizeApprovalType(record.getApprovalType()));
             //申请单
             if ("APPLY".equals(record.getApprovalType())) {
-                vo.setApprovalType("APPLY");
                 vo.setBusinessId(record.getTargetId());
                 //查询申领单单号，赋值给processNo
                 QueryWrapper<RequisitionOrder> qw = new QueryWrapper<>();
@@ -152,7 +152,6 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
 
             //转移单
             if ("TRANSFER".equals(record.getApprovalType())) {
-                vo.setApprovalType("TRANSFER");
                 vo.setBusinessId(record.getTargetId());
                 //查询转移单号，赋值给processNo
                 QueryWrapper<TransferOrder> qw = new QueryWrapper<>();
@@ -171,7 +170,6 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
             }
             //归还单
             if ("RETURN".equals(record.getApprovalType())) {
-                vo.setApprovalType("RETURN");
                 vo.setBusinessId(record.getTargetId());
                 //查询归还单号，赋值给processNo
                 QueryWrapper<ReturnOrder> qw = new QueryWrapper<>();
@@ -189,8 +187,7 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
                 vo.setCreatedAt(record.getCreatedAt());
             }
             //报废单
-            if ("SCRAP".equals(record.getApprovalType())) {
-                vo.setApprovalType("SCRAP");
+            if (isScrapApprovalType(record.getApprovalType())) {
                 vo.setBusinessId(record.getTargetId());
                 //查询报废单号，赋值给processNo
                 QueryWrapper<ScrapOrder> qw = new QueryWrapper<>();
@@ -210,7 +207,6 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
 
             }
             if ("ASSET".equals(record.getApprovalType())) {
-                vo.setApprovalType("ASSET");
                 vo.setBusinessId(record.getTargetId());
                 Asset asset = assetMapper.selectById(record.getTargetId());
                 if (asset != null) {
@@ -270,7 +266,7 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
         for (ApprovalRecord re : approvalRecord) {
             DonePageRecordVO record = new DonePageRecordVO();
             record.setId(re.getId());
-            record.setBusinessType(re.getApprovalType());
+            record.setBusinessType(normalizeApprovalType(re.getApprovalType()));
             record.setDecision(re.getApprovalStatus());
             //申领单
             if ("APPLY".equals(re.getApprovalType())) {
@@ -278,13 +274,13 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
                         new LambdaQueryWrapper<RequisitionOrder>()
                                 .eq(RequisitionOrder::getId, re.getTargetId())
                 );
-                record.setProcessNo(requisitionOrder.getOrderNo());
+                record.setProcessNo(requisitionOrder != null ? requisitionOrder.getOrderNo() : "APPLY-" + re.getTargetId());
 
 
                 QueryWrapper<User> qwU = new QueryWrapper<>();
                 qwU.eq("id", re.getApplicantId());
                 User user = userMapper.selectOne(qwU);
-                record.setTitle(user.getRealName() + "提交资产申领");
+                record.setTitle((user != null ? user.getRealName() : "用户") + "提交资产申领");
                 record.setApprovedAt(re.getApprovedAt());
 
             }
@@ -293,12 +289,12 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
                 QueryWrapper<TransferOrder> qw = new QueryWrapper<>();
                 qw.eq("id", re.getTargetId());
                 TransferOrder transferOrder = transferOrderMapper.selectOne(qw);
-                record.setProcessNo(transferOrder.getOrderNo());
+                record.setProcessNo(transferOrder != null ? transferOrder.getOrderNo() : "TRANSFER-" + re.getTargetId());
 
                 QueryWrapper<User> qwU = new QueryWrapper<>();
                 qwU.eq("id", re.getApplicantId());
                 User user = userMapper.selectOne(qwU);
-                record.setTitle(user.getRealName() + "提交资产转移");
+                record.setTitle((user != null ? user.getRealName() : "用户") + "提交资产转移");
 
                 record.setApprovedAt(re.getApprovedAt());
             }
@@ -307,26 +303,26 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
                 QueryWrapper<ReturnOrder> qw = new QueryWrapper<>();
                 qw.eq("id", re.getTargetId());
                 ReturnOrder returnOrder = returnOrderMapper.selectOne(qw);
-                record.setProcessNo(returnOrder.getOrderNo());
+                record.setProcessNo(returnOrder != null ? returnOrder.getOrderNo() : "RETURN-" + re.getTargetId());
 
                 QueryWrapper<User> qwU = new QueryWrapper<>();
                 qwU.eq("id", re.getApplicantId());
                 User user = userMapper.selectOne(qwU);
-                record.setTitle(user.getRealName() + "提交资产归还");
+                record.setTitle((user != null ? user.getRealName() : "用户") + "提交资产归还");
 
                 record.setApprovedAt(re.getApprovedAt());
             }
             //报废单
-            if ("SCRAP".equals(re.getApprovalType())) {
+            if (isScrapApprovalType(re.getApprovalType())) {
                 QueryWrapper<ScrapOrder> qw = new QueryWrapper<>();
                 qw.eq("id", re.getTargetId());
                 ScrapOrder scrapOrder = scrapOrderMapper.selectOne(qw);
-                record.setProcessNo(scrapOrder.getOrderNo());
+                record.setProcessNo(scrapOrder != null ? scrapOrder.getOrderNo() : "SCRAP-" + re.getTargetId());
 
                 QueryWrapper<User> qwU = new QueryWrapper<>();
                 qwU.eq("id", re.getApplicantId());
                 User user = userMapper.selectOne(qwU);
-                record.setTitle(user.getRealName() + "提交资产报废");
+                record.setTitle((user != null ? user.getRealName() : "用户") + "提交资产报废");
 
                 record.setApprovedAt(re.getApprovedAt());
             }
@@ -364,7 +360,7 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
         vo.setId(approvalRecord.getId());
 
         vo.setBusinessId(approvalRecord.getTargetId());
-        vo.setBusinessType(approvalRecord.getApprovalType());
+        vo.setBusinessType(normalizeApprovalType(approvalRecord.getApprovalType()));
 
         //生成 processNo
         LocalDateTime time = approvalRecord.getCreatedAt() != null ? approvalRecord.getCreatedAt() : approvalRecord.getApprovedAt();
@@ -392,7 +388,7 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
 
         ApprovalRecordDetailFormData formData = new ApprovalRecordDetailFormData();
         //设置title
-        switch (approvalRecord.getApprovalType()) {
+        switch (normalizeApprovalType(approvalRecord.getApprovalType())) {
             case "APPLY":
 
                 //设置formData
@@ -404,12 +400,16 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
                 //设置reason
                 formData.setReason(requisitionOrder.getReason());
                 //设置itemList
-                RequisitionOrderItem item = requisitionOrderItemMapper.selectById(approvalRecord.getTargetId());
-                ApprovalRecordDetailFormData.itemList itemList = new ApprovalRecordDetailFormData.itemList();
-                itemList.setCategoryId(item.getCategoryId());
-                itemList.setCategoryName(item.getCategoryName());
-                itemList.setQuantity(item.getQuantity());
-                formData.getItemList().add(itemList);
+                LambdaQueryWrapper<RequisitionOrderItem> reqItemQw = new LambdaQueryWrapper<>();
+                reqItemQw.eq(RequisitionOrderItem::getOrderId, approvalRecord.getTargetId());
+                List<RequisitionOrderItem> reqItems = requisitionOrderItemMapper.selectList(reqItemQw);
+                for (RequisitionOrderItem item : reqItems) {
+                    ApprovalRecordDetailFormData.itemList itemList = new ApprovalRecordDetailFormData.itemList();
+                    itemList.setCategoryId(item.getCategoryId());
+                    itemList.setCategoryName(item.getCategoryName());
+                    itemList.setQuantity(item.getQuantity());
+                    formData.getItemList().add(itemList);
+                }
                 vo.getFormData().add(formData);
 
                 //设置historyList
@@ -491,14 +491,18 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
                 //设置reason
                 formData.setReason(returnOrder.getReason());
                 //设置itemList
-                ReturnOrderItem item3 = returnOrderItemMapper.selectById(approvalRecord.getTargetId());
-                ApprovalRecordDetailFormData.itemList itemList3 = new ApprovalRecordDetailFormData.itemList();
-                itemList3.setCategoryName(item3.getCategoryName());
-                QueryWrapper<AssetCategory> qwC2 = new QueryWrapper<>();
-                qwC2.eq("name", item3.getCategoryName());
-                AssetCategory assetCategory2 = assetCategoryMapper.selectOne(qwC2);
-                itemList3.setCategoryId(assetCategory2.getId());
-                formData.getItemList().add(itemList3);
+                LambdaQueryWrapper<ReturnOrderItem> returnItemQw = new LambdaQueryWrapper<>();
+                returnItemQw.eq(ReturnOrderItem::getOrderId, approvalRecord.getTargetId());
+                List<ReturnOrderItem> returnItems = returnOrderItemMapper.selectList(returnItemQw);
+                for (ReturnOrderItem item3 : returnItems) {
+                    ApprovalRecordDetailFormData.itemList itemList3 = new ApprovalRecordDetailFormData.itemList();
+                    itemList3.setCategoryName(item3.getCategoryName());
+                    QueryWrapper<AssetCategory> qwC2 = new QueryWrapper<>();
+                    qwC2.eq("name", item3.getCategoryName());
+                    AssetCategory assetCategory2 = assetCategoryMapper.selectOne(qwC2);
+                    itemList3.setCategoryId(assetCategory2.getId());
+                    formData.getItemList().add(itemList3);
+                }
                 vo.getFormData().add(formData);
                 //设置historyList
                 QueryWrapper<ApprovalRecord> qw3 = new QueryWrapper<>();
@@ -529,19 +533,23 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
                 //设置reason
                 formData.setReason(scrapOrder.getReason());
                 //设置itemList
-                ScrapOrderItem item4 = scrapOrderItemMapper.selectById(approvalRecord.getTargetId());
-                ApprovalRecordDetailFormData.itemList itemList4 = new ApprovalRecordDetailFormData.itemList();
-                itemList4.setCategoryName(item4.getCategoryName());
-                QueryWrapper<AssetCategory> qwC3 = new QueryWrapper<>();
-                qwC3.eq("name", item4.getCategoryName());
-                AssetCategory assetCategory3 = assetCategoryMapper.selectOne(qwC3);
-                itemList4.setCategoryId(assetCategory3.getId());
-                formData.getItemList().add(itemList4);
+                LambdaQueryWrapper<ScrapOrderItem> scrapItemQw = new LambdaQueryWrapper<>();
+                scrapItemQw.eq(ScrapOrderItem::getOrderId, approvalRecord.getTargetId());
+                List<ScrapOrderItem> scrapItems = scrapOrderItemMapper.selectList(scrapItemQw);
+                for (ScrapOrderItem item4 : scrapItems) {
+                    ApprovalRecordDetailFormData.itemList itemList4 = new ApprovalRecordDetailFormData.itemList();
+                    itemList4.setCategoryName(item4.getCategoryName());
+                    QueryWrapper<AssetCategory> qwC3 = new QueryWrapper<>();
+                    qwC3.eq("name", item4.getCategoryName());
+                    AssetCategory assetCategory3 = assetCategoryMapper.selectOne(qwC3);
+                    itemList4.setCategoryId(assetCategory3.getId());
+                    formData.getItemList().add(itemList4);
+                }
                 vo.getFormData().add(formData);
                 //设置historyList
                 QueryWrapper<ApprovalRecord> qw4 = new QueryWrapper<>();
                 qw4.eq("target_id", approvalRecord.getTargetId());
-                qw4.eq("approval_type", "SCRAP");
+                qw4.in("approval_type", "SCRAP", "SCARP");
                 List<ApprovalRecord> targetlist4 = approvalRecordMapper.selectList(qw4);
                 for (ApprovalRecord re : targetlist4) {
                     ApprovalRecordDetailHistoryList historyList4 = new ApprovalRecordDetailHistoryList();
@@ -689,6 +697,22 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
 
 
 
+    /**
+     * 兼容历史脏数据：数据库中存在将 SCRAP 误写为 SCARP 的审批类型。
+     * 对外统一返回 SCRAP，并在内部分支判断时按报废审批处理。
+     */
+    private String normalizeApprovalType(String approvalType) {
+        return "SCARP".equals(approvalType) ? "SCRAP" : approvalType;
+    }
+
+    /**
+     * 判断当前审批类型是否属于报废审批，兼容 SCRAP/SCARP 两种存量值。
+     */
+    private boolean isScrapApprovalType(String approvalType) {
+        String normalizedType = normalizeApprovalType(approvalType);
+        return "SCRAP".equals(normalizedType);
+    }
+
     private LoginUserContext requireLoginUser() {
         LoginUserContext context = LoginUserInfoUtile.get();
         if (context == null || context.getId() == null) {
@@ -756,6 +780,24 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
                 transferOrder.setApprovalRemark(param.getComment());
                 transferOrder.setApprovedAt(LocalDateTime.now());
                 transferOrderMapper.updateById(transferOrder);
+                // 审批通过后，更新资产归属
+                if ("APPROVED".equals(status)) {
+                    // 查该转移单的所有资产明细
+                    LambdaQueryWrapper<TransferOrderItem> itemWrapper = new LambdaQueryWrapper<>();
+                    itemWrapper.eq(TransferOrderItem::getOrderId, targetId);
+                    List<TransferOrderItem> items = transferOrderItemMapper.selectList(itemWrapper);
+
+                    for (TransferOrderItem item : items) {
+                        Asset asset = assetMapper.selectById(item.getAssetId());
+                        if (asset != null) {
+                            asset.setCurrentUserId(transferOrder.getToUserId());
+                            asset.setDepartmentId(transferOrder.getToUserDepartmentId());
+                            asset.setDepartmentName(transferOrder.getToUserDepartmentName());
+                            asset.setUpdatedAt(LocalDateTime.now());
+                            assetMapper.updateById(asset);
+                        }
+                    }
+                }
                 break;
             case "return_order":
                 ReturnOrder returnOrder = returnOrderMapper.selectById(targetId);

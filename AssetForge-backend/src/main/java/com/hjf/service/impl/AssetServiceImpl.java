@@ -9,6 +9,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.hjf.common.result.CommonException;
 import com.hjf.context.LoginUserInfoUtile;
+import com.hjf.context.LoginUserIRoleUtile;
 import com.hjf.entity.ApprovalRecord;
 import com.hjf.entity.Asset;
 import com.hjf.entity.AssetCategory;
@@ -17,10 +18,12 @@ import com.hjf.entity.FileAttachment;
 import com.hjf.entity.InventoryDetail;
 import com.hjf.entity.LossOrder;
 import com.hjf.entity.RequisitionOrderItem;
+import com.hjf.entity.Role;
 import com.hjf.entity.ReturnOrderItem;
 import com.hjf.entity.ScrapOrderItem;
 import com.hjf.entity.TransferOrderItem;
 import com.hjf.entity.User;
+import com.hjf.entity.UserRole;
 import com.hjf.mapper.ApprovalRecordMapper;
 import com.hjf.mapper.AssetCategoryMapper;
 import com.hjf.mapper.AssetMapper;
@@ -30,9 +33,11 @@ import com.hjf.mapper.InventoryDetailMapper;
 import com.hjf.mapper.LossOrderMapper;
 import com.hjf.mapper.RequisitionOrderItemMapper;
 import com.hjf.mapper.ReturnOrderItemMapper;
+import com.hjf.mapper.RoleMapper;
 import com.hjf.mapper.ScrapOrderItemMapper;
 import com.hjf.mapper.TransferOrderItemMapper;
 import com.hjf.mapper.UserMapper;
+import com.hjf.mapper.UserRoleMapper;
 import com.hjf.param.AssetCreateWithFilesParam;
 import com.hjf.param.AssetPageParam;
 import com.hjf.param.AssetParam;
@@ -105,11 +110,23 @@ public class AssetServiceImpl extends ServiceImpl<AssetMapper, Asset> implements
     @Autowired
     private ApprovalRecordMapper approvalRecordMapper;
 
+    @Autowired
+    private RoleMapper roleMapper;
+
+    @Autowired
+    private UserRoleMapper userRoleMapper;
+
+    @Autowired
+    private LoginUserIRoleUtile loginUserIRoleUtile;
+
     /*
     * 分页查询
     * */
     @Override
     public AssetPageVO queryPage(AssetPageParam param) {
+        // 资产分页查询入口。
+        // 这里先按当前角色收口查询范围，避免前端被绕过后仍能查到越权数据。
+        applyAssetQueryScope(param);
         // 分页
         PageHelper.startPage(param.getPage(), param.getSize());
         // 查询
@@ -134,6 +151,8 @@ public class AssetServiceImpl extends ServiceImpl<AssetMapper, Asset> implements
         if (asset == null) {
             throw new CommonException(404, "资产不存在");
         }
+        // 详情读取同样要校验资产归属，防止通过接口直接查看其他部门资产。
+        validateAssetReadAccess(asset);
 
         AssetVO assetVO = BeanUtil.copyProperties(asset, AssetVO.class);
 
@@ -165,6 +184,9 @@ public class AssetServiceImpl extends ServiceImpl<AssetMapper, Asset> implements
     @Override
     @Transactional(rollbackFor = Exception.class)
     public AssetCreateVO create(AssetParam param) {
+        // 新建前强制收口部门字段：
+        // 部门管理员只能登记到本人部门，资产管理员保留全局能力。
+        enforceAssetDepartmentScope(param);
         if (param.getName() == null) {
             throw new CommonException(400, "资产名称不能为空");
         }
@@ -245,6 +267,8 @@ public class AssetServiceImpl extends ServiceImpl<AssetMapper, Asset> implements
     @Override
     @Transactional(rollbackFor = Exception.class)
     public AssetCreateVO createWithFiles(AssetCreateWithFilesParam param, MultipartFile[] files) {
+        // 带附件登记和普通登记走同一套部门权限规则，避免绕过前端跨部门建资产。
+        enforceAssetDepartmentScope(param);
         validateCreateWithFilesParam(param, files);
 
         List<File> savedFiles = new ArrayList<>();
@@ -291,6 +315,10 @@ public class AssetServiceImpl extends ServiceImpl<AssetMapper, Asset> implements
         if (asset == null) {
             throw new CommonException(404, "未找到资产");
         }
+        // 修改时分两步控制：
+        // 先校验当前人能不能操作这条资产，再强制覆盖提交部门，避免改到别的部门名下。
+        validateAssetWriteAccess(asset);
+        enforceAssetDepartmentScope(param);
         if (param.getName() == null) {
             throw new CommonException(400, "资产名称不能为空");
         }
@@ -343,6 +371,8 @@ public class AssetServiceImpl extends ServiceImpl<AssetMapper, Asset> implements
         if (asset == null) {
             throw new CommonException(404, "未找到资产");
         }
+        // 删除属于写操作，必须先校验资产归属，避免删除其他部门资产。
+        validateAssetWriteAccess(asset);
         QueryWrapper<InventoryDetail> qwI = new QueryWrapper<InventoryDetail>();
         qwI.eq("asset_id", param.getId());
         Long l = inventoryDetailMapper.selectCount(qwI);
@@ -392,6 +422,11 @@ public class AssetServiceImpl extends ServiceImpl<AssetMapper, Asset> implements
     @Override
     public AssetBarcodeDetailVO barcodeDetail(AssetParam param) {
         Asset asset = assetMapper.selectById(param.getId());
+        if (asset == null) {
+            throw new CommonException(404, "未找到资产");
+        }
+        // 条码详情本质上也是资产详情，沿用同一套读取权限校验。
+        validateAssetReadAccess(asset);
         AssetBarcodeDetailVO assetBarcodeDetailVO = BeanUtil.copyProperties(asset, AssetBarcodeDetailVO.class);
         QueryWrapper<AssetCategory> qw = new QueryWrapper<AssetCategory>();
         qw.eq("id", asset.getCategoryId());
@@ -533,5 +568,183 @@ public class AssetServiceImpl extends ServiceImpl<AssetMapper, Asset> implements
         String substring = orderNo.substring(orderNo.lastIndexOf("-") + 1);
         int num = Integer.parseInt(substring) + 1;
         return prefix + String.format("%06d", num);
+    }
+
+    // 从线程上下文中获取当前登录身份。
+    // 后续所有资产权限判断都以这里拿到的登录信息为起点。
+    private LoginUserContext requireLoginUser() {
+        LoginUserContext context = LoginUserInfoUtile.get();
+        if (context == null || context.getId() == null) {
+            throw new CommonException(401, "未登录或登录已过期");
+        }
+        return context;
+    }
+
+    // 根据登录身份查询完整用户实体。
+    // 主要用于拿部门、删除标记等信息，供权限判断复用。
+    private User requireCurrentUser() {
+        LoginUserContext context = requireLoginUser();
+        User user = userMapper.selectById(context.getId());
+        if (user == null || user.getIsDeleted() == 1) {
+            throw new CommonException(401, "当前登录用户不存在");
+        }
+        return user;
+    }
+
+
+
+    // 判断用户是否拥有指定角色编码。
+    // 先尝试读取当前选中角色，读不到时再回落到用户的全部角色。
+    private boolean hasRoleCode(Long userId, String roleCode) {
+        String selectedRoleId = loginUserIRoleUtile.getRole(String.valueOf(userId));
+        if (selectedRoleId != null && !selectedRoleId.isBlank()) {
+            try {
+                Role selectedRole = roleMapper.selectById(Long.valueOf(selectedRoleId));
+                if (selectedRole != null && roleCode.equals(selectedRole.getCode())) {
+                    return true;
+                }
+            } catch (NumberFormatException ignored) {
+            }
+        }
+
+
+        LambdaQueryWrapper<UserRole> userRoleWrapper = new LambdaQueryWrapper<>();
+        userRoleWrapper.eq(UserRole::getUserId, userId);
+        List<UserRole> userRoles = userRoleMapper.selectList(userRoleWrapper);
+        if (userRoles == null || userRoles.isEmpty()) {
+            return false;
+        }
+
+        LambdaQueryWrapper<Role> roleWrapper = new LambdaQueryWrapper<>();
+        roleWrapper.in(Role::getId, userRoles.stream().map(UserRole::getRoleId).toList());
+        List<Role> roles = roleMapper.selectList(roleWrapper);
+        return roles != null && roles.stream().anyMatch(role -> roleCode.equals(role.getCode()));
+    }
+
+    // 判断是否为资产管理员：资产模块的全局权限入口。
+    private boolean isAssetAdmin(Long userId) {
+        return hasRoleCode(userId, "ASSET_ADMIN");
+    }
+
+    // 判断是否为部门管理员：资产模块的部门级权限入口。
+    private boolean isDeptManager(Long userId) {
+        return hasRoleCode(userId, "DEPT_MANAGER");
+    }
+
+    private boolean isStorekeeper(Long userId) {
+        return hasRoleCode(userId, "STOREKEEPER");
+    }
+
+    // 给资产分页查询自动套上数据范围。
+    // 资产管理员看全部，部门管理员按 departmentId 过滤，普通员工按 currentUserId 过滤。
+    private void applyAssetQueryScope(AssetPageParam param) {
+        User currentUser = requireCurrentUser();
+        if (isAssetAdmin(currentUser.getId())) {
+            return;
+        }
+
+        if (isStorekeeper(currentUser.getId())) {
+            param.setCurrentUserId(null);
+            param.setDepartmentId(null);
+            param.setDepartmentName(null);
+            param.setAssetStatus("STOCK");
+            return;
+        }
+
+        if (isDeptManager(currentUser.getId())) {
+            if (currentUser.getDepartmentId() == null) {
+                throw new CommonException(400, "当前部门管理员未绑定所属部门");
+            }
+            param.setDepartmentId(currentUser.getDepartmentId());
+            param.setDepartmentName(null);
+            param.setCurrentUserId(null);
+            return;
+        }
+
+        param.setCurrentUserId(currentUser.getId());
+        param.setDepartmentId(null);
+    }
+
+    // 校验当前人是否允许查看这条资产。
+    // 用于详情、条码详情等读取场景，防止跨部门或跨用户越权访问。
+    private void validateAssetReadAccess(Asset asset) {
+        User currentUser = requireCurrentUser();
+        if (isAssetAdmin(currentUser.getId())) {
+            return;
+        }
+
+        if (isDeptManager(currentUser.getId())) {
+            if (currentUser.getDepartmentId() == null) {
+                throw new CommonException(400, "当前部门管理员未绑定所属部门");
+            }
+            if (asset.getDepartmentId() == null || !asset.getDepartmentId().equals(currentUser.getDepartmentId())) {
+                throw new CommonException(403, "无权查看其他部门资产");
+            }
+            return;
+        }
+
+        if (asset.getCurrentUserId() == null || !asset.getCurrentUserId().equals(currentUser.getId())) {
+            throw new CommonException(403, "无权查看他人资产");
+        }
+    }
+
+    // 校验当前人是否允许操作这条资产。
+    // 用于修改、删除等写场景，保证部门管理员只能处理本部门资产。
+    private void validateAssetWriteAccess(Asset asset) {
+        User currentUser = requireCurrentUser();
+        if (isAssetAdmin(currentUser.getId())) {
+            return;
+        }
+
+        if (isDeptManager(currentUser.getId())) {
+            if (currentUser.getDepartmentId() == null) {
+                throw new CommonException(400, "当前部门管理员未绑定所属部门");
+            }
+            if (asset.getDepartmentId() == null || !asset.getDepartmentId().equals(currentUser.getDepartmentId())) {
+                throw new CommonException(403, "无权操作其他部门资产");
+            }
+            return;
+        }
+
+        throw new CommonException(403, "当前角色无权操作资产");
+    }
+
+    // 对普通 JSON 资产表单强制收口部门字段。
+    // 部门管理员会被后端自动覆盖为本人部门，资产管理员保留原始提交值。
+    private void enforceAssetDepartmentScope(AssetParam param) {
+        User currentUser = requireCurrentUser();
+        if (isAssetAdmin(currentUser.getId())) {
+            return;
+        }
+
+        if (isDeptManager(currentUser.getId())) {
+            if (currentUser.getDepartmentId() == null) {
+                throw new CommonException(400, "当前部门管理员未绑定所属部门");
+            }
+            param.setDepartmentId(currentUser.getDepartmentId());
+            param.setDepartmentName(currentUser.getDepartmentName());
+            return;
+        }
+
+        throw new CommonException(403, "当前角色无权登记或修改资产");
+    }
+
+    // 对“带附件上传”的资产登记表单执行同样的部门收口规则。
+    // 单独重载是因为 create-with-files 使用的是另一套参数对象。
+    private void enforceAssetDepartmentScope(AssetCreateWithFilesParam param) {
+        User currentUser = requireCurrentUser();
+        if (isAssetAdmin(currentUser.getId())) {
+            return;
+        }
+
+        if (isDeptManager(currentUser.getId())) {
+            if (currentUser.getDepartmentId() == null) {
+                throw new CommonException(400, "当前部门管理员未绑定所属部门");
+            }
+            param.setDepartmentId(currentUser.getDepartmentId());
+            return;
+        }
+
+        throw new CommonException(403, "当前角色无权登记资产");
     }
 }

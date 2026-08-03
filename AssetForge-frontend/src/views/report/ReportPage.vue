@@ -119,7 +119,7 @@ loadReport()
       <el-card shadow="never" class="page-card">
         <template #header><span>分类汇总</span></template>
         <el-table :data="categorySummaryList" stripe v-loading="loading">
-          <el-table-column label="分类 ID" prop="categoryId" width="100" />
+          <el-table-column label="分类编号" prop="categoryId" width="100" />
           <el-table-column label="分类名称" prop="categoryName" min-width="180" />
           <el-table-column label="资产数量" prop="assetCount" width="100" />
           <el-table-column label="原值总额" prop="originalAmountTotal" min-width="120" />

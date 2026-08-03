@@ -370,6 +370,8 @@ onMounted(fetchList)
             v-bind="inputProps(field)"
             clearable
             style="width: 100%"
+            @select="field.onSelect?.($event, formModel)"
+            @change="field.onChange?.($event, formModel)"
           >
             <template v-if="field.type === 'select'">
               <el-option

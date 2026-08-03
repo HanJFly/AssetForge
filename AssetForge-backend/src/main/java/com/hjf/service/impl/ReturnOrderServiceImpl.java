@@ -107,33 +107,38 @@ public class ReturnOrderServiceImpl extends ServiceImpl<ReturnOrderMapper, Retur
                 //检查是否在转移单中为待审批
                 LambdaQueryWrapper<TransferOrderItem> queryTransferOrderItem = new LambdaQueryWrapper<>();
                 queryTransferOrderItem.eq(TransferOrderItem::getAssetId, item.getAssetId());
-                TransferOrderItem transferOrderItem = transferOrderItemMapper.selectOne(queryTransferOrderItem);
-                if(transferOrderItem != null){
-                   TransferOrder transferOrder = transferOrderMapper.selectById(transferOrderItem.getOrderId());
-                   if(transferOrder.getApprovalStatus().equals("PENDING")){
-                       throw new CommonException(400, "该资产在转移流程中，不能归还");
-                   }
-
+                List<TransferOrderItem> transferOrderItems = transferOrderItemMapper.selectList(queryTransferOrderItem);
+                boolean hasPendingTransfer = transferOrderItems.stream()
+                    .anyMatch(ti -> {
+                        TransferOrder transferOrder = transferOrderMapper.selectById(ti.getOrderId());
+                        return "PENDING".equals(transferOrder.getApprovalStatus());
+                    });
+                if (hasPendingTransfer) {
+                    throw new CommonException(400, "该资产在转移流程中，不能归还");
                 }
                 //检查是否在报废单中为待审批
                 LambdaQueryWrapper<ScrapOrderItem> scrapCheck = new LambdaQueryWrapper<>();
                 scrapCheck.eq(ScrapOrderItem::getAssetId, item.getAssetId());
-                ScrapOrderItem scrapItem = scrapOrderItemMapper.selectOne(scrapCheck);
-                if (scrapItem != null) {
-                    ScrapOrder scrapOrder = scrapOrderMapper.selectById(scrapItem.getOrderId());
-                    if ("PENDING".equals(scrapOrder.getApprovalStatus())) {
-                        throw new CommonException(400, "该资产正在报废审批中，无法归还");
-                    }
+                List<ScrapOrderItem> scrapItems = scrapOrderItemMapper.selectList(scrapCheck);
+                boolean hasPendingScrap = scrapItems.stream()
+                    .anyMatch(si -> {
+                        ScrapOrder scrapOrder = scrapOrderMapper.selectById(si.getOrderId());
+                        return "PENDING".equals(scrapOrder.getApprovalStatus());
+                    });
+                if (hasPendingScrap) {
+                    throw new CommonException(400, "该资产正在报废审批中，无法归还");
                 }
                 //检查是否在归还单中为待审批
                 LambdaQueryWrapper<ReturnOrderItem> returnCheck = new LambdaQueryWrapper<>();
                 returnCheck.eq(ReturnOrderItem::getAssetId, item.getAssetId());
-                ReturnOrderItem returnItem = returnOrderItemMapper.selectOne(returnCheck);
-                if (returnItem != null) {
-                    ReturnOrder returnOrder1 = returnOrderMapper.selectById(returnItem.getOrderId());
-                    if ("PENDING".equals(returnOrder1.getApprovalStatus())) {
-                        throw new CommonException(400, "该资产已有待审批的归还单");
-                    }
+                List<ReturnOrderItem> returnItems = returnOrderItemMapper.selectList(returnCheck);
+                boolean hasPendingReturn = returnItems.stream()
+                    .anyMatch(ri -> {
+                        ReturnOrder returnOrder1 = returnOrderMapper.selectById(ri.getOrderId());
+                        return "PENDING".equals(returnOrder1.getOrderStatus());
+                    });
+                if (hasPendingReturn) {
+                    throw new CommonException(400, "该资产已有待入库的归还单");
                 }
 
                 ReturnOrderItem returnOrderItem = new ReturnOrderItem();
@@ -148,7 +153,12 @@ public class ReturnOrderServiceImpl extends ServiceImpl<ReturnOrderMapper, Retur
                 returnOrderItem.setAssetCondition(item.getAssetCondition());
                 LambdaQueryWrapper<AssetLedger> queryWrapper = new LambdaQueryWrapper<>();
                 queryWrapper.eq(AssetLedger::getAssetId, item.getAssetId());
-                returnOrderItem.setNetValueAtReturn(assetLedgerMapper.selectOne(queryWrapper).getNetValue());
+                queryWrapper.orderByDesc(AssetLedger::getCreatedAt);
+                queryWrapper.last("limit 1");
+                AssetLedger ledger = assetLedgerMapper.selectOne(queryWrapper);
+                if (ledger != null) {
+                    returnOrderItem.setNetValueAtReturn(ledger.getNetValue());
+                }
                 returnOrderItem.setCreatedAt(LocalDateTime.now());
                 returnOrderItemMapper.insert(returnOrderItem);
             });

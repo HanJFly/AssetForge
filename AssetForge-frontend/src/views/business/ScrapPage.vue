@@ -25,7 +25,6 @@ const baseFilters = [
 ]
 
 const columns = [
-  { label: 'ID', prop: 'id', width: 80 },
   { label: '报废单号', prop: 'orderNo', minWidth: 160 },
   { label: '申请人', prop: 'applicantName', minWidth: 120 },
   { label: '审批状态', prop: 'approvalStatus', width: 120 },
@@ -74,8 +73,8 @@ const formFields = computed(() => [
     default: () => currentUser.value.departmentName || '当前所属部门',
     componentProps: { disabled: true }
   },
-  { label: '资产 ID', prop: 'assetId', placeholder: '请输入资产 ID' },
-  { label: '附件 IDs', prop: 'attachmentIdsText', placeholder: '如 1,2,3' },
+  { label: '资产内部编号', prop: 'assetId', placeholder: '请输入资产内部编号' },
+  { label: '附件编号列表', prop: 'attachmentIdsText', placeholder: '如 1,2,3' },
   { label: '报废原因', prop: 'reason', type: 'textarea', placeholder: '请输入报废原因' }
 ])
 

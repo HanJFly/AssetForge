@@ -79,7 +79,7 @@ loadFiles()
       <el-card shadow="never" class="page-card">
         <template #header><span>附件列表</span></template>
         <el-table :data="fileList" stripe v-loading="loading">
-          <el-table-column label="ID" prop="id" width="80" />
+          <el-table-column label="附件编号" prop="id" width="100" />
           <el-table-column label="文件名" prop="fileName" min-width="180" />
           <el-table-column label="地址" prop="fileUrl" min-width="260" />
           <el-table-column label="大小" prop="fileSize" width="100" />
@@ -93,10 +93,10 @@ loadFiles()
           <el-form-item label="业务类型">
             <el-input v-model="bindForm.bizType" />
           </el-form-item>
-          <el-form-item label="业务 ID">
+          <el-form-item label="业务编号">
             <el-input-number v-model="bindForm.bizId" class="full-width" />
           </el-form-item>
-          <el-form-item label="附件 IDs">
+          <el-form-item label="附件编号列表">
             <el-input v-model="bindForm.fileIds" placeholder="如 1,2,3" />
           </el-form-item>
         </el-form>

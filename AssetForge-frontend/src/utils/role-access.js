@@ -43,9 +43,7 @@ export const ROLE_PERMISSION_MAP = {
       ACTION_CODES.REQUISITION_CREATE,
       ACTION_CODES.TRANSFER_CREATE,
       ACTION_CODES.RETURN_CREATE,
-      ACTION_CODES.SCRAP_CREATE,
-      ACTION_CODES.INVENTORY_EXECUTE,
-      ACTION_CODES.REPORT_VIEW
+      ACTION_CODES.SCRAP_CREATE
     ]
   },
   [ROLE_CODES.STOREKEEPER]: {
@@ -112,7 +110,12 @@ export const APP_ROUTE_DEFS = [
   {
     path: '/system/user',
     name: 'user',
-    meta: { title: '用户管理', icon: 'User', roles: [ROLE_CODES.ASSET_ADMIN], group: 'base' }
+    meta: {
+      title: '用户管理',
+      icon: 'User',
+      roles: [ROLE_CODES.ASSET_ADMIN],
+      group: 'base'
+    }
   },
   {
     path: '/system/config',
@@ -145,7 +148,17 @@ export const APP_ROUTE_DEFS = [
     meta: {
       title: '资产申领',
       icon: 'ShoppingCart',
-      roles: [ROLE_CODES.EMPLOYEE, ROLE_CODES.STOREKEEPER, ROLE_CODES.ASSET_ADMIN, ROLE_CODES.DEPT_MANAGER],
+      roles: [ROLE_CODES.EMPLOYEE, ROLE_CODES.ASSET_ADMIN, ROLE_CODES.DEPT_MANAGER],
+      group: 'business'
+    }
+  },
+  {
+    path: '/business/outbound',
+    name: 'outbound',
+    meta: {
+      title: '出库作业',
+      icon: 'Top',
+      roles: [ROLE_CODES.STOREKEEPER, ROLE_CODES.ASSET_ADMIN],
       group: 'business'
     }
   },
@@ -165,7 +178,17 @@ export const APP_ROUTE_DEFS = [
     meta: {
       title: '资产归还',
       icon: 'RefreshLeft',
-      roles: [ROLE_CODES.EMPLOYEE, ROLE_CODES.STOREKEEPER, ROLE_CODES.ASSET_ADMIN, ROLE_CODES.DEPT_MANAGER],
+      roles: [ROLE_CODES.EMPLOYEE, ROLE_CODES.ASSET_ADMIN, ROLE_CODES.DEPT_MANAGER],
+      group: 'business'
+    }
+  },
+  {
+    path: '/business/inbound',
+    name: 'inbound',
+    meta: {
+      title: '入库作业',
+      icon: 'Bottom',
+      roles: [ROLE_CODES.STOREKEEPER, ROLE_CODES.ASSET_ADMIN],
       group: 'business'
     }
   },
@@ -182,7 +205,12 @@ export const APP_ROUTE_DEFS = [
   {
     path: '/inventory/task',
     name: 'inventory-task',
-    meta: { title: '盘点管理', icon: 'Tickets', roles: ALL_ROLE_CODES, group: 'report' }
+    meta: {
+      title: '盘点管理',
+      icon: 'Tickets',
+      roles: [ROLE_CODES.STOREKEEPER, ROLE_CODES.ASSET_ADMIN, ROLE_CODES.DEPT_MANAGER],
+      group: 'report'
+    }
   },
   {
     path: '/inventory/loss',
@@ -197,7 +225,12 @@ export const APP_ROUTE_DEFS = [
   {
     path: '/report/index',
     name: 'report',
-    meta: { title: '报表与折旧', icon: 'Histogram', roles: ALL_ROLE_CODES, group: 'report' }
+    meta: {
+      title: '报表与折旧',
+      icon: 'Histogram',
+      roles: [ROLE_CODES.STOREKEEPER, ROLE_CODES.ASSET_ADMIN, ROLE_CODES.DEPT_MANAGER],
+      group: 'report'
+    }
   },
   {
     path: '/file/index',
@@ -239,7 +272,9 @@ export function getAccessibleRouteDefs(roleCode) {
 export function getVisibleMenus(roleCode) {
   return MENU_GROUPS.map((group) => ({
     ...group,
-    items: APP_ROUTE_DEFS.filter((route) => route.meta?.group === group.key && roleAllows(route.meta?.roles, roleCode)).map((route) => ({
+    items: APP_ROUTE_DEFS.filter(
+      (route) => route.meta?.group === group.key && roleAllows(route.meta?.roles, roleCode)
+    ).map((route) => ({
       title: route.meta.title,
       path: route.path,
       icon: route.meta.icon,
@@ -250,10 +285,16 @@ export function getVisibleMenus(roleCode) {
 
 export function findFirstAccessiblePath(routesOrDefs, roleCode) {
   const defs = Array.isArray(routesOrDefs)
-    ? routesOrDefs.flatMap((route) => route.children?.length ? route.children.map((child) => ({
-      path: child.path.startsWith('/') ? child.path : `/${child.path}`,
-      meta: child.meta
-    })) : route.path ? [{ path: route.path, meta: route.meta }] : [])
+    ? routesOrDefs.flatMap((route) =>
+        route.children?.length
+          ? route.children.map((child) => ({
+              path: child.path.startsWith('/') ? child.path : `/${child.path}`,
+              meta: child.meta
+            }))
+          : route.path
+            ? [{ path: route.path, meta: route.meta }]
+            : []
+      )
     : APP_ROUTE_DEFS
 
   const firstRoute = defs.find((route) => {

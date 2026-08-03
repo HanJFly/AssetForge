@@ -11,8 +11,10 @@ import ConfigPage from '@/views/system/ConfigPage.vue'
 import AssetPage from '@/views/asset/AssetPage.vue'
 import ApprovalPage from '@/views/approval/ApprovalPage.vue'
 import RequisitionPage from '@/views/business/RequisitionPage.vue'
+import OutboundPage from '@/views/business/OutboundPage.vue'
 import TransferPage from '@/views/business/TransferPage.vue'
 import ReturnPage from '@/views/business/ReturnPage.vue'
+import InboundPage from '@/views/business/InboundPage.vue'
 import ScrapPage from '@/views/business/ScrapPage.vue'
 import InventoryTaskPage from '@/views/inventory/InventoryTaskPage.vue'
 import LossOrderPage from '@/views/inventory/LossOrderPage.vue'
@@ -30,8 +32,10 @@ const routeComponents = {
   asset: AssetPage,
   approval: ApprovalPage,
   requisition: RequisitionPage,
+  outbound: OutboundPage,
   transfer: TransferPage,
   return: ReturnPage,
+  inbound: InboundPage,
   scrap: ScrapPage,
   'inventory-task': InventoryTaskPage,
   'loss-order': LossOrderPage,

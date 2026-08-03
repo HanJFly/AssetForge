@@ -494,7 +494,6 @@ onMounted(async () => {
       </div>
 
       <el-table :data="pageRows" stripe v-loading="loading" style="margin-top: 16px">
-        <el-table-column label="ID" prop="id" width="70" />
         <el-table-column label="用户名" prop="username" min-width="130" />
         <el-table-column label="姓名" prop="realName" min-width="120" />
         <el-table-column label="工号" prop="employeeNo" min-width="120" />
@@ -557,7 +556,6 @@ onMounted(async () => {
         <el-empty v-if="!detailResult" description="先选择用户，再查看角色信息" />
         <el-empty v-else-if="!roleResult.length" description="当前用户暂无角色信息" />
         <el-table v-else :data="roleResult" stripe>
-          <el-table-column label="角色 ID" prop="id" width="90" />
           <el-table-column label="角色编码" prop="code" min-width="140" />
           <el-table-column label="角色名称" prop="name" min-width="140" />
         </el-table>
@@ -589,7 +587,7 @@ onMounted(async () => {
             <el-option
               v-for="item in departmentOptions"
               :key="item.id"
-              :label="`${item.name} (${item.id})`"
+              :label="item.name"
               :value="item.id"
             />
           </el-select>
@@ -605,7 +603,7 @@ onMounted(async () => {
             <el-option
               v-for="item in roleOptions"
               :key="item.id"
-              :label="`${item.label} (${item.id})`"
+              :label="item.label"
               :value="item.id"
             />
           </el-select>
@@ -624,9 +622,6 @@ onMounted(async () => {
 
     <el-dialog v-model="editDialogVisible" title="修改用户" width="560px" destroy-on-close>
       <el-form label-width="110px">
-        <el-form-item label="用户 ID">
-          <el-input :model-value="editForm.id ?? '-'" disabled />
-        </el-form-item>
         <el-form-item label="用户名">
           <el-input v-model="editForm.username" disabled />
         </el-form-item>
@@ -647,7 +642,7 @@ onMounted(async () => {
             <el-option
               v-for="item in departmentOptions"
               :key="item.id"
-              :label="`${item.name} (${item.id})`"
+              :label="item.name"
               :value="item.id"
             />
           </el-select>
@@ -663,7 +658,7 @@ onMounted(async () => {
             <el-option
               v-for="item in roleOptions"
               :key="item.id"
-              :label="`${item.label} (${item.id})`"
+              :label="item.label"
               :value="item.id"
             />
           </el-select>
@@ -682,9 +677,6 @@ onMounted(async () => {
 
     <el-dialog v-model="resetDialogVisible" title="重置密码" width="420px" destroy-on-close>
       <el-form label-width="100px">
-        <el-form-item label="用户 ID">
-          <el-input :model-value="resetForm.id ?? '-'" disabled />
-        </el-form-item>
         <el-form-item label="新密码">
           <el-input v-model="resetForm.newPassword" show-password />
         </el-form-item>

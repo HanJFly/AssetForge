@@ -162,7 +162,6 @@ onMounted(loadData)
         <el-empty v-if="!detail" description="请选择审批记录查看详情" />
         <template v-else>
           <el-descriptions :column="1" border>
-            <el-descriptions-item label="ID">{{ detail.id }}</el-descriptions-item>
             <el-descriptions-item label="流程号">{{ detail.processNo || '-' }}</el-descriptions-item>
             <el-descriptions-item label="标题">{{ detail.title || '-' }}</el-descriptions-item>
             <el-descriptions-item label="审批类型">{{ detail.approvalType || detail.businessType || '-' }}</el-descriptions-item>
@@ -189,7 +188,7 @@ onMounted(loadData)
 
             <el-divider>转交审批</el-divider>
             <el-form label-width="90px">
-              <el-form-item label="目标审批人 ID">
+              <el-form-item label="目标审批人编号">
                 <el-input-number v-model="transferForm.targetApproverId" class="full-width" />
               </el-form-item>
               <el-form-item label="转交说明">
@@ -215,7 +214,6 @@ onMounted(loadData)
                 <el-descriptions-item label="原因">{{ form.reason || '-' }}</el-descriptions-item>
               </el-descriptions>
               <el-table v-if="Array.isArray(form.itemList) && form.itemList.length > 0" :data="form.itemList" stripe>
-                <el-table-column label="分类 ID" prop="categoryId" width="100" />
                 <el-table-column label="分类名称" prop="categoryName" min-width="180" />
                 <el-table-column label="数量" prop="quantity" width="100" />
               </el-table>
