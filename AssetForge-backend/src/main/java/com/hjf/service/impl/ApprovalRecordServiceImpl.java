@@ -614,34 +614,35 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
         if(approvalRecord.getApplicantId() == context.getId()){
             throw new CommonException(400, "不能审批自己");
         }
-        if ("PENDING".equals(approvalRecord.getApprovalStatus())) {
-            if ("APPROVED".equals(param.getDecision())) {
+        if (!"PENDING".equals(approvalRecord.getApprovalStatus())) {
+            throw new CommonException(400, "该审批记录已处理，不能重复审批");
+        }
+        if ("APPROVED".equals(param.getDecision())) {
 
-                approvalRecord.setApprovalStatus("APPROVED");
-                approvalRecord.setApprovedAt(LocalDateTime.now());
-                approvalRecord.setApprovalRemark(param.getComment());
-                approvalRecordMapper.updateById(approvalRecord);
+            approvalRecord.setApprovalStatus("APPROVED");
+            approvalRecord.setApprovedAt(LocalDateTime.now());
+            approvalRecord.setApprovalRemark(param.getComment());
+            approvalRecordMapper.updateById(approvalRecord);
 
-                //审批通过后，更新对应的业务单据的审批状态
-                updateTargetTypeTable(approvalRecord.getTargetType(), approvalRecord.getTargetId(), "APPROVED", context, param);
+            //审批通过后，更新对应的业务单据的审批状态
+            updateTargetTypeTable(approvalRecord.getTargetType(), approvalRecord.getTargetId(), "APPROVED", context, param);
 
 
-                vo.setApprovalStatus("APPROVED");
-                vo.setSuccess(true);
-            } else if ("REJECTED".equals(param.getDecision())) {
+            vo.setApprovalStatus("APPROVED");
+            vo.setSuccess(true);
+        } else if ("REJECTED".equals(param.getDecision())) {
 
-                approvalRecord.setApprovalStatus("REJECTED");
-                approvalRecord.setApprovedAt(LocalDateTime.now());
-                approvalRecord.setApprovalRemark(param.getComment());
-                approvalRecordMapper.updateById(approvalRecord);
+            approvalRecord.setApprovalStatus("REJECTED");
+            approvalRecord.setApprovedAt(LocalDateTime.now());
+            approvalRecord.setApprovalRemark(param.getComment());
+            approvalRecordMapper.updateById(approvalRecord);
 
-                //审批拒绝后，更新对应的业务单据的审批状态
-                updateTargetTypeTable(approvalRecord.getTargetType(), approvalRecord.getTargetId(), "REJECTED", context, param);
-                vo.setApprovalStatus("REJECTED");
-                vo.setSuccess(true);
-            } else {
-                vo.setSuccess(false);
-            }
+            //审批拒绝后，更新对应的业务单据的审批状态
+            updateTargetTypeTable(approvalRecord.getTargetType(), approvalRecord.getTargetId(), "REJECTED", context, param);
+            vo.setApprovalStatus("REJECTED");
+            vo.setSuccess(true);
+        } else {
+            throw new CommonException(400, "审批结果不合法");
         }
         return vo;
 
@@ -682,27 +683,18 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
             throw new CommonException(400, "目标用户没有审批权限，无法转交");
         }
 
-
-        if ("PENDING".equals(approvalRecord.getApprovalStatus())) {
-            approvalRecord.setApproverId(param.getTargetApproverId());
-            approvalRecord.setTransferredTo(param.getTargetApproverId());
-            approvalRecord.setApprovalRemark(param.getComment());
-            approvalRecord.setApprovedAt(LocalDateTime.now());
-            approvalRecordMapper.updateById(approvalRecord);
-
-            //添加转交记录
-            ApprovalRecord transferRecord = new ApprovalRecord();
-            transferRecord.setApprovalType(approvalRecord.getApprovalType());
-            transferRecord.setTargetId(approvalRecord.getTargetId());
-            transferRecord.setTargetType(approvalRecord.getTargetType());
-            transferRecord.setApplicantId(approvalRecord.getApplicantId());
-            transferRecord.setApproverId(param.getTargetApproverId());
-            transferRecord.setApprovalStatus("PENDING");
-            transferRecord.setCreatedAt(LocalDateTime.now());
-            transferRecord.setUpdatedAt(LocalDateTime.now());
-            approvalRecordMapper.insert(transferRecord);
-
+        if (!"PENDING".equals(approvalRecord.getApprovalStatus())) {
+            throw new CommonException(400, "该审批记录已处理，不能重复转交");
         }
+        if (param.getTargetApproverId().equals(approvalRecord.getApproverId())) {
+            throw new CommonException(400, "目标审批人不能与当前审批人相同");
+        }
+
+        approvalRecord.setApproverId(param.getTargetApproverId());
+        approvalRecord.setTransferredTo(param.getTargetApproverId());
+        approvalRecord.setApprovalRemark(param.getComment());
+        approvalRecord.setUpdatedAt(LocalDateTime.now());
+        approvalRecordMapper.updateById(approvalRecord);
 
         ApprovalRecordTransferVO vo = new ApprovalRecordTransferVO();
         vo.setSuccess(true);
@@ -893,7 +885,9 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
             case "asset":
                 Asset asset = assetMapper.selectById(targetId);
                if("REJECTED".equals(status)){
-                   asset.setStatus("REJECTED");
+                   // 资产状态字段用于表达资产生命周期，不直接复用审批结果枚举。
+                   // 资产登记被驳回后，仍保留为待审批资产，由审批记录体现驳回结果。
+                   asset.setStatus("PENDING");
                    asset.setUpdatedAt(LocalDateTime.now());
                    assetMapper.updateById(asset);
                }

@@ -1,11 +1,13 @@
 import http from './http'
 
-const apiEnabled = import.meta.env.VITE_ENABLE_API === 'true'
+// 联调环境默认直连真实后端，只有显式配置为 false 时才关闭接口调用。
+const apiEnabled = import.meta.env.VITE_ENABLE_API !== 'false'
 
 const implementedEndpoints = new Set([
   '/auth/login',
   '/auth/me',
   '/auth/select-role',
+  '/auth/logout',
   '/department/getAll',
   '/department/tree',
   '/department/page',
@@ -76,14 +78,19 @@ const implementedEndpoints = new Set([
   '/file/bind'
 ])
 
+function createApiConfigError(message) {
+  const error = new Error(message)
+  error.code = 'API_CONFIG_ERROR'
+  return error
+}
+
 const post = (url, data = {}) => {
-  if (!apiEnabled || !implementedEndpoints.has(url)) {
-    return Promise.resolve({
-      code: 200,
-      msg: 'mock success',
-      data: null,
-      mock: true
-    })
+  if (!apiEnabled) {
+    return Promise.reject(createApiConfigError('当前环境未启用真实后端接口，请检查 VITE_ENABLE_API 配置'))
+  }
+
+  if (!implementedEndpoints.has(url)) {
+    return Promise.reject(createApiConfigError(`接口未登记: ${url}`))
   }
 
   const isFormData = typeof FormData !== 'undefined' && data instanceof FormData
@@ -102,18 +109,12 @@ const post = (url, data = {}) => {
 }
 
 const upload = (url, file, bizType = '') => {
-  if (!apiEnabled || !implementedEndpoints.has(url)) {
-    return Promise.resolve({
-      code: 200,
-      msg: 'mock success',
-      data: {
-        id: Date.now(),
-        fileName: file?.name || 'mock-file',
-        bizType,
-        fileUrl: file?.name || 'mock-file'
-      },
-      mock: true
-    })
+  if (!apiEnabled) {
+    return Promise.reject(createApiConfigError('当前环境未启用真实后端接口，请检查 VITE_ENABLE_API 配置'))
+  }
+
+  if (!implementedEndpoints.has(url)) {
+    return Promise.reject(createApiConfigError(`接口未登记: ${url}`))
   }
 
   const formData = new FormData()

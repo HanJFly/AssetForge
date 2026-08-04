@@ -12,6 +12,7 @@ import { formatAssetStatus, formatSourceType } from '@/utils/display-map'
 import { ACTION_CODES, DATA_SCOPES, getRoleDataScope, ROLE_CODES, roleHasAction } from '@/utils/role-access'
 
 const assetStatusOptions = [
+  { label: '待审批', value: 'PENDING' },
   { label: '库存', value: 'STOCK' },
   { label: '已领用', value: 'ASSIGNED' },
   { label: '已报废', value: 'SCRAPPED' },

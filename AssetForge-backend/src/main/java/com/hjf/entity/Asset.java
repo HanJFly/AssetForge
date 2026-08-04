@@ -98,7 +98,7 @@ public class Asset implements Serializable {
     private String location;
 
     /**
-     * 状态 STOCK/ASSIGNED/SCRAPPED/LOST
+     * 状态 PENDING/STOCK/ASSIGNED/SCRAPPED/LOST
      */
     private String status;
 

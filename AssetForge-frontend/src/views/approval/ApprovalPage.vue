@@ -42,6 +42,10 @@ const canReviewApproval = computed(() => roleHasAction(selectedRoleCode.value, A
 const currentUser = computed(() => getCurrentUserProfile())
 const detailFormData = computed(() => (Array.isArray(detail.value?.formData) ? detail.value.formData : []))
 const detailHistoryList = computed(() => (Array.isArray(detail.value?.historyList) ? detail.value.historyList : []))
+const currentApprovalStatus = computed(() => detail.value?.status || detail.value?.approvalStatus || '')
+const canOperateCurrentApproval = computed(() => (
+  canReviewApproval.value && currentApprovalStatus.value === 'PENDING'
+))
 const pageDesc = computed(() => (
   canReviewApproval.value
     ? '处理待审批事项并查看审批记录。'
@@ -69,7 +73,9 @@ async function startReview(row) {
   actionForm.decision = 'APPROVED'
   actionForm.comment = '同意办理'
   await loadDetail(row)
-  ElMessage.info('请先核对审批详情，再选择审批结果并提交。')
+  if ((detail.value?.status || detail.value?.approvalStatus) === 'PENDING') {
+    ElMessage.info('请先核对审批详情，再选择审批结果并提交。')
+  }
 }
 
 async function loadData() {
@@ -156,9 +162,14 @@ async function loadDetail(row) {
 async function submitAction(row) {
   actionForm.id = row.id
   try {
-    await approvalApi.action({ ...actionForm })
+    const payload = await approvalApi.action({ ...actionForm })
+    if (payload?.data?.success === false) {
+      ElMessage.warning('当前审批记录未处理成功，请刷新后重试。')
+      return
+    }
     ElMessage.success('审批已提交')
     await loadData()
+    await loadDetail(row)
   } catch (error) {
     ElMessage.error(error?.msg || error?.message || '审批提交失败')
   }
@@ -166,9 +177,16 @@ async function submitAction(row) {
 
 async function submitTransfer() {
   try {
+    if (!transferForm.targetApproverId) {
+      ElMessage.warning('请先选择目标审批人')
+      return
+    }
     await approvalApi.transfer({ ...transferForm })
     ElMessage.success('转交审批已提交')
     await loadData()
+    if (detail.value) {
+      await loadDetail(detail.value)
+    }
   } catch (error) {
     ElMessage.error(error?.msg || error?.message || '转交审批失败')
   }
@@ -252,7 +270,7 @@ watch(activeTab, () => {
             <el-descriptions-item label="当前审批人">{{ detail.currentApproverName || '-' }}</el-descriptions-item>
           </el-descriptions>
 
-          <template v-if="canReviewApproval">
+          <template v-if="canOperateCurrentApproval">
             <el-divider>审批操作</el-divider>
             <div class="action-tip">从左侧点“去审批”后，先核对详情，再选择结果并提交，避免误操作直接通过。</div>
             <el-form label-width="90px">
@@ -293,6 +311,14 @@ watch(activeTab, () => {
               <el-button @click="submitTransfer">提交转交</el-button>
             </div>
           </template>
+
+          <el-alert
+            v-else-if="canReviewApproval"
+            title="当前审批记录已处理完成，仅支持查看详情与历史记录。"
+            type="info"
+            :closable="false"
+            class="status-alert"
+          />
 
           <el-divider>表单数据</el-divider>
           <el-empty v-if="detailFormData.length === 0" description="暂无表单数据" />
@@ -336,6 +362,10 @@ watch(activeTab, () => {
   color: #6b7280;
   font-size: 13px;
   line-height: 1.6;
+}
+
+.status-alert {
+  margin-top: 16px;
 }
 
 .detail-subcard {

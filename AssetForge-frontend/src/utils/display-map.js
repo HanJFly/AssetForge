@@ -32,6 +32,7 @@ const decisionMap = {
 }
 
 const assetStatusMap = {
+  PENDING: '待审批',
   STOCK: '库存',
   ASSIGNED: '已领用',
   SCRAPPED: '已报废',
