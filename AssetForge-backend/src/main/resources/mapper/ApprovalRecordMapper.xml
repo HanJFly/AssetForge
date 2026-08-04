@@ -60,5 +60,6 @@
             <if test="approvalStatus != null and approvalStatus != ''">
                 AND approval_status = #{approvalStatus}
             </if>
+            ORDER BY approved_at DESC
     </select>
 </mapper>

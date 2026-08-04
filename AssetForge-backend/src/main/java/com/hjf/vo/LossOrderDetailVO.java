@@ -20,4 +20,6 @@ public class LossOrderDetailVO {
     private BigDecimal lossAmount;
     private String compensationStatus;
     private String remark;
+    private BigDecimal suggestedCompensation;  // 建议赔偿金额
+    private BigDecimal actualCompensation;
 }

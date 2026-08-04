@@ -27,9 +27,15 @@ const columns = [
   { label: '创建时间', prop: 'createdAt', minWidth: 170 }
 ]
 
+const handleTypeOptions = [
+  { label: '赔偿', value: 'PENDING_COMPENSATION' },
+  { label: '免责', value: 'EXEMPTING' }
+]
+
 const formFields = [
   { label: 'ID', prop: 'id', placeholder: '处理时必填' },
-  { label: '处理类型', prop: 'handleType', placeholder: 'COMPENSATE / EXEMPT' },
+  { label: '处理类型', prop: 'handleType', type: 'select', options: handleTypeOptions, placeholder: '请选择处理类型' },
+  { label: '建议赔偿金额', prop: 'suggestedCompensation', componentProps: { disabled: true } },
   { label: '处理金额', prop: 'handleAmount', type: 'number', default: 0 },
   { label: '处理意见', prop: 'handlingRemark', type: 'textarea', placeholder: '请输入处理意见' }
 ]

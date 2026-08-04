@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, reactive, ref } from 'vue'
+import { computed, onMounted, reactive, ref, watch } from 'vue'
 import { ElMessage } from 'element-plus'
 
 import { approvalApi } from '@/api'
@@ -109,6 +109,10 @@ async function submitTransfer() {
 }
 
 onMounted(loadData)
+
+watch(activeTab, () => {
+  loadData()
+})
 </script>
 
 <template>

@@ -1,6 +1,7 @@
 package com.hjf.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.hjf.common.result.CommonException;
@@ -80,13 +81,50 @@ public class InventoryDetailServiceImpl extends ServiceImpl<InventoryDetailMappe
           if (detail == null){
               throw new CommonException(404, "资产明细不存在");
           }
-          detail.setResult(inventoryDetailSubmitList.getResult());
-          detail.setActualUserId(inventoryDetailSubmitList.getActualUserId());
-          detail.setActualLocation(inventoryDetailSubmitList.getActualLocation());
-          detail.setRemark(inventoryDetailSubmitList.getRemark());
-          detail.setCheckedAt(LocalDateTime.now());
-          detail.setUpdatedAt(LocalDateTime.now());
-          inventoryDetailMapper.updateById(detail);
+          if("NORMAL".equals(inventoryDetailSubmitList.getResult()) || "MISMATCH".equals(inventoryDetailSubmitList.getResult())){
+              detail.setResult(inventoryDetailSubmitList.getResult());
+              detail.setActualUserId(inventoryDetailSubmitList.getActualUserId());
+              detail.setActualLocation(inventoryDetailSubmitList.getActualLocation());
+              detail.setFoundAssetName(null);
+              detail.setFoundAssetCategory(null);
+              detail.setFoundAssetLocation(null);
+              detail.setFoundAssetCode(null);
+
+          }else if ("LOSS".equals(inventoryDetailSubmitList.getResult())){detail.setResult(inventoryDetailSubmitList.getResult());
+              detail.setActualUserId(null);
+              detail.setActualLocation(null);
+              detail.setFoundAssetName(null);
+              detail.setFoundAssetCategory(null);
+              detail.setFoundAssetLocation(null);
+              detail.setFoundAssetCode(null);
+          }else if ("GAIN".equals(inventoryDetailSubmitList.getResult())) {
+              detail.setResult(inventoryDetailSubmitList.getResult());
+              detail.setFoundAssetName(inventoryDetailSubmitList.getFoundAssetName());
+              detail.setFoundAssetCategory(inventoryDetailSubmitList.getFoundAssetCategory());
+              detail.setFoundAssetLocation(inventoryDetailSubmitList.getFoundAssetLocation());
+              detail.setFoundAssetCode(inventoryDetailSubmitList.getFoundAssetCode());
+              detail.setSystemUserId(null);
+              detail.setActualUserId(inventoryDetailSubmitList.getActualUserId());
+              detail.setActualLocation(inventoryDetailSubmitList.getActualLocation());
+          }
+            detail.setRemark(inventoryDetailSubmitList.getRemark());
+            detail.setCheckedAt(LocalDateTime.now());
+            detail.setUpdatedAt(LocalDateTime.now());
+
+            LambdaUpdateWrapper<InventoryDetail> updateWrapper = new LambdaUpdateWrapper<>();
+            updateWrapper.eq(InventoryDetail::getId, detail.getId())
+                    .set(InventoryDetail::getResult, detail.getResult())
+                    .set(InventoryDetail::getFoundAssetName, detail.getFoundAssetName())
+                    .set(InventoryDetail::getFoundAssetCategory, detail.getFoundAssetCategory())
+                    .set(InventoryDetail::getFoundAssetLocation, detail.getFoundAssetLocation())
+                    .set(InventoryDetail::getFoundAssetCode, detail.getFoundAssetCode())
+                    .set(InventoryDetail::getSystemUserId, detail.getSystemUserId())
+                    .set(InventoryDetail::getActualUserId, detail.getActualUserId())
+                    .set(InventoryDetail::getActualLocation, detail.getActualLocation())
+                    .set(InventoryDetail::getRemark, detail.getRemark())
+                    .set(InventoryDetail::getCheckedAt, detail.getCheckedAt())
+                    .set(InventoryDetail::getUpdatedAt, detail.getUpdatedAt());
+            inventoryDetailMapper.update(null, updateWrapper);
           count ++;
         }
         if ("PENDING".equals(inventoryTask.getStatus())) {
