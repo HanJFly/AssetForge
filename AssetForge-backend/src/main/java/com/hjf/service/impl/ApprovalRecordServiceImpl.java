@@ -666,6 +666,22 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
             throw new CommonException(400, "不能转交给自己");
         }
 
+        //检查目标用户是否有审批权限
+        LambdaQueryWrapper<UserRole> targetRoleWrapper = new LambdaQueryWrapper<>();
+        targetRoleWrapper.eq(UserRole::getUserId, param.getTargetApproverId());
+        List<UserRole> targetUserRoles = userRoleMapper.selectList(targetRoleWrapper);
+        boolean hasApprovalPermission = false;
+        if (targetUserRoles != null && !targetUserRoles.isEmpty()) {
+            LambdaQueryWrapper<Role> roleQuery = new LambdaQueryWrapper<>();
+            roleQuery.in(Role::getId, targetUserRoles.stream().map(UserRole::getRoleId).toList());
+            roleQuery.in(Role::getCode, "ASSET_ADMIN", "DEPT_MANAGER");
+            List<Role> validRoles = roleMapper.selectList(roleQuery);
+            hasApprovalPermission = validRoles != null && !validRoles.isEmpty();
+        }
+        if (!hasApprovalPermission) {
+            throw new CommonException(400, "目标用户没有审批权限，无法转交");
+        }
+
 
         if ("PENDING".equals(approvalRecord.getApprovalStatus())) {
             approvalRecord.setApproverId(param.getTargetApproverId());
@@ -695,7 +711,66 @@ public class ApprovalRecordServiceImpl extends ServiceImpl<ApprovalRecordMapper,
 
     }
 
+    @Override
+    public List<ApprovalApproverVO> approverList() {
+        // 查询有审批权限的角色（ASSET_ADMIN、DEPT_MANAGER）
+        LambdaQueryWrapper<Role> roleQuery = new LambdaQueryWrapper<>();
+        roleQuery.in(Role::getCode, "ASSET_ADMIN", "DEPT_MANAGER");
+        List<Role> approvalRoles = roleMapper.selectList(roleQuery);
+        if (approvalRoles == null || approvalRoles.isEmpty()) {
+            return new ArrayList<>();
+        }
 
+        List<Long> roleIds = approvalRoles.stream().map(Role::getId).toList();
+
+        // 查询拥有这些角色的用户
+        LambdaQueryWrapper<UserRole> userRoleQuery = new LambdaQueryWrapper<>();
+        userRoleQuery.in(UserRole::getRoleId, roleIds);
+        List<UserRole> userRoles = userRoleMapper.selectList(userRoleQuery);
+        if (userRoles == null || userRoles.isEmpty()) {
+            return new ArrayList<>();
+        }
+
+        List<Long> userIds = userRoles.stream().map(UserRole::getUserId).distinct().toList();
+
+        // 查询用户信息
+        LambdaQueryWrapper<User> userQuery = new LambdaQueryWrapper<>();
+        userQuery.in(User::getId, userIds);
+        userQuery.eq(User::getIsDeleted, 0);
+        List<User> users = userMapper.selectList(userQuery);
+        if (users == null || users.isEmpty()) {
+            return new ArrayList<>();
+        }
+
+        // 构建返回结果，确定职位名称
+        List<ApprovalApproverVO> result = new ArrayList<>();
+        for (User user : users) {
+            ApprovalApproverVO vo = new ApprovalApproverVO();
+            vo.setUserId(user.getId());
+            vo.setRealName(user.getRealName());
+
+            // 确定用户的职位
+            List<Long> userRoleIdList = userRoles.stream()
+                .filter(ur -> ur.getUserId().equals(user.getId()))
+                .map(UserRole::getRoleId)
+                .toList();
+
+            String position = null;
+            for (Role role : approvalRoles) {
+                if (userRoleIdList.contains(role.getId())) {
+                    if ("ASSET_ADMIN".equals(role.getCode())) {
+                        position = "资产管理员";
+                    } else if ("DEPT_MANAGER".equals(role.getCode())) {
+                        position = (user.getDepartmentName() != null ? user.getDepartmentName() : "") + "管理员";
+                    }
+                    break;
+                }
+            }
+            vo.setPosition(position);
+            result.add(vo);
+        }
+        return result;
+    }
 
     /**
      * 兼容历史脏数据：数据库中存在将 SCRAP 误写为 SCARP 的审批类型。

@@ -5,6 +5,7 @@ import com.hjf.entity.ApprovalRecord;
 import com.baomidou.mybatisplus.spring.service.IService;
 import com.hjf.param.*;
 import com.hjf.vo.*;
+import java.util.List;
 
 /**
  * <p>
@@ -25,4 +26,6 @@ public interface IApprovalRecordService extends IService<ApprovalRecord> {
     ApprovalRecordActionVO action(ApprovalRecordActionParam param);
 
     ApprovalRecordTransferVO transfer(ApprovalRecordTransferParam param);
+
+    List<ApprovalApproverVO> approverList();
 }

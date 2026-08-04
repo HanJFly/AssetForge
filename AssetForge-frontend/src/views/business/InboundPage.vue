@@ -5,6 +5,7 @@ import { ElMessage } from 'element-plus'
 import { assetApi, returnApi } from '@/api'
 import { normalizeDataResult, normalizePageResult } from '@/api/helpers'
 import { authState } from '@/utils/auth'
+import { formatApprovalStatus, formatAssetCondition } from '@/utils/display-map'
 import { ACTION_CODES, roleHasAction } from '@/utils/role-access'
 
 const loading = ref(false)
@@ -253,7 +254,9 @@ loadList()
         <el-table :data="tableData" v-loading="loading" stripe style="margin-top: 16px">
           <el-table-column label="归还单号" prop="orderNo" min-width="160" />
           <el-table-column label="归还人" prop="returnUserName" min-width="120" />
-          <el-table-column label="审批状态" prop="approvalStatus" width="120" />
+          <el-table-column label="审批状态" width="120">
+            <template #default="{ row }">{{ formatApprovalStatus(row.approvalStatus) }}</template>
+          </el-table-column>
           <el-table-column label="创建时间" prop="createdAt" min-width="170" />
           <el-table-column label="操作" width="160" fixed="right">
             <template #default="{ row }">
@@ -310,7 +313,7 @@ loadList()
           <el-descriptions-item label="归还单号">{{ detailModel.orderNo || '-' }}</el-descriptions-item>
           <el-descriptions-item label="归还人">{{ detailModel.returnUserName || '-' }}</el-descriptions-item>
           <el-descriptions-item label="归还原因">{{ detailModel.reason || '-' }}</el-descriptions-item>
-          <el-descriptions-item label="审批状态">{{ detailModel.approvalStatus || '-' }}</el-descriptions-item>
+          <el-descriptions-item label="审批状态">{{ formatApprovalStatus(detailModel.approvalStatus) }}</el-descriptions-item>
         </el-descriptions>
 
         <div class="section-title">归还明细</div>
@@ -318,7 +321,9 @@ loadList()
           <el-table-column label="明细编号" prop="id" width="100" />
           <el-table-column label="资产编码" prop="assetCode" width="160" />
           <el-table-column label="资产内部编号" prop="assetId" width="120" />
-          <el-table-column label="资产状态" prop="assetCondition" min-width="140" />
+          <el-table-column label="资产状态" min-width="140">
+            <template #default="{ row }">{{ formatAssetCondition(row.assetCondition) }}</template>
+          </el-table-column>
           <el-table-column label="状态说明" prop="conditionRemark" min-width="180" />
         </el-table>
       </div>

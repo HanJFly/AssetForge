@@ -41,6 +41,7 @@ const implementedEndpoints = new Set([
   '/approval/detail',
   '/approval/action',
   '/approval/transfer',
+  '/approval/approvers',
   '/receive-order/create',
   '/receive-order/page',
   '/receive-order/detail',
@@ -188,7 +189,8 @@ export const approvalApi = {
   donePage: (data) => post('/approval/done/page', data),
   detail: (data) => post('/approval/detail', data),
   action: (data) => post('/approval/action', data),
-  transfer: (data) => post('/approval/transfer', data)
+  transfer: (data) => post('/approval/transfer', data),
+  approvers: () => post('/approval/approvers')
 }
 
 export const requisitionApi = {

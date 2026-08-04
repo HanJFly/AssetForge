@@ -7,6 +7,7 @@ import { assetApi, departmentApi, transferApi, userApi } from '@/api'
 import { normalizePageResult } from '@/api/helpers'
 import { authState } from '@/utils/auth'
 import { buildScopedQuery, getCurrentUserProfile } from '@/utils/data-scope'
+import { formatApprovalStatus } from '@/utils/display-map'
 import { ACTION_CODES, DATA_SCOPES, getRoleDataScope, roleHasAction } from '@/utils/role-access'
 
 const approvalStatusOptions = [
@@ -35,7 +36,7 @@ const columns = [
   { label: '调拨单号', prop: 'orderNo', minWidth: 160 },
   { label: '调出部门', prop: 'fromUserDepartmentName', minWidth: 140 },
   { label: '调入部门', prop: 'toUserDepartmentName', minWidth: 140 },
-  { label: '审批状态', prop: 'approvalStatus', width: 120 },
+  { label: '审批状态', prop: 'approvalStatus', width: 120, formatter: (_row, _column, value) => formatApprovalStatus(value) },
   { label: '创建时间', prop: 'createdAt', minWidth: 170 }
 ]
 
@@ -45,7 +46,7 @@ const detailFields = [
   { label: '调入部门', prop: 'toDepartmentName' },
   { label: '调出人', prop: 'fromUserName' },
   { label: '调入人', prop: 'toUserName' },
-  { label: '审批状态', prop: 'approvalStatus' }
+  { label: '审批状态', prop: 'approvalStatus', formatter: (_row, _field, value) => formatApprovalStatus(value) }
 ]
 
 const selectedRoleCode = computed(() => authState.selectedRole?.code || '')

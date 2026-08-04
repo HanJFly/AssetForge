@@ -5,6 +5,7 @@ import { ElMessage } from 'element-plus'
 import { inventoryApi, departmentApi, categoryApi, userApi } from '@/api'
 import { normalizePageResult } from '@/api/helpers'
 import { authState } from '@/utils/auth'
+import { formatInventoryResult, formatInventoryTaskStatus, formatScopeType } from '@/utils/display-map'
 import { ACTION_CODES, getRoleDataScope, roleHasAction } from '@/utils/role-access'
 import { getCurrentUserProfile } from '@/utils/data-scope'
 
@@ -133,14 +134,11 @@ watch(
 )
 
 function formatResult(value) {
-  return resultOptions.find((item) => item.value === value)?.label || value || '-'
+  return formatInventoryResult(value)
 }
 
 function formatTaskStatus(value) {
-  if (value === 'COMPLETED') return '已完成'
-  if (value === 'IN_PROGRESS') return '进行中'
-  if (value === 'PENDING') return '待开始'
-  return value || '-'
+  return formatInventoryTaskStatus(value)
 }
 
 function getTaskStatusType(value) {
@@ -600,7 +598,9 @@ onMounted(async () => {
       >
         <el-table-column label="任务编号" prop="id" width="100" />
         <el-table-column label="任务名称" prop="taskName" min-width="240" />
-        <el-table-column label="范围类型" prop="scopeType" width="140" />
+        <el-table-column label="范围类型" width="140">
+          <template #default="{ row }">{{ formatScopeType(row.scopeType) }}</template>
+        </el-table-column>
         <el-table-column label="截止日期" prop="deadline" width="140" />
         <el-table-column label="负责人编号" prop="responsibleUserId" width="120" />
         <el-table-column label="状态" width="120">
@@ -619,7 +619,7 @@ onMounted(async () => {
         <el-descriptions v-else :column="1" border>
           <el-descriptions-item label="任务名称">{{ selectedTask.taskName || '-' }}</el-descriptions-item>
           <el-descriptions-item label="任务编号">{{ selectedTask.id }}</el-descriptions-item>
-          <el-descriptions-item label="范围类型">{{ selectedTask.scopeType || '-' }}</el-descriptions-item>
+          <el-descriptions-item label="范围类型">{{ formatScopeType(selectedTask.scopeType) }}</el-descriptions-item>
           <el-descriptions-item label="截止日期">{{ selectedTask.deadline || '-' }}</el-descriptions-item>
           <el-descriptions-item label="状态">{{ formatTaskStatus(selectedTask.status) }}</el-descriptions-item>
         </el-descriptions>
@@ -730,7 +730,7 @@ onMounted(async () => {
               <el-input v-model="conclusionForm.conclusion" type="textarea" :rows="5" placeholder="填写本次盘点结论后提交结案" />
             </el-form-item>
             <el-form-item label="提交状态">
-              <el-input model-value="COMPLETED" disabled />
+              <el-input :model-value="formatTaskStatus('COMPLETED')" disabled />
             </el-form-item>
           </el-form>
 

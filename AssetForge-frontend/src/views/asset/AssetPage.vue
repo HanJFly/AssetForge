@@ -8,6 +8,7 @@ import http from '@/api/http'
 import { normalizeDataResult, normalizePageResult } from '@/api/helpers'
 import { authState } from '@/utils/auth'
 import { buildScopedQuery, getCurrentUserProfile } from '@/utils/data-scope'
+import { formatAssetStatus, formatSourceType } from '@/utils/display-map'
 import { ACTION_CODES, DATA_SCOPES, getRoleDataScope, ROLE_CODES, roleHasAction } from '@/utils/role-access'
 
 const assetStatusOptions = [
@@ -96,8 +97,8 @@ const columns = [
   { label: '分类', prop: 'categoryName', minWidth: 150 },
   { label: '部门', prop: 'departmentName', minWidth: 140 },
   { label: '当前使用人', prop: 'currentUserName', minWidth: 120 },
-  { label: '状态', prop: 'status', width: 100 },
-  { label: '来源', prop: 'sourceType', width: 100 },
+  { label: '状态', prop: 'status', width: 100, formatter: (_row, _column, value) => formatAssetStatus(value) },
+  { label: '来源', prop: 'sourceType', width: 100, formatter: (_row, _column, value) => formatSourceType(value) },
   { label: '采购金额', prop: 'purchaseAmount', width: 120 },
   { label: '采购日期', prop: 'purchaseDate', width: 120 }
 ]
@@ -169,7 +170,8 @@ const detailFields = [
   { label: '当前使用人', prop: 'currentUserName' },
   { label: '品牌型号', prop: 'brandModel' },
   { label: '用途', prop: 'purpose' },
-  { label: '状态', prop: 'status' },
+  { label: '状态', prop: 'status', formatter: (_row, _field, value) => formatAssetStatus(value) },
+  { label: '来源', prop: 'sourceType', formatter: (_row, _field, value) => formatSourceType(value) },
   { label: '采购金额', prop: 'purchaseAmount' },
   { label: '采购日期', prop: 'purchaseDate' }
 ]

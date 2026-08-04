@@ -5,6 +5,7 @@ import { ElMessage } from 'element-plus'
 import { assetApi, requisitionApi } from '@/api'
 import { normalizeDataResult, normalizePageResult } from '@/api/helpers'
 import { authState } from '@/utils/auth'
+import { formatApprovalStatus } from '@/utils/display-map'
 import { ACTION_CODES, roleHasAction } from '@/utils/role-access'
 
 const loading = ref(false)
@@ -281,7 +282,9 @@ loadList()
         <el-table :data="tableData" v-loading="loading" stripe style="margin-top: 16px">
           <el-table-column label="申领单号" prop="orderNo" min-width="160" />
           <el-table-column label="申请人" prop="applicantName" min-width="120" />
-          <el-table-column label="审批状态" prop="approvalStatus" width="120" />
+          <el-table-column label="审批状态" width="120">
+            <template #default="{ row }">{{ formatApprovalStatus(row.approvalStatus) }}</template>
+          </el-table-column>
           <el-table-column label="创建时间" prop="createdAt" min-width="170" />
           <el-table-column label="操作" width="160" fixed="right">
             <template #default="{ row }">
@@ -341,7 +344,7 @@ loadList()
           <el-descriptions-item label="申领单号">{{ detailModel.orderNo || '-' }}</el-descriptions-item>
           <el-descriptions-item label="申请人">{{ detailModel.applicantName || '-' }}</el-descriptions-item>
           <el-descriptions-item label="申请原因">{{ detailModel.reason || '-' }}</el-descriptions-item>
-          <el-descriptions-item label="审批状态">{{ detailModel.approvalStatus || '-' }}</el-descriptions-item>
+          <el-descriptions-item label="审批状态">{{ formatApprovalStatus(detailModel.approvalStatus) }}</el-descriptions-item>
         </el-descriptions>
 
         <div class="section-title">申领明细</div>

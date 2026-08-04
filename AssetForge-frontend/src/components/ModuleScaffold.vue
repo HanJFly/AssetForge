@@ -93,7 +93,9 @@ const detailEntries = computed(() => {
   if (props.detailFields.length) {
     return props.detailFields.map((field) => ({
       label: field.label,
-      value: detailModel.value?.[field.prop]
+      value: field.formatter
+        ? field.formatter(detailModel.value, field, detailModel.value?.[field.prop])
+        : detailModel.value?.[field.prop]
     }))
   }
 

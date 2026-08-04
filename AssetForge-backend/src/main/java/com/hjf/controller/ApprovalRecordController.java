@@ -10,8 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * <p>
@@ -70,6 +71,15 @@ public class ApprovalRecordController {
     public Result<ApprovalRecordTransferVO> transfer(@RequestBody ApprovalRecordTransferParam param){
         ApprovalRecordTransferVO vo= approvalRecordService.transfer(param);
         return Result.ok(vo);
+    }
+
+    /*
+    * 获取有审批权限的用户列表
+    * */
+    @PostMapping("/approvers")
+    public Result<List<ApprovalApproverVO>> approvers(){
+        List<ApprovalApproverVO> list = approvalRecordService.approverList();
+        return Result.ok(list);
     }
 
 }

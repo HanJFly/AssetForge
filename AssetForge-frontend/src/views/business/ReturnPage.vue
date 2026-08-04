@@ -6,6 +6,7 @@ import ModuleScaffold from '@/components/ModuleScaffold.vue'
 import { assetApi, returnApi } from '@/api'
 import { authState } from '@/utils/auth'
 import { buildScopedQuery, getCurrentUserProfile } from '@/utils/data-scope'
+import { formatApprovalStatus } from '@/utils/display-map'
 import { normalizePageResult } from '@/api/helpers'
 import { ACTION_CODES, getRoleDataScope, roleHasAction } from '@/utils/role-access'
 
@@ -36,7 +37,7 @@ const baseFilters = [
 const columns = [
   { label: '归还单号', prop: 'orderNo', minWidth: 160 },
   { label: '归还人', prop: 'returnUserName', minWidth: 120 },
-  { label: '审批状态', prop: 'approvalStatus', width: 120 },
+  { label: '审批状态', prop: 'approvalStatus', width: 120, formatter: (_row, _column, value) => formatApprovalStatus(value) },
   { label: '创建时间', prop: 'createdAt', minWidth: 170 }
 ]
 
@@ -44,7 +45,7 @@ const detailFields = [
   { label: '归还单号', prop: 'orderNo' },
   { label: '归还人', prop: 'returnUserName' },
   { label: '归还原因', prop: 'reason' },
-  { label: '审批状态', prop: 'approvalStatus' }
+  { label: '审批状态', prop: 'approvalStatus', formatter: (_row, _field, value) => formatApprovalStatus(value) }
 ]
 
 const selectedRoleCode = computed(() => authState.selectedRole?.code || '')
